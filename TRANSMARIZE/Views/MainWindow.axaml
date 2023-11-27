@@ -36,10 +36,9 @@
 							BorderThickness="1.5" 
 							Padding="5" 
 							CornerRadius="25">
-						<TextBlock Text="Transmarize" 
-								   FontSize="25" 
+						<TextBlock FontSize="25"
 								   FontWeight="Bold"
-								   FontFamily="VigaFont"/>
+								   FontFamily="{StaticResource VigaFont}">Transmarize</TextBlock>
 					</Border>
 				</Grid>
 			</Grid>
