@@ -9,5 +9,10 @@
     </Application.Styles>
 	<Application.Resources>
 		<FontFamily x:Key="VigaFont">avares://TRANSMARIZE/Assets/Fonts#Viga</FontFamily>
+		<FontFamily x:Key="ZenKakuGothicAntiqueBlack">avares://TRANSMARIZE/Assets/Fonts#Zen Kaku Gothic Antique Black</FontFamily>
+		<FontFamily x:Key="ZenKakuGothicAntiqueBold">avares://TRANSMARIZE/Assets/Fonts#Zen Kaku Gothic Antique</FontFamily>
+		<FontFamily x:Key="ZenKakuGothicAntiqueLight">avares://TRANSMARIZE/Assets/Fonts#Zen Kaku Gothic Antique Light</FontFamily>
+		<FontFamily x:Key="ZenKakuGothicAntiqueMedium">avares://TRANSMARIZE/Assets/Fonts#Zen Kaku Gothic Antique Medium</FontFamily>
+		<FontFamily x:Key="ZenKakuGothicAntiqueRegular">avares://TRANSMARIZE/Assets/Fonts#Zen Kaku Gothic Antique</FontFamily>
 	</Application.Resources>
 </Application>

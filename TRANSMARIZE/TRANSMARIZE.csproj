@@ -12,6 +12,11 @@
 
   
   <ItemGroup>
+    <None Remove="Assets\Fonts\ZenKakuGothicAntique-Black.ttf" />
+    <None Remove="Assets\Fonts\ZenKakuGothicAntique-Bold.ttf" />
+    <None Remove="Assets\Fonts\ZenKakuGothicAntique-Light.ttf" />
+    <None Remove="Assets\Fonts\ZenKakuGothicAntique-Medium.ttf" />
+    <None Remove="Assets\Fonts\ZenKakuGothicAntique-Regular.ttf" />
     <None Remove="Assets\MainWindow\logo_transparent.ico" />
   </ItemGroup>
 
