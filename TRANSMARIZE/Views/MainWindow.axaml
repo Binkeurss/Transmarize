@@ -22,6 +22,7 @@
 			  Width="383">
 			<!-- Column 0 Row 0 dùng để chữa logo và tên app-->
 			<Grid Grid.Row="0" ColumnDefinitions="Auto, Auto">
+				<!--Logo-->
 				<Grid Grid.Column="0">
 					<Image Source="avares://TRANSMARIZE/Assets/MainWindow/logo_transparent.ico"
 						   Width="115." 
@@ -30,19 +31,42 @@
 						   HorizontalAlignment="Left" 
 						   VerticalAlignment="Center"/>
 				</Grid>
+				<!--Tên app-->
 				<Grid Grid.Column="1"
 					  HorizontalAlignment="Center" 
 					  VerticalAlignment="Center"
-					  Margin="0 -23 0 0">
-					<Border Margin="-15 0 0 0" 
-							BorderBrush="Black" 
-							BorderThickness="1.5" 
-							Padding="5" 
-							CornerRadius="25">
-						<TextBlock FontSize="25"
-								   FontWeight="Bold"
-								   FontFamily="{StaticResource VigaFont}">Transmarize</TextBlock>
+					  Margin="-15 -23 0 0"
+					  Width="287"
+					  Height="51">
+					<Grid.Styles>
+						<Style Selector="Border.TenApp">
+							<Setter Property="Width" Value="287"/>
+							<Setter Property="Height" Value="51"/>
+							<Setter Property="BorderBrush" Value="Black"/>
+							<Setter Property="BorderThickness" Value="2"/>
+							<Setter Property="Padding" Value="25"/>
+							<Setter Property="CornerRadius" Value="25"/>
+							<Setter Property="Background" Value="White"/>
+							<Setter Property="Effect">
+								<DropShadowEffect Color="Black"
+												  BlurRadius="5"
+												  OffsetX="-1"
+												  OffsetY="3"/>
+							</Setter>
+						</Style>
+
+						<Style Selector="TextBlock.App">
+							<Setter Property="FontSize" Value="25"/>
+							<Setter Property="FontWeight" Value="Bold"/>
+							<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+							<Setter Property="Foreground" Value="Black"/>
+							<Setter Property="HorizontalAlignment" Value="Center"/>
+							<Setter Property="VerticalAlignment" Value="Center"/>
+						</Style>
+					</Grid.Styles>
+					<Border Classes="TenApp">
 					</Border>
+					<TextBlock Classes="App">TRANSMARIZE</TextBlock>
 				</Grid>
 			</Grid>
 
@@ -139,6 +163,14 @@
 						<Setter Property="Background" Value="White"/>
 						<Setter Property="CornerRadius" Value="10"/>
 						<Setter Property="Padding" Value="4"/>
+						<Setter Property="BorderBrush" Value="Black"/>
+						<Setter Property="BorderThickness" Value="1"/>
+						<Setter Property="Effect">
+							<DropShadowEffect Color="Black"
+											  BlurRadius="5"
+											  OffsetX="-1"
+											  OffsetY="3"/>
+						</Setter>
 					</Style>
 					
 					<Style Selector="Border.h2">
@@ -157,17 +189,18 @@
 					</Style>
 
 					<Style Selector="TextBlock.ToYou">
+						<Setter Property="Background" Value="Transparent"/>
+						<Setter Property="FontFamily" Value="{StaticResource ZenKakuGothicAntiqueRegular}"/>
+						<Setter Property="Margin" Value="20 12 20 20"/>
+					</Style>
+					
+					<Style Selector="TextBlock.Hope">
 						<Setter Property="Margin" Value="0 5 0 0"/>
 						<Setter Property="FontFamily" Value="{StaticResource ZenKakuGothicAntiqueRegular}"/>
-						<Setter Property="FontSize" Value="12.5"/>
 					</Style>
 				</Grid.Styles>
 				<Border Classes="h1">
-					<TextBlock Name="Guild"
-							   Background="Transparent" 
-							   FontFamily="ZenKakuGothicAntiqueRegular"
-							   Padding="20"
-							   Margin="0 -10 0 0">
+					<TextBlock Classes="ToYou">
 						To: you
 					</TextBlock>
 				</Border>
@@ -176,9 +209,11 @@
 				<!--To: you-->
 				<Border Classes="h3">
 
-					<TextBlock Classes="ToYou">
-						I hope you have a good day. If you do not 
-						<LineBreak></LineBreak>understand any words, let I help you explain these words.
+					<TextBlock Classes="Hope">
+						I hope you have a good day.
+						<LineBreak></LineBreak> If you do not understand any 
+						<LineBreak></LineBreak>words, let I help you explain 
+						<LineBreak></LineBreak>these words.
 					</TextBlock>					
 				</Border>
 			</Grid>
@@ -186,6 +221,27 @@
 			<Grid Grid.Row="2"/>
 		</Grid>
 		<!-- Column 3-->
-		<Grid Grid.Column="3" Width="30" Background="Transparent"></Grid>
+		<Grid Grid.Column="3" Width="30" Background="Transparent">
+			<Grid.Styles>
+				<Style Selector="Button.Exit">
+					<Setter Property="HorizontalAlignment" Value="Right"/>
+					<Setter Property="VerticalAlignment" Value="Top"/>
+					<Setter Property="Margin" Value="0 -18 -13 0"/>
+					<Setter Property="Height" Value="40"/>
+					<Setter Property="Width" Value="40"/>
+					<Setter Property="VerticalContentAlignment" Value="Bottom"/>
+					<Setter Property="HorizontalContentAlignment" Value="Left"/>
+					<Setter Property="Background" Value="Transparent"/>
+					<Setter Property="FontSize" Value="10"/>
+				</Style>
+			</Grid.Styles>
+			<Button Classes="Exit" 
+					Name="ExitButton"
+					Content="✖">
+			</Button>
+		</Grid>
+
+
+		<!--Button Exit-->
 	</Grid>
 </Window>
