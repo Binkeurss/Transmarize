@@ -91,7 +91,7 @@
 					</Grid.Styles>
 					<ComboBox
 						BorderBrush="Black" 
-						BorderThickness="1.1" 
+						BorderThickness="2" 
 						VerticalAlignment="Center"
 						CornerRadius="25"
 						Margin="40 0 0 0" 
@@ -110,7 +110,9 @@
 							</Setter>
 						</Style>
 					</Grid.Styles>
-					<Button x:Name="ToggleButton" 
+					<Button x:Name="ToggleButton"
+							BorderBrush="Black"
+							BorderThickness="2"
 							Content="START" 
 							Background="#FFFFFF"
 							Margin="18 0 0 0" 
@@ -130,7 +132,7 @@
 		<!-- Column 2-->
 		<Grid Grid.Column="2" RowDefinitions="Auto, Auto, *">
 			<Grid Grid.Row="0" Height="60"/>
-			
+			<!--Chia Row 1 thành 4 phần-->
 			<Grid Grid.Row="1" Height="200">
 				<Grid.Styles>
 					<Style Selector="Border.h1">
@@ -142,7 +144,22 @@
 					<Style Selector="Border.h2">
 						<Setter Property="Background" Value="Black"/>
 						<Setter Property="Height" Value="1"/>
-						<Setter Property="Width" Value="181"/>
+						<Setter Property="Width" Value="195"/>
+						<Setter Property="Margin" Value="0 -100 0 0"/>
+					</Style>
+
+					<Style Selector="Border.h3">
+						<Setter Property="Background" Value="Transparent"/>
+						<Setter Property="BorderThickness" Value="1"/>
+						<Setter Property="Height" Value="90"/>
+						<Setter Property="Width" Value="195"/>
+						<Setter Property="Margin" Value="0"/>
+					</Style>
+
+					<Style Selector="TextBlock.ToYou">
+						<Setter Property="Margin" Value="0 5 0 0"/>
+						<Setter Property="FontFamily" Value="{StaticResource ZenKakuGothicAntiqueRegular}"/>
+						<Setter Property="FontSize" Value="12.5"/>
 					</Style>
 				</Grid.Styles>
 				<Border Classes="h1">
@@ -154,13 +171,21 @@
 						To: you
 					</TextBlock>
 				</Border>
-				
+				<!--Đường thẳng ở giữa-->
 				<Border Classes="h2"/>
+				<!--To: you-->
+				<Border Classes="h3">
+
+					<TextBlock Classes="ToYou">
+						I hope you have a good day. If you do not 
+						<LineBreak></LineBreak>understand any words, let I help you explain these words.
+					</TextBlock>					
+				</Border>
 			</Grid>
 			
 			<Grid Grid.Row="2"/>
 		</Grid>
 		<!-- Column 3-->
-		<Grid Grid.Column="3" Width="30" Background="Red"></Grid>
+		<Grid Grid.Column="3" Width="30" Background="Transparent"></Grid>
 	</Grid>
 </Window>
