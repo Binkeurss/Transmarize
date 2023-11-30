@@ -121,7 +121,8 @@
 						Margin="40 0 0 0" 
 						Width="260" 
 						Height="43" 
-						Background="#FFFFFF"></ComboBox>
+						Background="#FFFFFF"
+						Foreground="Transparent"></ComboBox>
 				</Grid>
 				<Grid Grid.Column="1">
 					<Grid.Styles>
@@ -144,6 +145,7 @@
 							Height="43" 
 							FontWeight="Bold" 
 							FontFamily="VigaFont"
+							Foreground="Black"
 							CornerRadius="25" 
 							HorizontalContentAlignment="Center" 
 							VerticalContentAlignment="Center">						
@@ -200,7 +202,7 @@
 					</Style>
 				</Grid.Styles>
 				<Border Classes="h1">
-					<TextBlock Classes="ToYou">
+					<TextBlock Classes="ToYou" Foreground="Black">
 						To: you
 					</TextBlock>
 				</Border>
@@ -209,7 +211,7 @@
 				<!--To: you-->
 				<Border Classes="h3">
 
-					<TextBlock Classes="Hope">
+					<TextBlock Classes="Hope" Foreground="Black">
 						I hope you have a good day.
 						<LineBreak></LineBreak> If you do not understand any 
 						<LineBreak></LineBreak>words, let I help you explain 
