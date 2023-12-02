@@ -216,7 +216,7 @@
 				<!--To: you-->
 				<Border Classes="h3">
 
-					<TextBlock Classes="Hope" >
+					<TextBlock Classes="Hope" Foreground="Black">
 						I hope you have a good day.
 						<LineBreak></LineBreak> If you do not understand any 
 						<LineBreak></LineBreak>words, let I help you explain 
