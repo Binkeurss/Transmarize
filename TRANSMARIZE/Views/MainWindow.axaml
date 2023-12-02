@@ -72,14 +72,18 @@
 
 			<Grid Grid.Row="1" 
 				  Height="71">
-				<TextBlock
-					Margin="-60 -5 0 0"
-					FontSize="22.5"
-					FontFamily="{StaticResource VigaFont}"
-					FontWeight="UltraBold"
-					HorizontalAlignment="Center"
-					TextAlignment="Left"
-					TextWrapping="Wrap">
+				<Grid.Styles>
+					<Style Selector="TextBlock">
+						<Setter Property="Margin" Value="-60 -5 0 0"/>
+						<Setter Property="FontSize" Value="22.5"/>
+						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+						<Setter Property="FontWeight" Value="UltraBold"/>
+						<Setter Property="HorizontalAlignment" Value="Center"/>
+						<Setter Property="TextAlignment" Value="Left"/>
+						<Setter Property="TextWrapping" Value="Wrap"/>
+					</Style> 
+				</Grid.Styles>
+				<TextBlock>
 					Transmarize is up and
 					<LineBreak/> running
 				</TextBlock>
@@ -135,7 +139,7 @@
 							</Setter>
 						</Style>
 					</Grid.Styles>
-					<Button x:Name="ToggleButton"
+					<Button
 							BorderBrush="Black"
 							BorderThickness="2"
 							Content="START" 
@@ -148,7 +152,8 @@
 							Foreground="Black"
 							CornerRadius="25" 
 							HorizontalContentAlignment="Center" 
-							VerticalContentAlignment="Center">						
+							VerticalContentAlignment="Center"
+							Click="ToggleButtonClick">						
 					</Button>
 				</Grid>
 			</Grid>
@@ -224,26 +229,55 @@
 		</Grid>
 		<!-- Column 3-->
 		<Grid Grid.Column="3" Width="30" Background="Transparent">
-			<Grid.Styles>
-				<Style Selector="Button.Exit">
-					<Setter Property="HorizontalAlignment" Value="Right"/>
-					<Setter Property="VerticalAlignment" Value="Top"/>
-					<Setter Property="Margin" Value="0 -18 -13 0"/>
-					<Setter Property="Height" Value="40"/>
-					<Setter Property="Width" Value="40"/>
-					<Setter Property="VerticalContentAlignment" Value="Bottom"/>
-					<Setter Property="HorizontalContentAlignment" Value="Left"/>
-					<Setter Property="Background" Value="Transparent"/>
-					<Setter Property="FontSize" Value="10"/>
-				</Style>
-			</Grid.Styles>
-			<Button Classes="Exit" 
-					Name="ExitButton"
-					Content="✖">
-			</Button>
+			<StackPanel Orientation="Horizontal"
+			Height="80"
+			Width="80"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Top">
+				<StackPanel.Styles>
+					<Style Selector="Button.Hide">
+						<Setter Property="HorizontalAlignment" Value="Right"/>
+						<Setter Property="VerticalAlignment" Value="Top"/>
+						<Setter Property="Margin" Value="0 -15 -10 0"/>
+						<Setter Property="Height" Value="40"/>
+						<Setter Property="Width" Value="40"/>
+						<Setter Property="VerticalContentAlignment" Value="Center"/>
+						<Setter Property="HorizontalContentAlignment" Value="Center"/>
+						<Setter Property="Background" Value="Transparent"/>
+						<Setter Property="FontSize" Value="10"/>
+						<Setter Property="Foreground" Value="Black"/>
+						<Setter Property="FontWeight" Value="UltraBold"/>
+					</Style>
+
+					<Style Selector="Button.Exit">
+						<Setter Property="HorizontalAlignment" Value="Right"/>
+						<Setter Property="VerticalAlignment" Value="Top"/>
+						<Setter Property="Height" Value="40"/>
+						<Setter Property="Width" Value="40"/>
+						<Setter Property="Margin" Value="10 -15 0 0"/>
+						<Setter Property="VerticalContentAlignment" Value="Bottom"/>
+						<Setter Property="HorizontalContentAlignment" Value="Center"/>
+						<Setter Property="FontWeight" Value="UltraBold"/>
+						<Setter Property="Background" Value="Transparent"/>
+						<Setter Property="Foreground" Value="Black"/>
+					</Style>
+				</StackPanel.Styles>
+				<Button Classes="Hide"
+						Name="HideButton"
+						Content="___"
+						Click="HideButton_Click">
+				</Button>
+
+				<Button Classes="Exit"
+						Name="ExitButton"
+						Click="ExitButton_Click">
+					<Image Source="avares://TRANSMARIZE/Assets/MainWindow/close-window.png"
+						   Margin="0 0 0 -3"/>
+				</Button>
+
+			</StackPanel>
 		</Grid>
-
-
-		<!--Button Exit-->
+		
+		<!--Button Exit and Hide-->
 	</Grid>
 </Window>

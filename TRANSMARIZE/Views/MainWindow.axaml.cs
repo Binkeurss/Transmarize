@@ -10,30 +10,28 @@ namespace TRANSMARIZE.Views;
 public partial class MainWindow : Window
 {
     public Button toggleButton;
-    public bool isRunning;
+    public bool isRunning = false;
     public Button ThoatButton;
     public  MainWindow()
     {
         InitializeComponent();
-        toggleButton = this.Find<Button>("ToggleButton");
-        toggleButton.Click += ToggleButtonClick;
-        ThoatButton = this.Find<Button>("ExitButton");
-        ThoatButton.Click += ExitButton_Click;
     }
 
     private void ToggleButtonClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
+        Button button = (Button)sender;
         isRunning = !isRunning;
-        UpdateButtonLabel();
-    }
-
-    private void UpdateButtonLabel()
-    {
-        toggleButton.Content = isRunning ? "STOP" : "START";
+        button.Content = isRunning ? "STOP" : "START";
     }
 
     public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        Environment.Exit(0);
+        //Environment.Exit(0);
+        this.Close();
+    }
+
+    public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        this.WindowState = WindowState.Minimized;
     }
 }
