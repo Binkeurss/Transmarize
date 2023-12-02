@@ -2,8 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
-		Width="1000" Height="700"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="700"
+		Width="1200" Height="700"
         x:Class="TRANSMARIZE.Views.TranslateAndSumarize"
         Title="TranslateAndSumarize"
 		CornerRadius="25"
@@ -17,8 +17,7 @@
 		<Grid Grid.Row="0">
 			<Grid.Styles>
 				<Style Selector="Grid.Tong">
-					<Setter Property="Background" Value="Red"/>
-					<Setter Property="Width" Value="1000"/>
+					<Setter Property="Width" Value="1200"/>
 					<Setter Property="Height" Value="70"/>
 				</Style>
 			</Grid.Styles>
@@ -26,16 +25,34 @@
 				<Grid.Styles>
 					<Style Selector="TextBlock.SourceTextTextBlock">
 						<Setter Property="Height" Value="27"/>
-						<Setter Property="Width" Value="77"/>
-						<Setter Property="Background" Value="Yellow"/>
+						<Setter Property="Width" Value="88"/>
 						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
-						<Setter Property="Margin" Value="25 0 0 0"/>
+						<Setter Property="Margin" Value="25 0 5 -12"/>
 						<Setter Property="FontWeight" Value="Bold"/>
 						<Setter Property="HorizontalAlignment" Value="Left"/>
 						<Setter Property="VerticalAlignment" Value="Center"/>
+						<Setter Property="FontSize" Value="15"/>
 					</Style>
 
-					<Style Selector="ComboBox.SourceTextComboBox">
+					<Style Selector="ComboBox.TranslateFrom">
+						<Setter Property="Width" Value="260"/>
+						<Setter Property="Height" Value="45"/>
+						<Setter Property="HorizontalAlignment" Value="Center"/>
+						<Setter Property="VerticalAlignment" Value="Center"/>
+						<Setter Property="Margin" Value="50 0 0 0"/>
+						<Setter Property="Background" Value="White"/>
+						<Setter Property="CornerRadius" Value="25"/>
+						<Setter Property="BorderBrush" Value="Black"/>
+						<Setter Property="BorderThickness" Value="1.1"/>
+						<Setter Property="Effect">
+							<DropShadowEffect Color="Black"
+											  BlurRadius="5"
+											  OffsetX="-1"
+											  OffsetY="3"/>
+						</Setter>
+					</Style>
+
+					<Style Selector="ComboBox.TranslateTo">
 						<Setter Property="Width" Value="260"/>
 						<Setter Property="Height" Value="45"/>
 						<Setter Property="HorizontalAlignment" Value="Center"/>
@@ -103,11 +120,12 @@
 				</Grid.Styles>
 				<!--Column 0 để chứa textblock-->
 				<Grid Grid.Column="0">
-					<TextBlock Classes="SourceTextTextBlock">Source Text</TextBlock>
+					<!--<TextBlock Classes="SourceTextTextBlock">Source Text</TextBlock>-->
+					<ComboBox Classes="TranslateFrom"></ComboBox>
 				</Grid>
 				<!--Column 1 chứa comboBox để chứa ngôn ngữ cần chọn-->
 				<Grid Grid.Column="1">
-					<ComboBox Classes="SourceTextComboBox"></ComboBox>
+					<ComboBox Classes="TranslateTo"></ComboBox>
 				</Grid>
 				<!--Column 2 chứa button translate-->
 				<Grid Grid.Column="2">
@@ -123,9 +141,29 @@
 		</Grid>
 
 		<!--Row 1 gồm TextBlock chữa những từ, câu trong clipboard-->
-		<Grid Grid.Row="1"></Grid>
+		<Grid Grid.Row="1">
+			<Grid.Styles>
+				<Style Selector="Label.Translate">
+					<Setter Property="Background" Value="White"/>
+					<Setter	Property="Height" Value="300"/>
+					<Setter Property="Width" Value="1100"/>
+					<Setter Property="Margin" Value="0 20 0 0"/>
+					<Setter Property="CornerRadius" Value="25"/>
+					<Setter Property="Effect">
+						<DropShadowEffect Color="Black"
+										  />
+					</Setter>
+				</Style>
+			</Grid.Styles>
+
+			<ScrollViewer>
+				<StackPanel>
+					<Label Classes="Translate"/>
+				</StackPanel>
+			</ScrollViewer>
+		</Grid>
 		
-		<!--Row 2 Khoảng trống-->
+		<!--Row 2 chọn ngôn ngữ đích-->
 		<Grid Grid.Row="2"></Grid>
 		
 		<!--Row 3 gồm TextBlock chứa những từ được dịch hoặc summarize-->
