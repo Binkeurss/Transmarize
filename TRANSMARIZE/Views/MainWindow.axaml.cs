@@ -19,6 +19,7 @@ public partial class MainWindow : Window
         toggleButton.Click += ToggleButtonClick;
         ThoatButton = this.Find<Button>("ExitButton");
         ThoatButton.Click += ExitButton_Click;
+
     }
 
     private void ToggleButtonClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -40,6 +41,6 @@ public partial class MainWindow : Window
 
     public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        this.Hide();
+        this.WindowState = WindowState.Minimized;
     }
 }

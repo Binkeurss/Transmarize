@@ -229,24 +229,24 @@
 			<StackPanel Orientation="Horizontal"
 			Height="80"
 			Width="80"
-			Background="Red"
 			HorizontalAlignment="Right"
 			VerticalAlignment="Top">
 				<StackPanel.Styles>
-					<Style Selector="Button.Exit">
+					<Style Selector="Button.Hide">
 						<Setter Property="HorizontalAlignment" Value="Right"/>
 						<Setter Property="VerticalAlignment" Value="Top"/>
 						<Setter Property="Margin" Value="0 -15 -10 0"/>
 						<Setter Property="Height" Value="40"/>
 						<Setter Property="Width" Value="40"/>
-						<Setter Property="VerticalContentAlignment" Value="Bottom"/>
-						<Setter Property="HorizontalContentAlignment" Value="Left"/>
+						<Setter Property="VerticalContentAlignment" Value="Center"/>
+						<Setter Property="HorizontalContentAlignment" Value="Center"/>
 						<Setter Property="Background" Value="Transparent"/>
 						<Setter Property="FontSize" Value="10"/>
 						<Setter Property="Foreground" Value="Black"/>
+						<Setter Property="FontWeight" Value="UltraBold"/>
 					</Style>
 
-					<Style Selector="Button.Hide">
+					<Style Selector="Button.Exit">
 						<Setter Property="HorizontalAlignment" Value="Right"/>
 						<Setter Property="VerticalAlignment" Value="Top"/>
 						<Setter Property="Height" Value="40"/>
@@ -256,17 +256,21 @@
 						<Setter Property="HorizontalContentAlignment" Value="Center"/>
 						<Setter Property="FontWeight" Value="UltraBold"/>
 						<Setter Property="Background" Value="Transparent"/>
+						<Setter Property="Foreground" Value="Black"/>
 					</Style>
 				</StackPanel.Styles>
-				<Button Classes="Exit"
-						Name="ExitButton"
-						Content="✖">
-				</Button>
-
 				<Button Classes="Hide"
 						Name="HideButton"
-						Content="_">
+						Content="___"
+						Click="HideButton_Click">
 				</Button>
+
+				<Button Classes="Exit"
+						Name="ExitButton"
+						Click="ExitButton_Click">
+					<Image Source="avares://TRANSMARIZE/Assets/MainWindow/close-window.png"/>
+				</Button>
+
 			</StackPanel>
 		</Grid>
 		
