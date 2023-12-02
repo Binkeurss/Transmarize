@@ -128,19 +128,23 @@
 				<!--Column 4 chứa khoảng trống-->
 				<Grid Grid.Column="4"></Grid>
 				<!--Colmn 5 chứa Hide button và Exit Button-->
-				<Grid Grid.Column="5" Background="Red" Width="82">
-					<StackPanel Orientation="Vertical">
+				<Grid Grid.Column="5" Background="Red" Width="80">
+					<StackPanel Orientation="Horizontal"
+								Height="80"
+								Width="80"
+								HorizontalAlignment="Right"
+								VerticalAlignment="Top">
 						<StackPanel.Styles>
 							<Style Selector="Button.Hide">
 								<Setter Property="HorizontalAlignment" Value="Right"/>
 								<Setter Property="VerticalAlignment" Value="Top"/>
-								<Setter Property="Margin" Value="0 -15 0 0"/>
+								<Setter Property="Margin" Value="0 -15 -4 0"/>
 								<Setter Property="Height" Value="40"/>
 								<Setter Property="Width" Value="40"/>
 								<Setter Property="VerticalContentAlignment" Value="Center"/>
 								<Setter Property="HorizontalContentAlignment" Value="Center"/>
 								<Setter Property="Background" Value="Transparent"/>
-								<Setter Property="FontSize" Value="10"/>
+								<Setter Property="FontSize" Value="15"/>
 								<Setter Property="Foreground" Value="Black"/>
 								<Setter Property="FontWeight" Value="UltraBold"/>
 							</Style>
@@ -165,7 +169,12 @@
 								Click="HideButton_Click">
 						</Button>
 
-						<Button Classes="Exit"></Button>
+						<Button Classes="Exit"
+								Name="ExitButton"
+								Click="ExitButton_Click">
+							<Image Source="avares://TRANSMARIZE/Assets/MainWindow/close-window.png"
+								   Margin="0 0 0 -3"/>
+						</Button>
 						
 					</StackPanel>
 				</Grid>
