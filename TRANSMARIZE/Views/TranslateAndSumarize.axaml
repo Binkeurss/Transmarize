@@ -54,15 +54,16 @@
 					</Style>
 
 					<Style Selector="Button.Translate">
-						<!--Chữ-->
+						<!--Translate-->
 						<Setter Property="Content" Value="Translate"/>
 						<Setter Property="HorizontalContentAlignment" Value="Center"/>
 						<Setter Property="VerticalContentAlignment" Value="Center"/>
 						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
 						<Setter Property="FontWeight" Value="Bold"/>
+						<Setter Property="FontSize" Value="20"/>
 						<!--Button-->
 						<Setter Property="Height" Value="45"/>
-						<Setter Property="Width" Value="100"/>
+						<Setter Property="Width" Value="120"/>
 						<Setter Property="Margin" Value="15 0 0 0"/>
 						<Setter Property="Background" Value="White"/>
 						<Setter Property="CornerRadius" Value="25"/>
@@ -74,11 +75,35 @@
 											  OffsetX="-1"
 											  OffsetY="3"/>
 						</Setter>
-					</Style> 
+					</Style>
+
+					<Style Selector="Button.Summarize">
+						<!--Summarize-->
+						<Setter Property="Content" Value="Sumarize"/>
+						<Setter Property="HorizontalContentAlignment" Value="Center"/>
+						<Setter Property="VerticalContentAlignment" Value="Center"/>
+						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+						<Setter Property="FontWeight" Value="Bold"/>
+						<Setter Property="FontSize" Value="20"/>
+						<!--Buttion-->
+						<Setter Property="Height" Value="45"/>
+						<Setter Property="Width" Value="120"/>
+						<Setter Property="Margin" Value="15 0 0 0"/>
+						<Setter Property="Background" Value="White"/>
+						<Setter Property="CornerRadius" Value="25"/>
+						<Setter Property="BorderBrush" Value="Black"/>
+						<Setter Property="BorderThickness" Value="1.1"/>
+						<Setter Property="Effect">
+							<DropShadowEffect Color="Black"
+											  BlurRadius="5"
+											  OffsetX="-1"
+											  OffsetY="3"/>
+						</Setter>
+					</Style>
 				</Grid.Styles>
 				<!--Column 0 để chứa textblock-->
 				<Grid Grid.Column="0">
-					<TextBlock Classes="SourceTextTextBlock">SourceText</TextBlock>
+					<TextBlock Classes="SourceTextTextBlock">Source Text</TextBlock>
 				</Grid>
 				<!--Column 1 chứa comboBox để chứa ngôn ngữ cần chọn-->
 				<Grid Grid.Column="1">
@@ -89,7 +114,9 @@
 					<Button Classes="Translate"></Button>
 				</Grid>
 				<!--Column 3 chứa button summarize-->
-				<Grid Grid.Column="3"></Grid>
+				<Grid Grid.Column="3">
+					<Button Classes="Summarize"></Button>
+				</Grid>
 				<!--Column 4 chứa khoảng trống-->
 				<Grid Grid.Column="4"></Grid>
 			</Grid>
