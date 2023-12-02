@@ -17,6 +17,7 @@
     <None Remove="Assets\Fonts\ZenKakuGothicAntique-Light.ttf" />
     <None Remove="Assets\Fonts\ZenKakuGothicAntique-Medium.ttf" />
     <None Remove="Assets\Fonts\ZenKakuGothicAntique-Regular.ttf" />
+    <None Remove="Assets\MainWindow\close-window.png" />
     <None Remove="Assets\MainWindow\logo_transparent.ico" />
   </ItemGroup>
 
