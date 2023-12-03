@@ -113,7 +113,9 @@
 					<!--<TextBlock Classes="SourceTextTextBlock">Source Text</TextBlock>-->
 					<ComboBox Classes="TranslateFrom"></ComboBox>
 				</Grid>
-				<Grid Grid.Column="1" Background="Red">
+				<Grid Grid.Column="1"
+					  Height="30"
+					  Margin="15 0 0 0">
 					<Image Source="avares://TRANSMARIZE/Assets/PopWindow/right_arrow_ver2.png"/>
 				</Grid>
 				<!--Column 1 chứa comboBox để chứa ngôn ngữ cần chuyển sang-->
