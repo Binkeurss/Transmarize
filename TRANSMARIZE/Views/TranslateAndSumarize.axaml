@@ -113,6 +113,7 @@
 					<!--<TextBlock Classes="SourceTextTextBlock">Source Text</TextBlock>-->
 					<ComboBox Classes="TranslateFrom"></ComboBox>
 				</Grid>
+				<Image Source=""/>
 				<!--Column 1 chứa comboBox để chứa ngôn ngữ cần chuyển sang-->
 				<Grid Grid.Column="1">
 					<ComboBox Classes="TranslateTo"></ComboBox>
