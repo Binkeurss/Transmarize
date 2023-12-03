@@ -2,12 +2,56 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="50" d:DesignHeight="50"
-		Width="50" Height="50"
+        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="50"
+		Width="200" Height="50"
         x:Class="TRANSMARIZE.Views.PopWindow"
         Title="PopWindow"
+		CornerRadius="25"
 		ExtendClientAreaToDecorationsHint="True"
 		ExtendClientAreaChromeHints="NoChrome"
-		ExtendClientAreaTitleBarHeightHint="-1"	>
-  Welcome to Avalonia!
+		ExtendClientAreaTitleBarHeightHint="-1"	
+		Background="#709BE3"
+		CanResize="False"	>
+
+	<StackPanel Orientation="Horizontal"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center">
+		<StackPanel.Styles>
+			<Style Selector="Button">
+				<!--Button-->
+				<Setter Property="Background" Value="White"/>
+				<Setter Property="Height" Value="40"/>
+				<Setter Property="Width" Value="120"/>
+				<Setter Property="BorderBrush" Value="Black"/>
+				<Setter Property="BorderThickness" Value="2"/>
+				<Setter Property="CornerRadius" Value="25"/>
+				<Setter Property="Effect">
+					<DropShadowEffect Color="Black"
+									  BlurRadius="5"
+									  OffsetX="-1"
+									  OffsetY="3"/>
+				</Setter>
+			</Style>
+
+			<Style Selector="TextBlock">
+				<Setter Property="HorizontalAlignment" Value="Center"/>
+				<Setter Property="VerticalAlignment" Value="Center"/>
+				<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+				<Setter Property="FontWeight" Value="Bold"/>
+				<Setter Property="FontSize" Value="18"/>
+			</Style>
+		</StackPanel.Styles>
+		<Button>
+			<TextBlock>
+				Translate
+			</TextBlock>
+		</Button>
+
+		<Button>
+			<TextBlock>
+				Summarize
+			</TextBlock>
+		</Button>
+	</StackPanel>
+	
 </Window>
