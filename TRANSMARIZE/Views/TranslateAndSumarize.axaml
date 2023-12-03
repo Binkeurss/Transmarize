@@ -70,7 +70,7 @@
 						<Setter Property="FontSize" Value="20"/>
 						<!--Button-->
 						<Setter Property="Height" Value="45"/>
-						<Setter Property="Width" Value="120"/>
+						<Setter Property="Width" Value="130"/>
 						<Setter Property="Margin" Value="15 0 0 0"/>
 						<Setter Property="Background" Value="White"/>
 						<Setter Property="CornerRadius" Value="25"/>
@@ -86,7 +86,7 @@
 
 					<Style Selector="Button.Summarize">
 						<!--Summarize-->
-						<Setter Property="Content" Value="Sumarize"/>
+						<Setter Property="Content" Value="Summarize"/>
 						<Setter Property="HorizontalContentAlignment" Value="Center"/>
 						<Setter Property="VerticalContentAlignment" Value="Center"/>
 						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
@@ -94,7 +94,7 @@
 						<Setter Property="FontSize" Value="20"/>
 						<!--Buttion-->
 						<Setter Property="Height" Value="45"/>
-						<Setter Property="Width" Value="120"/>
+						<Setter Property="Width" Value="130"/>
 						<Setter Property="Margin" Value="15 0 0 0"/>
 						<Setter Property="Background" Value="White"/>
 						<Setter Property="CornerRadius" Value="25"/>
@@ -128,7 +128,7 @@
 				<!--Column 4 chứa khoảng trống-->
 				<Grid Grid.Column="4"></Grid>
 				<!--Colmn 5 chứa Hide button và Exit Button-->
-				<Grid Grid.Column="5" Background="Red" Width="80">
+				<Grid Grid.Column="5"  Width="80">
 					<StackPanel Orientation="Horizontal"
 								Height="80"
 								Width="80"
