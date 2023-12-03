@@ -114,7 +114,7 @@
 					<ComboBox Classes="TranslateFrom"></ComboBox>
 				</Grid>
 				<Grid Grid.Column="1" Background="Red">
-					<Image Source="avares://TRANSMARIZW/Assets/PopWindow/right_arrow.png"/>
+					<Image Source="avares://TRANSMARIZE/Assets/PopWindow/right_arrow_ver2.png"/>
 				</Grid>
 				<!--Column 1 chứa comboBox để chứa ngôn ngữ cần chuyển sang-->
 				<Grid Grid.Column="2">

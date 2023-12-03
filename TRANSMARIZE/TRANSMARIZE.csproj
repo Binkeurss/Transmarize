@@ -19,6 +19,7 @@
     <None Remove="Assets\Fonts\ZenKakuGothicAntique-Regular.ttf" />
     <None Remove="Assets\MainWindow\close-window.png" />
     <None Remove="Assets\MainWindow\logo_transparent.ico" />
+    <None Remove="Assets\PopWindow\right-arrow_ver2.png" />
     <None Remove="Assets\PopWindow\right_arrow.png" />
   </ItemGroup>
 
