@@ -21,7 +21,7 @@
 					<Setter Property="Height" Value="70"/>
 				</Style>
 			</Grid.Styles>
-			<Grid Classes="Tong" ColumnDefinitions="Auto, Auto, Auto, Auto, *, Auto">
+			<Grid Classes="Tong" ColumnDefinitions="Auto, Auto, Auto, Auto, Auto, *, Auto">
 				<Grid.Styles>
 
 					<Style Selector="ComboBox.TranslateFrom">
@@ -113,22 +113,25 @@
 					<!--<TextBlock Classes="SourceTextTextBlock">Source Text</TextBlock>-->
 					<ComboBox Classes="TranslateFrom"></ComboBox>
 				</Grid>
+				<Grid Grid.Column="1" Background="Red">
+					<Image Source="avares://TRANSMARIZW/Assets/PopWindow/right_arrow.png"/>
+				</Grid>
 				<!--Column 1 chứa comboBox để chứa ngôn ngữ cần chuyển sang-->
-				<Grid Grid.Column="1">
+				<Grid Grid.Column="2">
 					<ComboBox Classes="TranslateTo"></ComboBox>
 				</Grid>
 				<!--Column 2 chứa button translate-->
-				<Grid Grid.Column="2">
+				<Grid Grid.Column="3">
 					<Button Classes="Translate"></Button>
 				</Grid>
 				<!--Column 3 chứa button summarize-->
-				<Grid Grid.Column="3">
+				<Grid Grid.Column="4">
 					<Button Classes="Summarize"></Button>
 				</Grid>
 				<!--Column 4 chứa khoảng trống-->
-				<Grid Grid.Column="4"></Grid>
+				<Grid Grid.Column="5"></Grid>
 				<!--Colmn 5 chứa Hide button và Exit Button-->
-				<Grid Grid.Column="5"  Width="80">
+				<Grid Grid.Column="6"  Width="80">
 					<StackPanel Orientation="Horizontal"
 								Height="80"
 								Width="80"
