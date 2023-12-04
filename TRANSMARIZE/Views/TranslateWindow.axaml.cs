@@ -8,9 +8,9 @@ using System;
 
 namespace TRANSMARIZE.Views
 {
-    public partial class TranslateAndSumarize : Window
+    public partial class TranslateWindow : Window
     {
-        public TranslateAndSumarize()
+        public TranslateWindow()
         {
             InitializeComponent();
         }
