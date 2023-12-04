@@ -8,5 +8,17 @@ namespace TRANSMARIZE.Views
         {
             InitializeComponent();
         }
+
+        public void Window_Deactivated(object? sender, System.EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Translate(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            TranslateAndSumarize translate = new TranslateAndSumarize();
+            translate.Show();
+            this.Close();
+        }
     }
 }
