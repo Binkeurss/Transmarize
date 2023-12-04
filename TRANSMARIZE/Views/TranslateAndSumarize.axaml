@@ -11,7 +11,8 @@
 		ExtendClientAreaChromeHints="NoChrome"
 		ExtendClientAreaTitleBarHeightHint="-1"	
 		Background="#709BE3"
-		CanResize="False">
+		CanResize="False"
+		WindowStartupLocation="CenterScreen">
 	<Grid RowDefinitions="Auto, Auto, *, Auto, *">
 		<!--Row 0 gồm comboBox và các button-->
 		<Grid Grid.Row="0">
@@ -124,11 +125,11 @@
 				</Grid>
 				<!--Column 2 chứa button translate-->
 				<Grid Grid.Column="3">
-					<Button Classes="Translate"></Button>
+					<Button Classes="Translate" Foreground="Black"></Button>
 				</Grid>
 				<!--Column 3 chứa button summarize-->
 				<Grid Grid.Column="4">
-					<Button Classes="Summarize"></Button>
+					<Button Classes="Summarize" Foreground="Black"></Button>
 				</Grid>
 				<!--Column 4 chứa khoảng trống-->
 				<Grid Grid.Column="5"></Grid>
@@ -220,7 +221,7 @@
 				<TextBlock Classes="SourceTextTextBlock" Text="Source Text"/>
 				
 				<ScrollViewer>
-					<TextBox Classes="Translate" x:Name="SourceText"/>
+					<TextBox Classes="Translate" x:Name="SourceText" Foreground="Black"/>
 				</ScrollViewer>				
 			</StackPanel>
 		</Grid>
@@ -259,7 +260,7 @@
 				<TextBlock Classes="TranslationTextBlock" Text="Translation"/>
 
 				<ScrollViewer>
-					<TextBox Classes="Translate" x:Name="TransText"/>
+					<TextBox Classes="Translate" x:Name="TransText" Foreground="Black"/>
 				</ScrollViewer>
 			</StackPanel>
 		</Grid>

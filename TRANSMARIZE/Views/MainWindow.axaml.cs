@@ -1,9 +1,4 @@
 ﻿using Avalonia.Controls;
-using Avalonia.Controls.Primitives;
-using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
-using Avalonia;
-using System;
 using SharpHook;
 using SharpHook.Native;
 using System.Threading.Tasks;
@@ -14,17 +9,20 @@ namespace TRANSMARIZE.Views;
 
 public partial class MainWindow : Window
 {
+    // biến theo dõi trạng thái của toggle button
     public bool isRunning = false;
 
     // Khởi tạo các biến hook và giả lập sự kiện
     TaskPoolGlobalHook hook = new TaskPoolGlobalHook();
     EventSimulator simulator = new EventSimulator();
 
+    // currentText dùng để tránh popup window mở sai thời điểm
     string currentText = string.Empty;
     public MainWindow()
     {
         InitializeComponent();
-        //Đăng kí sự kiện và chạy hook
+        Clipboard.ClearAsync();
+        // Đăng kí sự kiện và chạy hook
         hook.MouseReleased += OnMouseRelease;
         hook.RunAsync();
     }
@@ -51,13 +49,14 @@ public partial class MainWindow : Window
                 return;
             }
 
-            ShareData.transText = text;
             currentText = text;
+            // gán text cho transText để đưa đi dịch
+            ShareData.transText = text;
             // Mở popup window tại vị trí con chuột đang đứng
-            PopWindow popup = new PopWindow();
-            popup.Position = new Avalonia.PixelPoint(e.Data.X, e.Data.Y);
-            popup.WindowStartupLocation = WindowStartupLocation.Manual;
-            popup.Show();
+            PopWindow popWindow = new PopWindow();
+            popWindow.Position = new Avalonia.PixelPoint(e.Data.X, e.Data.Y);
+            popWindow.WindowStartupLocation = WindowStartupLocation.Manual;
+            popWindow.Show();
         });
     }
 
@@ -81,5 +80,8 @@ public partial class MainWindow : Window
         this.WindowState = WindowState.Minimized;
     }
 
-
+    private void Window_Closed(object? sender, System.EventArgs e)
+    {
+        hook.Dispose();
+    }
 }

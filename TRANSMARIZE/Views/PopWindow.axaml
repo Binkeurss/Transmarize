@@ -42,13 +42,13 @@
 				<Setter Property="FontSize" Value="18"/>
 			</Style>
 		</StackPanel.Styles>
-		<Button Margin="0 0 5 0" Click="Button_Translate">
+		<Button Margin="0 0 5 0" Click="Button_Translate" Foreground="Black">
 			<TextBlock>
 				Translate
 			</TextBlock>
 		</Button>
 
-		<Button Margin="5 0 0 0">
+		<Button Margin="5 0 0 0" Foreground="Black">
 			<TextBlock>
 				Summarize
 			</TextBlock>
