@@ -11,7 +11,8 @@
 		ExtendClientAreaChromeHints="NoChrome"
 		ExtendClientAreaTitleBarHeightHint="-1"	
 		Background="#709BE3"
-		CanResize="False"	>
+		CanResize="False"
+		Deactivated="Window_Deactivated">
 
 	<StackPanel Orientation="Horizontal"
 				HorizontalAlignment="Center"
@@ -42,7 +43,7 @@
 				<Setter Property="Foreground" Value="Black"/>
 			</Style>
 		</StackPanel.Styles>
-		<Button Margin="0 0 5 0">
+		<Button Margin="0 0 5 0" Click="Button_Translate">
 			<TextBlock>
 				Translate
 			</TextBlock>

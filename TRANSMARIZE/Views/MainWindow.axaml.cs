@@ -46,12 +46,13 @@ public partial class MainWindow : Window
             // Lấy giá trị text đang có trong Clipboard
             string text = await Clipboard.GetTextAsync();
 
-            if (text is null || text == " ")
+            if (text is null || text == " " || text == currentText)
             {
                 return;
             }
 
             ShareData.transText = text;
+            currentText = text;
             // Mở popup window tại vị trí con chuột đang đứng
             PopWindow popup = new PopWindow();
             popup.Position = new Avalonia.PixelPoint(e.Data.X, e.Data.Y);
