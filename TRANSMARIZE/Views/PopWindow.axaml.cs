@@ -16,7 +16,7 @@ namespace TRANSMARIZE.Views
 
         private void Button_Translate(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            TranslateAndSumarize translate = new TranslateAndSumarize();
+            TranslateWindow translate = new TranslateWindow();
             translate.Show();
             this.Close();
         }

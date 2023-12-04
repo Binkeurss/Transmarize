@@ -11,10 +11,10 @@ using TRANSMARIZE.Model;
 
 namespace TRANSMARIZE.Views
 {
-    public partial class TranslateAndSumarize : Window
+    public partial class TranslateWindow : Window
     {
         private HttpClient httpClient;
-        public TranslateAndSumarize()
+        public TranslateWindow()
         {
             InitializeComponent();
             httpClient = new HttpClient();

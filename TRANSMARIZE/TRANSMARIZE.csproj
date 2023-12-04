@@ -40,4 +40,10 @@
     <PackageReference Include="SharpHook" Version="5.1.2" />
     <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.20" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\TranslateWindow.axaml.cs">
+      <DependentUpon>TranslateWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
