@@ -2,15 +2,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="50"
-		Width="250" Height="50"
+        mc:Ignorable="d" d:DesignWidth="145" d:DesignHeight="43"
+		Width="145" Height="43"
         x:Class="TRANSMARIZE.Views.PopWindow"
         Title="PopWindow"
 		CornerRadius="30"
 		ExtendClientAreaToDecorationsHint="True"
 		ExtendClientAreaChromeHints="NoChrome"
 		ExtendClientAreaTitleBarHeightHint="-1"	
-		Background="#709BE3"
+		Background="Transparent"
 		CanResize="False"
 		Deactivated="Window_Deactivated">
 
@@ -20,18 +20,18 @@
 		<StackPanel.Styles>
 			<Style Selector="Button">
 				<!--Button-->
-				<Setter Property="Background" Value="White"/>
+				<Setter Property="Background" Value="#709BE3"/>
 				<Setter Property="Height" Value="40"/>
-				<Setter Property="Width" Value="120"/>
+				<Setter Property="Width" Value="70"/>
 				<Setter Property="BorderBrush" Value="Black"/>
 				<Setter Property="BorderThickness" Value="2"/>
-				<Setter Property="CornerRadius" Value="25"/>
-				<Setter Property="Effect">
+				<Setter Property="CornerRadius" Value="10"/>
+				<!--<Setter Property="Effect">
 					<DropShadowEffect Color="Black"
 									  BlurRadius="5"
 									  OffsetX="-1"
 									  OffsetY="3"/>
-				</Setter>
+				</Setter>-->
 			</Style>
 
 			<Style Selector="TextBlock">
@@ -43,15 +43,15 @@
 				<Setter Property="Foreground" Value="Black"/>
 			</Style>
 		</StackPanel.Styles>
-		<Button Margin="0 0 5 0" Click="Button_Translate" Foreground="Black">
+		<Button Margin="0 0 3 0" Click="Button_Translate" Foreground="White">
 			<TextBlock>
-				Translate
+				Trans
 			</TextBlock>
 		</Button>
 
-		<Button Margin="5 0 0 0" Foreground="Black">
+		<Button Margin="0 0 0 0" Foreground="White">
 			<TextBlock>
-				Summarize
+				Sum
 			</TextBlock>
 		</Button>
 	</StackPanel>
