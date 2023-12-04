@@ -35,12 +35,6 @@
 						<Setter Property="CornerRadius" Value="25"/>
 						<Setter Property="BorderBrush" Value="Black"/>
 						<Setter Property="BorderThickness" Value="2"/>
-						<Setter Property="Effect">
-							<DropShadowEffect Color="Black"
-											  BlurRadius="5"
-											  OffsetX="-1"
-											  OffsetY="3"/>
-						</Setter>
 					</Style>
 
 					<Style Selector="ComboBox.TranslateTo">
