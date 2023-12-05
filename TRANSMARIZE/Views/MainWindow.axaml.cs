@@ -4,14 +4,12 @@ using SharpHook.Native;
 using System.Threading.Tasks;
 using Avalonia.Threading;
 using TRANSMARIZE.Model;
+using System.Collections.Generic;
 
 namespace TRANSMARIZE.Views;
 
 public partial class MainWindow : Window
 {
-    // biến theo dõi trạng thái của toggle button
-    public bool isRunning = false;
-
     // Khởi tạo các biến hook và giả lập sự kiện
     TaskPoolGlobalHook hook = new TaskPoolGlobalHook();
     EventSimulator simulator = new EventSimulator();
@@ -22,9 +20,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         Clipboard.ClearAsync();
-        // Đăng kí sự kiện và chạy hook
-        hook.MouseReleased += OnMouseRelease;
-        hook.RunAsync();
     }
 
     public void OnMouseRelease(object sender, MouseHookEventArgs e)
@@ -60,11 +55,22 @@ public partial class MainWindow : Window
         });
     }
 
-    private void ToggleButtonClick(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private void RunHookButton(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         Button button = (Button)sender;
-        isRunning = !isRunning;
-        button.Content = isRunning ? "STOP" : "START";
+        if (hook.IsRunning == false)
+        {
+            // Đăng kí sự kiện và chạy hook
+            hook.MouseReleased += OnMouseRelease;
+            hook.RunAsync();
+            button.Content = "STOP";
+        }
+        else
+        {
+            hook.Dispose();
+            hook = new TaskPoolGlobalHook();
+            button.Content = "START";
+        }
     }
 
     //Exit button and Close window
@@ -83,5 +89,15 @@ public partial class MainWindow : Window
     private void Window_Closed(object? sender, System.EventArgs e)
     {
         hook.Dispose();
+    }
+
+    private void ComboBox_SelectionChanged(object? sender, Avalonia.Controls.SelectionChangedEventArgs e)
+    {
+        ComboBox comboBox = sender as ComboBox;
+        string langSelected = comboBox.SelectedItem.ToString();
+        if (langSelected != null)
+        {
+            ShareData.langSecond = ShareData.languageDictionary[langSelected];
+        }
     }
 }
