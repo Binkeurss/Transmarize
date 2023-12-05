@@ -119,16 +119,25 @@
 							</Setter>
 						</Style>
 					</Grid.Styles>
-					<ComboBox
-						BorderBrush="Black" 
-						BorderThickness="2" 
-						VerticalAlignment="Center"
-						CornerRadius="25"
-						Margin="40 0 0 0" 
-						Width="260" 
-						Height="43" 
-						Background="#FFFFFF"
-						Foreground="Transparent"></ComboBox>
+					<ComboBox x:Name="LanguageBox"
+							  BorderBrush="Black"
+							  BorderThickness="2"
+							  VerticalAlignment="Center"
+							  CornerRadius="25"
+							  Margin="40 0 0 0"
+							  Width="260"
+							  Height="43"
+							  Background="#FFFFFF"
+							  Foreground="Black"
+							  ItemsSource="{Binding LanguageList}"
+							  MaxDropDownHeight="200"
+							  SelectionChanged="ComboBox_SelectionChanged">
+						<ComboBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding}" FontFamily="VigaFont"/>
+							</DataTemplate>
+						</ComboBox.ItemTemplate>
+					</ComboBox>
 				</Grid>
 				<Grid Grid.Column="1">
 					<Grid.Styles>
@@ -155,7 +164,7 @@
 							CornerRadius="25" 
 							HorizontalContentAlignment="Center" 
 							VerticalContentAlignment="Center"
-							Click="ToggleButtonClick">						
+							Click="RunHookButton">						
 					</Button>
 				</Grid>
 			</Grid>

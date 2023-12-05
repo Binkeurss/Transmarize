@@ -2,7 +2,7 @@
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-
+using TRANSMARIZE.Model;
 using TRANSMARIZE.ViewModels;
 using TRANSMARIZE.Views;
 
@@ -25,7 +25,7 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel()
+                DataContext = new ShareData()
             };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
