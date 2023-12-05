@@ -130,6 +130,7 @@
 							  Background="#FFFFFF"
 							  Foreground="Black"
 							  ItemsSource="{Binding LanguageList}"
+							  SelectedIndex="{Binding SelectedIndex}"
 							  MaxDropDownHeight="200"
 							  SelectionChanged="ComboBox_SelectionChanged">
 						<ComboBox.ItemTemplate>

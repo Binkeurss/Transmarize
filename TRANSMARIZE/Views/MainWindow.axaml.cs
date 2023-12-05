@@ -19,6 +19,9 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        string text = "Vietnamese";
+        object ini = text;
+        LanguageBox.SelectedItem = ini;
         Clipboard.ClearAsync();
     }
 
