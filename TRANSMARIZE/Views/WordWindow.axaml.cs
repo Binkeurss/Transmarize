@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using TRANSMARIZE.Model;
 
 namespace TRANSMARIZE.Views
 {

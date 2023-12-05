@@ -15,6 +15,8 @@ namespace TRANSMARIZE.ViewModels
 {
     public partial class WordWindowViewModel : ViewModelBase
     {
+        // Ánh xạ mảng vào ComboBox
+
         private HttpClient httpClient = new HttpClient();
 
         [ObservableProperty]
@@ -28,7 +30,9 @@ namespace TRANSMARIZE.ViewModels
     
         public WordWindowViewModel() 
         {
+
             string input = ConvertString(ShareData.transText);
+            TranslateWord(input);
         }
 
         //Dùng để bỏ dấu xuống dòng
