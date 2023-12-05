@@ -82,11 +82,18 @@
 				</Grid>
 				<!--Column 1 chứa comboBox để chứa ngôn ngữ cần chuyển sang-->
 				<Grid Grid.Column="1">
-					<ComboBox Classes="SummarizeTo"></ComboBox>
+					<ComboBox Classes="SummarizeTo" 
+							  ItemsSource="{Binding LanguageList}"
+							  SelectedIndex="{Binding SelectedIndex}"
+							  Foreground="Black">					
+					</ComboBox>
 				</Grid>
 				<!--Column 2 chứa button translate-->
 				<Grid Grid.Column="2">
-					<Button Classes="Summarize" Foreground="Black"></Button>
+					<Button Classes="Summarize" 
+							Foreground="Black"
+							Click="SummarizeButton">						
+					</Button>
 				</Grid>
 				<!--Column 3 chứa khoảng trống-->
 				<Grid Grid.Column="3"></Grid>

@@ -38,6 +38,10 @@ namespace TRANSMARIZE.Views
             string output = responseData["data"]["outputs"][0]["text"].ToString();
             return output;
         }
+        private void SummarizeButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            SumText.Text = ShareData.TranslateText(SumText.Text, "auto", ShareData.langSecond);
+        }
         string ConvertString(string input)
         {
             string convertInput = input.Replace(System.Environment.NewLine, " ");

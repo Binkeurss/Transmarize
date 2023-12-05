@@ -17,7 +17,7 @@ namespace TRANSMARIZE.Views
         }
         private void Window_Deactivated(object? sender, System.EventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
         public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
