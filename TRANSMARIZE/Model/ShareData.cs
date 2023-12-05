@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,7 +84,10 @@ namespace TRANSMARIZE.Model
         };
 
         [ObservableProperty]
-        private List<string> languageList = new List<string>
+        private int selectedIndex = 61;
+
+        [ObservableProperty]
+        private ObservableCollection<string> languageList = new ObservableCollection<string>
         {
             "Afrikaans", 
             "Albanian",
