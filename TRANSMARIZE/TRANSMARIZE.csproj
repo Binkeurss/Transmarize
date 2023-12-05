@@ -21,6 +21,7 @@
     <None Remove="Assets\MainWindow\close.png" />
     <None Remove="Assets\MainWindow\logo_transparent.ico" />
     <None Remove="Assets\PopWindow\right_arrow.png" />
+    <None Remove="Assets\WordWindow\volume.png" />
   </ItemGroup>
 
   <ItemGroup>
