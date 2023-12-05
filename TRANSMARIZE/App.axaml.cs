@@ -23,7 +23,7 @@ public partial class App : Application
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new WordWindow()
+            desktop.MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel()
             };

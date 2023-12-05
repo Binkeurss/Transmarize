@@ -6,7 +6,6 @@
 		Height="600" Width="500"
         x:Class="TRANSMARIZE.Views.WordWindow"
         Title="WordWindow"
-		CornerRadius="25"
 		ExtendClientAreaToDecorationsHint="True"
 		ExtendClientAreaChromeHints="NoChrome"
 		ExtendClientAreaTitleBarHeightHint="-1"	
@@ -74,12 +73,19 @@
 				<Style Selector="TextBlock.Word">
 					<Setter Property="FontSize" Value="35"/>
 					<Setter Property="FontWeight" Value="Bold"/>
-					<Setter Property="Margin" Value="20"/>
+					<Setter Property="Margin" Value="30 20 20 20"/>
 					<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
 				</Style>
 				<Style Selector="TextBlock.PhienAm">
 					<Setter Property="FontSize" Value="25"/>
-					<Setter Property="Margin" Value="20 2 0 0"/>
+					<Setter Property="Margin" Value="30 2 0 0"/>
+				</Style>
+
+				<Style Selector="Button.Volume">
+					<Setter Property="Height" Value="50"/>
+					<Setter Property="Width" Value="50"/>
+					<Setter Property="Margin" Value="10 -5 0 0"/>
+					<Setter Property="Background" Value="Transparent"/>
 				</Style>
 			</Grid.Styles>
 			<StackPanel Orientation="Vertical">
@@ -88,7 +94,9 @@
 				
 				<StackPanel Orientation="Horizontal">
 					<TextBlock Classes="PhienAm" Text="/ˈmɪsɪŋ/"/>
-					<Image Source="avares://TRANSMARIZE/Assets/WordWindow/volume.png"/>
+					<Button Classes="Volume">
+						<Image Source="avares://TRANSMARIZE/Assets/WordWindow/volume.png"/>						
+					</Button>
 				</StackPanel>
 			</StackPanel>
 		</Grid>
