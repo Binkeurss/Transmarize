@@ -218,7 +218,7 @@
 				<TextBlock Classes="SummarizeTextBlock" Text="Summarize"/>
 
 				<ScrollViewer>
-					<TextBox Classes="Translate" x:Name="TransText" Foreground="Black"/>
+					<TextBox Classes="Translate" x:Name="SumText" Foreground="Black"/>
 				</ScrollViewer>
 			</StackPanel>
 		</Grid>

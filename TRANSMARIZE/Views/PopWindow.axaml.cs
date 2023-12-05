@@ -1,4 +1,4 @@
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 
 namespace TRANSMARIZE.Views
 {
@@ -8,16 +8,24 @@ namespace TRANSMARIZE.Views
         {
             InitializeComponent();
         }
-
-        public void Window_Deactivated(object? sender, System.EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Button_Translate(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void TranslateButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             TranslateWindow translate = new TranslateWindow();
+            // Gán DataContext của PopWindow cho TransWindow
+            translate.DataContext = this.DataContext;
             translate.Show();
+            this.Close();
+        }
+        private void SummarizeButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            SumWindow sumWindow = new SumWindow();
+            // Gán DataContext của PopWindow cho SumWindow
+            sumWindow.DataContext = this.DataContext;
+            sumWindow.Show();
+            this.Close();
+        }
+        public void Window_Deactivated(object? sender, System.EventArgs e)
+        {
             this.Close();
         }
     }
