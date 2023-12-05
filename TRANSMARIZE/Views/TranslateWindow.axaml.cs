@@ -13,18 +13,19 @@ namespace TRANSMARIZE.Views
 {
     public partial class TranslateWindow : Window
     {
-        private HttpClient httpClient;
+        // private HttpClient httpClient;
+        public string input = String.Empty;
         public TranslateWindow()
         {
             InitializeComponent();
-            httpClient = new HttpClient();
-            string input = ConvertString(ShareData.transText);
+            // httpClient = new HttpClient();
+            input = ConvertString(ShareData.transText);
             SourceText.Text = input;
-            TransText.Text = TranslateText(input, "auto", ShareData.langSecond);
+            TransText.Text = ShareData.TranslateText(input, "auto", ShareData.langSecond);
         }
 
         //Call API
-        public string TranslateText(string input, string lang_first, string lang_second)
+/*        public string TranslateText(string input, string lang_first, string lang_second)
         {
             // tạo link để gọi API
             string url = String.Format
@@ -45,6 +46,11 @@ namespace TRANSMARIZE.Views
             }
             if (translation.Length > 1) { translation = translation.Substring(1); };
             return translation;
+        }*/
+
+        public void TransButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            TransText.Text = ShareData.TranslateText(input, "auto", ShareData.langSecond);
         }
 
         //Bỏ đi những dấu xuống dòng tránh bị lỗi
@@ -56,7 +62,6 @@ namespace TRANSMARIZE.Views
 
         public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            //Environment.Exit(0);
             this.Close();
         }
 

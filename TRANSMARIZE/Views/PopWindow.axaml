@@ -43,13 +43,13 @@
 				<Setter Property="Foreground" Value="Black"/>
 			</Style>
 		</StackPanel.Styles>
-		<Button Margin="0 0 3 0" Click="Button_Translate" Foreground="White">
+		<Button Margin="0 0 3 0" Click="TranslateButton" Foreground="White">
 			<TextBlock>
 				Trans
 			</TextBlock>
 		</Button>
 
-		<Button Margin="0 0 0 0" Foreground="White">
+		<Button Margin="0 0 0 0" Click="SummarizeButton" Foreground="White">
 			<TextBlock>
 				Sum
 			</TextBlock>

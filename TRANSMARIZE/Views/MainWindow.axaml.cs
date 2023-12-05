@@ -19,9 +19,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        string text = "Vietnamese";
-        object ini = text;
-        LanguageBox.SelectedItem = ini;
         Clipboard.ClearAsync();
     }
 
@@ -52,6 +49,8 @@ public partial class MainWindow : Window
             ShareData.transText = text;
             // Mở popup window tại vị trí con chuột đang đứng
             PopWindow popWindow = new PopWindow();
+            // Gán DataContext của MainWindow cho PopWindow
+            popWindow.DataContext = this.DataContext;
             popWindow.Position = new Avalonia.PixelPoint(e.Data.X, e.Data.Y);
             popWindow.WindowStartupLocation = WindowStartupLocation.Manual;
             popWindow.Show();
@@ -75,6 +74,15 @@ public partial class MainWindow : Window
             button.Content = "START";
         }
     }
+    private void ComboBox_SelectionChanged(object? sender, Avalonia.Controls.SelectionChangedEventArgs e)
+    {
+        ComboBox comboBox = sender as ComboBox;
+        string langSelected = comboBox.SelectedItem.ToString();
+        if (langSelected != null)
+        {
+            ShareData.langSecond = ShareData.languageDictionary[langSelected];
+        }
+    }
 
     //Exit button and Close window
     public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -92,15 +100,5 @@ public partial class MainWindow : Window
     private void Window_Closed(object? sender, System.EventArgs e)
     {
         hook.Dispose();
-    }
-
-    private void ComboBox_SelectionChanged(object? sender, Avalonia.Controls.SelectionChangedEventArgs e)
-    {
-        ComboBox comboBox = sender as ComboBox;
-        string langSelected = comboBox.SelectedItem.ToString();
-        if (langSelected != null)
-        {
-            ShareData.langSecond = ShareData.languageDictionary[langSelected];
-        }
     }
 }
