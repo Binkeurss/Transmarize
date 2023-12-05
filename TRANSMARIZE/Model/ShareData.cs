@@ -12,7 +12,6 @@ namespace TRANSMARIZE.Model
         // các biến được sử dụng chung bởi các views
         public static string transText = string.Empty;
         public static string langSecond = "vi";
-
         public static Dictionary<string, string> languageDictionary = new Dictionary<string, string>
         {
             {"Afrikaans", "af"},
@@ -153,4 +152,6 @@ namespace TRANSMARIZE.Model
             "Zulu", 
         };
     }
+
 }
+ 

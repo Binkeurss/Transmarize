@@ -88,7 +88,7 @@
 				<Grid Grid.Column="2">
 					<Button Classes="Translate" Foreground="Black"></Button>
 				</Grid>
-				<!--Column 4 chứa khoảng trống-->
+				<!--Column 3 chứa khoảng trống-->
 				<Grid Grid.Column="3"></Grid>
 				<!--Colmn 5 chứa Hide button và Exit Button-->
 				<Grid Grid.Column="4"  Width="80">
@@ -223,7 +223,7 @@
 			</StackPanel>
 		</Grid>
 		
-		<!--Row 3 gồm TextBlock chứa những từ được dịch hoặc summarize-->
+		<!--Row 3 gồm TextBlock chứa những từ được dịch-->
 		<Grid Grid.Row="3"></Grid>
 		
 		<!--Row 4 Khoảng trống-->
