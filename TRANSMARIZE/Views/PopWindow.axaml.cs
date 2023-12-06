@@ -1,6 +1,7 @@
 ﻿using Avalonia.Controls;
 using System.Threading.Tasks;
 using TRANSMARIZE.Model;
+using TRANSMARIZE.ViewModels;
 
 namespace TRANSMARIZE.Views
 {
@@ -16,6 +17,7 @@ namespace TRANSMARIZE.Views
             if (numWord == 1)
             {
                 WordWindow wordWindow = new WordWindow();
+                wordWindow.DataContext = new WordWindowViewModel();
                 wordWindow.Show();
             }
             else

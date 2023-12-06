@@ -90,11 +90,11 @@
 			</Grid.Styles>
 			<StackPanel Orientation="Vertical">
 				
-				<TextBlock Classes="Word" Text="ESCAPE"/>
+				<TextBlock Classes="Word" Text="{Binding Word}"/>
 				
 				<StackPanel Orientation="Horizontal">
-					<TextBlock Classes="PhienAm" Text="/ˈmɪsɪŋ/"/>
-					<Button Classes="Volume">
+					<TextBlock Classes="PhienAm" Text="{Binding Phonetic}"/>
+					<Button Classes="Volume" Command="{Binding AudioPlayCommand}">
 						<Image Source="avares://TRANSMARIZE/Assets/WordWindow/volume.png"/>						
 					</Button>
 				</StackPanel>
@@ -102,6 +102,22 @@
 		</Grid>
 
 		<!-- Chứa các definitions của từ đó-->
-		<Grid Grid.Row="2" Background="Black"></Grid>
+		<Grid Grid.Row="2" Background="Yellow">
+			
+			<ScrollViewer>
+				<!--Template cho những đại từ-->
+				<ItemsControl ItemsSource="{Binding Definitions}">
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<StackPanel>
+								<!--Dùng để phân loại nó thuộc loại đại từ nào-->
+								<CheckBox Margin="4"
+										  Content="{Binding PartOfSpeech}"/>
+							</StackPanel>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</ScrollViewer>
+		</Grid>
 	</Grid>
 </Window>
