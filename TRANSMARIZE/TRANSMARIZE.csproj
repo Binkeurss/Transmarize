@@ -21,6 +21,7 @@
     <None Remove="Assets\MainWindow\close.png" />
     <None Remove="Assets\MainWindow\logo_transparent.ico" />
     <None Remove="Assets\PopWindow\right_arrow.png" />
+    <None Remove="Assets\WordWindow\star.png" />
     <None Remove="Assets\WordWindow\volume.png" />
   </ItemGroup>
 
@@ -39,5 +40,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
     <PackageReference Include="SharpHook" Version="5.1.2" />
+    <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.20" />
   </ItemGroup>
 </Project>

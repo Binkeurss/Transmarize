@@ -8,6 +8,7 @@ namespace TRANSMARIZE.Views
         public WordWindow()
         {
             InitializeComponent();
+            
         }
 
         public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
