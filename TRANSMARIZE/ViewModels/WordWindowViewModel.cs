@@ -20,10 +20,13 @@ namespace TRANSMARIZE.ViewModels
         private HttpClient httpClient = new HttpClient();
 
         [ObservableProperty]
+        public string word = "empty";
+
+        [ObservableProperty]
         public string sound = "default";
 
         [ObservableProperty]
-        public string word = "empty";
+        public string phonetic = "muted";
 
         [ObservableProperty]
         public ObservableCollection<Definition> definitions = new ObservableCollection<Definition>();
@@ -51,13 +54,35 @@ namespace TRANSMARIZE.ViewModels
             JArray jsonArray = JArray.Parse(result);
             foreach (JToken entry in jsonArray)
             {
+                // lấy word 
                 Word = entry["word"].ToString();
+                // lấy cách đọc
+                if (entry["phonetic"] != null)
+                {
+                    Phonetic = entry["phonetic"].ToString();
+                }
+                // lấy file audio
+                JToken phonetics = entry["phonetics"];
+                foreach (JToken phonetic in phonetics)
+                {
+                    if (phonetic["audio"].ToString() != "")
+                    {
+                        Sound = phonetic["audio"].ToString();
+                        break;
+                    }
+                }
+
+                // lấy phần dịch nghĩa
                 JToken meanings = entry["meanings"]; 
                 foreach(JToken meaning in meanings)
                 {
+                    // mỗi item là 1 loại từ
                     Definition item = new Definition();
+
+                    // lấy loại từ
                     item.PartOfSpeech = meaning["partOfSpeech"].ToString();
 
+                    // lấy danh sách các định nghĩa và ví dụ
                     JToken definitions = meaning["definitions"].ToString();
                     foreach(JToken definition in definitions)
                     {
@@ -74,17 +99,22 @@ namespace TRANSMARIZE.ViewModels
                         }
                         item.Def2exs.Add(def2ex);
                     }
-                    Definitions.Add(item);
-                }
 
-                JToken phonetics = entry["phonetics"];
-                foreach (JToken phonetic in phonetics)
-                {
-                    if (phonetic["audio"].ToString() != "")
+                    // lấy từ đồng nghĩa và trái nghĩa
+                    JToken synonyms = meaning["synonyms"];
+                    foreach (JToken synonym in synonyms)
                     {
-                        Sound = phonetic["audio"].ToString();
-                        break;
+                        item.IsHasSynonym = true;
+                        item.Synonyms.Add(synonym.ToString());
                     }
+                    JToken antonyms = meaning["antonyms"];
+                    foreach (JToken antonym in antonyms)
+                    {
+                        item.IsHasAntonym = true;
+                        item.Antonyms.Add(antonym.ToString());
+                    }
+
+                    Definitions.Add(item);
                 }
             }
         }
