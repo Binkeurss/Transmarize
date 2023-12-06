@@ -34,5 +34,9 @@ namespace TRANSMARIZE.Model
         //Dùng để truy xuất các thuộc tính có trong noun, verb ...
         public string PartOfSpeech { get; set; } = String.Empty;
         public ObservableCollection<Def2ex> Def2exs { get; set; } = new ObservableCollection<Def2ex>();
+        public ObservableCollection<string> Synonyms { get; set; } = new ObservableCollection<string>();
+        public bool IsHasSynonym { get; set; } = false;
+        public ObservableCollection<string> Antonyms { get; set; } = new ObservableCollection<string>();
+        public bool IsHasAntonym { get; set; } = false;
     }
 }
