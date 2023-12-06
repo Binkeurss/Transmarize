@@ -66,6 +66,7 @@ public partial class MainWindow : Window
             hook.MouseReleased += OnMouseRelease;
             hook.RunAsync();
             button.Content = "STOP";
+            this.WindowState = WindowState.Minimized;
         }
         else
         {

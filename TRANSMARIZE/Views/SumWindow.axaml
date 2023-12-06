@@ -76,7 +76,7 @@
 						<Setter Property="FontSize" Value="25"/>
 					</Style>
 				</Grid.Styles>
-				<!--Column 0 có chữa Translate to-->
+				<!--Column 0 có chữa Summarize to-->
 				<Grid Grid.Column="0">
 					<TextBlock Classes="Sum" Text="Summarize To:"/>
 				</Grid>
@@ -88,7 +88,7 @@
 							  Foreground="Black">					
 					</ComboBox>
 				</Grid>
-				<!--Column 2 chứa button translate-->
+				<!--Column 2 chứa button Summarize-->
 				<Grid Grid.Column="2">
 					<Button Classes="Summarize" 
 							Foreground="Black"
@@ -204,7 +204,7 @@
 						<Setter Property="FontSize" Value="25"/>
 					</Style>
 
-					<Style Selector="TextBox.Translate">
+					<Style Selector="TextBox.Summarize">
 						<!--TextBox-->
 						<Setter Property="Background" Value="White"/>
 						<Setter	Property="Height" Value="300"/>
@@ -225,7 +225,7 @@
 				<TextBlock Classes="SummarizeTextBlock" Text="Summarize"/>
 
 				<ScrollViewer>
-					<TextBox Classes="Translate" x:Name="SumText" Foreground="Black"/>
+					<TextBox Classes="Summarize" x:Name="SumText" Foreground="Black"/>
 				</ScrollViewer>
 			</StackPanel>
 		</Grid>
