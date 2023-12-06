@@ -89,7 +89,7 @@ namespace TRANSMARIZE.Model
         // 2 biến Observerble được sử dụng cho các ComboBox
         [ObservableProperty]
         private int selectedIndex = 61;
-
+       
         [ObservableProperty]
         private ObservableCollection<string> languageList = new ObservableCollection<string>
         {
