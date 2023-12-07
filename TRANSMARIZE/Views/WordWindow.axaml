@@ -8,7 +8,7 @@
         Title="WordWindow"
 		ExtendClientAreaToDecorationsHint="True"
 		ExtendClientAreaChromeHints="NoChrome"
-		ExtendClientAreaTitleBarHeightHint="-1"	
+		ExtendClientAreaTitleBarHeightHint="-1"
 		Background="#709BE3"
 		CanResize="False"
 		Deactivated="Window_Deactivated">
@@ -89,30 +89,68 @@
 				</Style>
 			</Grid.Styles>
 			<StackPanel Orientation="Vertical">
-				
-				<TextBlock Classes="Word" Text="{Binding Word}"/>
-				
+
+				<TextBlock Classes="Word" Text="{Binding Word}" Foreground="Black"/>
+
 				<StackPanel Orientation="Horizontal">
-					<TextBlock Classes="PhienAm" Text="{Binding Phonetic}"/>
+					<TextBlock Classes="PhienAm" Text="{Binding Phonetic}" Foreground="Black"/>
 					<Button Classes="Volume" Command="{Binding AudioPlayCommand}">
-						<Image Source="avares://TRANSMARIZE/Assets/WordWindow/volume.png"/>						
+						<Image Source="avares://TRANSMARIZE/Assets/WordWindow/volume.png"/>
 					</Button>
 				</StackPanel>
 			</StackPanel>
 		</Grid>
 
 		<!-- Chứa các definitions của từ đó-->
-		<Grid Grid.Row="2" Background="Yellow">
-			
+		<Grid Grid.Row="2" Background="Transparent">
+
 			<ScrollViewer>
 				<!--Template cho những đại từ-->
 				<ItemsControl ItemsSource="{Binding Definitions}">
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
 							<StackPanel>
-								<!--Dùng để phân loại nó thuộc loại đại từ nào-->
-								<CheckBox Margin="4"
-										  Content="{Binding PartOfSpeech}"/>
+								<!--DataTempalte này dùng để phân loại nó thuộc loại đại từ nào-->
+								<StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+											Margin="10 0 0 0">
+									<Image Source="avares://TRANSMARIZE/Assets/WordWindow/star.png"
+										   Width="30"
+										   Height="30"/>
+									<!--Gồm star icon và đại từ, nằm ngang-->
+									<TextBlock Margin="10 10 0 10"
+											   FontFamily="{StaticResource VigaFont}"
+											   FontWeight="Bold"
+											   FontSize="25"
+											   Text="{Binding PartOfSpeech}"/>
+								</StackPanel>
+
+								<!--DataTemplate này dùng để vô meaning và example (nếu có)-->
+								<ItemsControl ItemsSource="{Binding Def2exs}">
+									<!--Style cho example-->
+									<ItemsControl.Styles>
+										<!--Tồn tại example-->
+										<Style Selector="SelectableTextBlock.HaveExample">
+											<Setter Property="Height" Value="25"/>
+										</Style>
+										<!--Không tồn tại example-->
+										<Style Selector="SelectableTextBlock.NotExample">
+											<Setter Property="Height" Value="0"/>
+										</Style>
+									</ItemsControl.Styles>
+									<!--Bắt đầu design cho definitions-->
+									<ItemsControl.ItemTemplate>
+										<DataTemplate>
+											<StackPanel>
+												<SelectableTextBlock Margin="4" TextWrapping="Wrap"
+																	 Text="{Binding Meaning}"/>
+												<SelectableTextBlock Classes.NotExample="{Binding !IsHasExample}"
+																	 Classes.HaveExample="{Binding IsHasExample}"
+																	 Margin="4" TextWrapping="Wrap"
+																	 Text="{Binding Example}"/>
+											</StackPanel>
+										</DataTemplate>
+									</ItemsControl.ItemTemplate>
+								</ItemsControl>
 							</StackPanel>
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>

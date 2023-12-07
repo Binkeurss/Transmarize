@@ -83,7 +83,7 @@ namespace TRANSMARIZE.ViewModels
                     item.PartOfSpeech = meaning["partOfSpeech"].ToString();
 
                     // lấy danh sách các định nghĩa và ví dụ
-                    JToken definitions = meaning["definitions"].ToString();
+                    JToken definitions = meaning["definitions"];
                     foreach(JToken definition in definitions)
                     {
                         Def2ex def2ex = new Def2ex();
