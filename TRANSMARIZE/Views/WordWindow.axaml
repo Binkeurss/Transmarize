@@ -13,11 +13,11 @@
 		CanResize="False"
 		Deactivated="Window_Deactivated">
 
-	<Grid RowDefinitions="Auto, Auto, *">
+	<Grid RowDefinitions="Auto, Auto, Auto, *">
 		<!--Row 1 để chứa button exit và hide-->
-		<Grid Grid.Row="0" Height="40" Background="Red">
+		<Grid Grid.Row="0" Height="40">
 			<StackPanel Orientation="Horizontal"
-			Height="40"
+			Height="45"
 			Width="80"
 			HorizontalAlignment="Right"
 			VerticalAlignment="Top">
@@ -60,15 +60,15 @@
 				<Button Classes="Exit"
 						Name="ExitButton"
 						Click="ExitButton_Click">
-					<Image Source="avares://TRANSMARIZE/Assets/MainWindow/close.png"
+					<Image Source="avares://TRANSMARIZE/Assets/MainWindow/close-window.png"
 						   Width="20" Height="20"
-						   Margin="0 0 0 -3"/>
+						   Margin="0 2 0 -5"/>
 				</Button>
 			</StackPanel>
 		</Grid>
 
 		<!--Row 2 để chứa chữ, phiên âm và sound -->
-		<Grid Grid.Row="1" Height="150" Background="White">
+		<Grid Grid.Row="1" Height="150">
 			<Grid.Styles>
 				<Style Selector="TextBlock.Word">
 					<Setter Property="FontSize" Value="35"/>
@@ -89,20 +89,40 @@
 				</Style>
 			</Grid.Styles>
 			<StackPanel Orientation="Vertical">
-
+				<StackPanel.Styles>
+				<!--Style nếu có Sound-->
+					<Style Selector="Button.HaveSound">
+						<Setter Property="Height" Value="50"/>
+						<Setter Property="Width" Value="50"/>
+						<Setter Property="Margin" Value="10 -5 0 0"/>
+						<Setter Property="Background" Value="Transparent"/>
+					</Style>
+				<!--Style nếu không có Sound-->
+					<Style Selector="Button.NotHaveSound">
+						<Setter Property="Height" Value="0"/>
+					</Style>
+				</StackPanel.Styles>
 				<TextBlock Classes="Word" Text="{Binding Word}" Foreground="Black"/>
 
 				<StackPanel Orientation="Horizontal">
 					<TextBlock Classes="PhienAm" Text="{Binding Phonetic}" Foreground="Black"/>
-					<Button Classes="Volume" Command="{Binding AudioPlayCommand}">
+					<Button Classes.HaveSound="{Binding Ishassound}"
+							Classes.NotHaveSound="{Binding !Ishassound}"
+							Command="{Binding AudioPlayCommand}" >
 						<Image Source="avares://TRANSMARIZE/Assets/WordWindow/volume.png"/>
 					</Button>
 				</StackPanel>
 			</StackPanel>
 		</Grid>
-
+		<Grid Grid.Row="2">
+			<Border Background="White"
+					BorderBrush="White"
+					CornerRadius="20"
+					BorderThickness="2"
+					Margin="15 0 15 0"/>			
+		</Grid>
 		<!-- Chứa các definitions của từ đó-->
-		<Grid Grid.Row="2" Background="Transparent">
+		<Grid Grid.Row="3" Background="Transparent">
 
 			<ScrollViewer>
 				<!--Template cho những đại từ-->
@@ -125,29 +145,52 @@
 								</StackPanel>
 
 								<!--DataTemplate này dùng để vô meaning và example (nếu có)-->
-								<ItemsControl ItemsSource="{Binding Def2exs}">
-									<!--Style cho example-->
+								<ItemsControl ItemsSource="{Binding Def2exs}">			
+									<!--Style cho meaning và example-->
 									<ItemsControl.Styles>
+										<Style Selector="SelectableTextBlock.Meaning">
+											<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+											<Setter Property="FontSize" Value="18"/>
+										</Style>
 										<!--Tồn tại example-->
 										<Style Selector="SelectableTextBlock.HaveExample">
 											<Setter Property="Height" Value="25"/>
+											<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+											<Setter Property="FontSize" Value="14"/>
+											<Setter Property="FontStyle" Value="Oblique"/>
+											<Setter Property="FontWeight" Value="DemiBold"/>
 										</Style>
 										<!--Không tồn tại example-->
 										<Style Selector="SelectableTextBlock.NotExample">
 											<Setter Property="Height" Value="0"/>
 										</Style>
+										<!--Style cho border bao quanh definition và example-->
+										<Style Selector="Border">
+											<Setter Property="Background" Value="White"/>
+											<Setter Property="BorderBrush" Value="White"/>
+											<Setter Property="BorderThickness" Value="1.2"/>
+											<Setter Property="CornerRadius" Value="12"/>
+											<Setter Property="Margin" Value="5"/>
+										</Style>
+										<!--Style cho StackPanel-->
+										<Style Selector="StackPanel">
+											<Setter Property="Margin" Value="5 0 5 0"/>
+										</Style>
 									</ItemsControl.Styles>
 									<!--Bắt đầu design cho definitions-->
 									<ItemsControl.ItemTemplate>
 										<DataTemplate>
-											<StackPanel>
-												<SelectableTextBlock Margin="4" TextWrapping="Wrap"
-																	 Text="{Binding Meaning}"/>
-												<SelectableTextBlock Classes.NotExample="{Binding !IsHasExample}"
-																	 Classes.HaveExample="{Binding IsHasExample}"
-																	 Margin="4" TextWrapping="Wrap"
-																	 Text="{Binding Example}"/>
-											</StackPanel>
+											<Border>
+												<StackPanel>
+													<SelectableTextBlock Classes="Meaning"
+																			Margin="4" TextWrapping="Wrap"
+																			Text="{Binding Meaning}"/>
+													<SelectableTextBlock Classes.NotExample="{Binding !IsHasExample}"
+																			Classes.HaveExample="{Binding IsHasExample}"
+																			Margin="20 0 0 0" TextWrapping="Wrap"
+																			Text="{Binding Example}"/>
+												</StackPanel>						
+											</Border>
 										</DataTemplate>
 									</ItemsControl.ItemTemplate>
 								</ItemsControl>
