@@ -26,6 +26,9 @@ namespace TRANSMARIZE.ViewModels
         public string sound = "default";
 
         [ObservableProperty]
+        public bool ishassound = false;
+
+        [ObservableProperty]
         public string phonetic = "muted";
 
         [ObservableProperty]
@@ -60,6 +63,7 @@ namespace TRANSMARIZE.ViewModels
                 if (entry["phonetic"] != null)
                 {
                     Phonetic = entry["phonetic"].ToString();
+                    
                 }
                 // lấy file audio
                 JToken phonetics = entry["phonetics"];
@@ -68,6 +72,7 @@ namespace TRANSMARIZE.ViewModels
                     if (phonetic["audio"].ToString() != "")
                     {
                         Sound = phonetic["audio"].ToString();
+                        ishassound = true;
                         break;
                     }
                 }
@@ -90,7 +95,7 @@ namespace TRANSMARIZE.ViewModels
                         def2ex.Meaning = "Definition: " + definition["definition"].ToString();
                         if (definition["example"] != null)
                         {
-                            def2ex.Example = "Example: " + definition["definition"].ToString() + "\n";
+                            def2ex.Example = "Example: " + definition["example"].ToString() + "\n";
                             def2ex.IsHasExample = true;
                         }
                         else

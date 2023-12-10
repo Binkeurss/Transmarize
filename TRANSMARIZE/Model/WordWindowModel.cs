@@ -20,9 +20,10 @@ namespace TRANSMARIZE.Model
         public string Meaning { get; set; } = String.Empty;
         public string Example { get; set; } = String.Empty;
         public bool IsHasExample { get; set; } = false;
+
         public Def2ex() { }
 
-        public Def2ex(string meaning, string example, string phonetic)
+        public Def2ex(string meaning, string example)
         {
             Meaning = meaning;
             Example = example;
