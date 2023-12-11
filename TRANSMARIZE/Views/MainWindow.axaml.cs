@@ -66,7 +66,7 @@ public partial class MainWindow : Window
             hook.MouseReleased += OnMouseRelease;
             hook.RunAsync();
             button.Content = "STOP";
-            this.WindowState = WindowState.Minimized;
+            this.Hide();
         }
         else
         {
@@ -95,11 +95,17 @@ public partial class MainWindow : Window
 
     public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        this.WindowState = WindowState.Minimized;
+        this.Hide();
     }
 
     private void Window_Closed(object? sender, System.EventArgs e)
     {
         hook.Dispose();
+    }
+
+    private void OpenBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        SavedWordWindow savedWordWindow = new SavedWordWindow();
+        savedWordWindow.Show();
     }
 }

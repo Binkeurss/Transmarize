@@ -151,22 +151,29 @@
 							</Setter>
 						</Style>
 					</Grid.Styles>
-					<Button
+					
+					<StackPanel Orientation="Horizontal">
+						<Button
 							BorderBrush="Black"
 							BorderThickness="2"
-							Content="START" 
+							Content="START"
 							Background="#FFFFFF"
-							Margin="18 0 0 0" 
-							Width="69" 
-							Height="43" 
-							FontWeight="Bold" 
+							Margin="18 0 0 0"
+							Width="69"
+							Height="43"
+							FontWeight="Bold"
 							FontFamily="VigaFont"
 							Foreground="Black"
-							CornerRadius="25" 
-							HorizontalContentAlignment="Center" 
+							CornerRadius="25"
+							HorizontalContentAlignment="Center"
 							VerticalContentAlignment="Center"
-							Click="RunHookButton">						
-					</Button>
+							Click="RunHookButton">
+						</Button>
+						<Button Content="WordBook"
+								Click="OpenBookButton"
+								Margin="18 0 0 0"/>
+					</StackPanel>
+					
 				</Grid>
 			</Grid>
 		</Grid>

@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450"
+        x:Class="TRANSMARIZE.Views.SavedWordWindow"
+        Title="SavedWordWindow"
+		Width="300"
+		Height="450"
+		WindowStartupLocation="CenterScreen"
+		Activated="Window_Activated_1">
+	<ScrollViewer>
+		<StackPanel>
+			<ListBox ItemsSource="{Binding WordList}" SelectedItem="{Binding SelectedWord}"
+					 SelectionChanged="ListBox_SelectionChanged_1">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<StackPanel>
+							<Border BorderBrush="Blue" BorderThickness="1"
+									CornerRadius="4" Padding="4">
+								<TextBlock Text="{Binding Content}"/>
+							</Border>
+						</StackPanel>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+		</StackPanel>
+	</ScrollViewer>
+</Window>

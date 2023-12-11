@@ -15,4 +15,21 @@
 		<FontFamily x:Key="ZenKakuGothicAntiqueMedium">avares://TRANSMARIZE/Assets/Fonts#Zen Kaku Gothic Antique Medium</FontFamily>
 		<FontFamily x:Key="ZenKakuGothicAntiqueRegular">avares://TRANSMARIZE/Assets/Fonts#Zen Kaku Gothic Antique</FontFamily>
 	</Application.Resources>
+	
+	<TrayIcon.Icons>
+		<TrayIcons>
+			<TrayIcon Icon="/Assets/avalonia-logo.ico"
+					  ToolTipText="Avalonia Tray Icon ToolTip">
+				<TrayIcon.Menu>
+					<NativeMenu>
+						<NativeMenuItem Header="Settings"
+										Click="MainWindowOpenClick"/>
+						<NativeMenuItem Header="WordBook"
+										Click="WordBookOpenClick"/>
+					</NativeMenu>
+				</TrayIcon.Menu>
+			</TrayIcon>
+		</TrayIcons>
+	</TrayIcon.Icons>
+	
 </Application>
