@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using System.ComponentModel;
 using TRANSMARIZE.Model;
 using TRANSMARIZE.ViewModels;
 

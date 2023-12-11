@@ -12,7 +12,8 @@
 		ExtendClientAreaTitleBarHeightHint="-1"	
 		Background="Transparent"
 		CanResize="False"
-		Deactivated="Window_Deactivated">
+		Deactivated="Window_Deactivated"
+		ShowInTaskbar="False">
 
 	<StackPanel Orientation="Horizontal"
 				HorizontalAlignment="Center"
