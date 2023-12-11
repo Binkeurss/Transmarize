@@ -11,7 +11,7 @@ namespace TRANSMARIZE.Views;
 public partial class MainWindow : Window
 {
     // Khởi tạo các biến hook và giả lập sự kiện
-    TaskPoolGlobalHook hook = new TaskPoolGlobalHook();
+    public static TaskPoolGlobalHook hook = new TaskPoolGlobalHook();
     EventSimulator simulator = new EventSimulator();
 
     // currentText dùng để tránh popup window mở sai thời điểm
@@ -105,7 +105,7 @@ public partial class MainWindow : Window
 
     private void OpenBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        SavedWordWindow savedWordWindow = new SavedWordWindow();
-        savedWordWindow.Show();
+        App.SavedWordWindow.Show();
+        App.SavedWordWindow.Activate();
     }
 }

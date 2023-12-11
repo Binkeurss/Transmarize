@@ -63,9 +63,27 @@ public partial class App : Application
         }
     }
 
+    static SavedWordWindow savedWordWindow;
+    public static SavedWordWindow SavedWordWindow
+    {
+        get
+        {
+            if (savedWordWindow == null)
+            {
+                savedWordWindow = new SavedWordWindow();
+                return savedWordWindow;
+            }
+            if (savedWordWindow.IsVisible == false)
+            {
+                savedWordWindow = new SavedWordWindow();
+                return savedWordWindow;
+            }
+            return savedWordWindow;
+        }
+    }
     private void WordBookOpenClick(object? sender, System.EventArgs e)
     {
-        SavedWordWindow savedWordWindow = new SavedWordWindow();
-        savedWordWindow.Show();
+        SavedWordWindow.Show();
+        SavedWordWindow.Activate();
     }
 }
