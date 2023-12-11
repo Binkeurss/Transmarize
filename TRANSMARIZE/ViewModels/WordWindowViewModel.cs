@@ -95,7 +95,7 @@ namespace TRANSMARIZE.ViewModels
                         def2ex.Meaning = "Definition: " + definition["definition"].ToString();
                         if (definition["example"] != null)
                         {
-                            def2ex.Example = "Example: " + definition["example"].ToString() + "\n";
+                            def2ex.Example = "Example: " + definition["example"].ToString();
                             def2ex.IsHasExample = true;
                         }
                         else
@@ -110,13 +110,13 @@ namespace TRANSMARIZE.ViewModels
                     foreach (JToken synonym in synonyms)
                     {
                         item.IsHasSynonym = true;
-                        item.Synonyms.Add(synonym.ToString());
+                        item.Synonyms.Add("• " + synonym.ToString());
                     }
                     JToken antonyms = meaning["antonyms"];
                     foreach (JToken antonym in antonyms)
                     {
                         item.IsHasAntonym = true;
-                        item.Antonyms.Add(antonym.ToString());
+                        item.Antonyms.Add("• " + antonym.ToString());
                     }
 
                     Definitions.Add(item);

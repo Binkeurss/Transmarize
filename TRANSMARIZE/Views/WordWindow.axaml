@@ -134,15 +134,31 @@
 							<Setter Property="Height" Value="0" />
 						</Style>
 						<Style Selector="TextBlock.HasSynonym">
-							<Setter Property="Height" Value="20"/>
-							<Setter Property="Margin" Value="10"/>
+							<Setter Property="FontSize" Value="20"/>
+							<Setter Property="Margin" Value="22 10 4 4"/>
 						</Style>
 						<Style Selector="TextBlock.NoAntonym">
 							<Setter Property="Height" Value="0" />
 						</Style>
 						<Style Selector="TextBlock.HasAntonym">
-							<Setter Property="Height" Value="20" />
-							<Setter Property="Margin" Value="10"/>
+							<Setter Property="FontSize" Value="20"/>
+							<Setter Property="Margin" Value="22 10 4 4"/>
+						</Style>
+						<Style Selector="Border.HasSynonym">
+							<Setter Property="Background" Value="White"/>
+							<Setter Property="BorderBrush" Value="White"/>
+							<Setter Property="BorderThickness" Value="1.2"/>
+							<Setter Property="CornerRadius" Value="12"/>
+							<Setter Property="Margin" Value="16 5 16 5"/>
+							<Setter Property="Padding" Value="0 5 0 5"/>
+						</Style>
+						<Style Selector="Border.HasAntonym">
+							<Setter Property="Background" Value="White"/>
+							<Setter Property="BorderBrush" Value="White"/>
+							<Setter Property="BorderThickness" Value="1.2"/>
+							<Setter Property="CornerRadius" Value="12"/>
+							<Setter Property="Margin" Value="16 5 16 5"/>
+							<Setter Property="Padding" Value="0 5 0 5"/>
 						</Style>
 					</ItemsControl.Styles>
 					
@@ -174,7 +190,6 @@
 										</Style>
 										<!--Tồn tại example-->
 										<Style Selector="SelectableTextBlock.HaveExample">
-											<Setter Property="Height" Value="25"/>
 											<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
 											<Setter Property="FontSize" Value="18"/>
 											<Setter Property="FontStyle" Value="Oblique"/>
@@ -207,7 +222,7 @@
 																			Text="{Binding Meaning}"/>
 													<SelectableTextBlock Classes.NotExample="{Binding !IsHasExample}"
 																			Classes.HaveExample="{Binding IsHasExample}"
-																			Margin="4" TextWrapping="Wrap"
+																			Margin="4 0 0 0" TextWrapping="Wrap"
 																			Text="{Binding Example}"
 																		    Foreground="Gray"/>
 												</StackPanel>						
@@ -217,33 +232,49 @@
 								</ItemsControl>
 
 								<TextBlock Text="Synonyms" FontWeight="Bold"
+										   Foreground="Black"
 										   Classes.NoSynonym="{Binding !IsHasSynonym}"
 										   Classes.HasSynonym="{Binding IsHasSynonym}"/>
-								<ItemsControl ItemsSource="{Binding Synonyms}">
-									<ItemsControl.ItemTemplate>
-										<DataTemplate>
-											<StackPanel>
-												<SelectableTextBlock FontWeight="Bold"
-																	 Text="{Binding}"/>
-											</StackPanel>
-										</DataTemplate>
-									</ItemsControl.ItemTemplate>
-								</ItemsControl>
+								<Border Classes.NoSynonym="{Binding !IsHasSynonym}"
+										Classes.HasSynonym="{Binding IsHasSynonym}">
+									<ItemsControl ItemsSource="{Binding Synonyms}">
+										<ItemsControl.ItemTemplate>
+											<DataTemplate>
+												<StackPanel Margin="5 0 5 0">
+													<SelectableTextBlock FontWeight="Bold"
+																		 Text="{Binding}"
+																		 Margin="4"
+																		 FontSize="18"
+																		 Foreground="Black"
+																		 FontFamily="{StaticResource VigaFont}"/>
+												</StackPanel>
+											</DataTemplate>
+										</ItemsControl.ItemTemplate>
+									</ItemsControl>
+								</Border>
 
 								<TextBlock Text="Antonyms" FontWeight="Bold"
+										   Foreground="Black"
 										   Classes.NoAntonym="{Binding !IsHasAntonym}"
 										   Classes.HasAntonym="{Binding IsHasAntonym}"/>
-								<ItemsControl ItemsSource="{Binding Antonyms}">
-									<ItemsControl.ItemTemplate>
-										<DataTemplate>
-											<StackPanel>
-												<SelectableTextBlock FontWeight="Bold"
-																	 Text="{Binding}"/>
-											</StackPanel>
-										</DataTemplate>
-									</ItemsControl.ItemTemplate>
-								</ItemsControl>
-							
+								<Border Classes.NoAntonym="{Binding !IsHasAntonym}"
+										Classes.HasAntonym="{Binding IsHasAntonym}">
+									<ItemsControl ItemsSource="{Binding Antonyms}">
+										<ItemsControl.ItemTemplate>
+											<DataTemplate>
+												<StackPanel Margin="5 0 5 0">
+													<SelectableTextBlock FontWeight="Bold"
+																		 Text="{Binding}"
+																		 Margin="4"
+																		 FontSize="18"
+																		 Foreground="Black"
+																		 FontFamily="{StaticResource VigaFont}"/>
+												</StackPanel>
+											</DataTemplate>
+										</ItemsControl.ItemTemplate>
+									</ItemsControl>
+								</Border>
+						
 							</StackPanel>
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
