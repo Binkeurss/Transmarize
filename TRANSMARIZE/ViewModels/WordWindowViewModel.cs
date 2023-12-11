@@ -15,9 +15,16 @@ namespace TRANSMARIZE.ViewModels
 {
     public partial class WordWindowViewModel : ViewModelBase
     {
-        // Ánh xạ mảng vào ComboBox
-
         private HttpClient httpClient = new HttpClient();
+
+        // biến savedword có giá trị khi từ đang tra đã được lưu vào WordBook
+        public SavedWord findedWord = new SavedWord();
+
+        [ObservableProperty]
+        public string buttonContent = "Add"; // Nội dung của Button thay đổi tùy tình huống
+
+        [ObservableProperty]
+        public string buttonColor = "Blue"; // Màu sắc của Button thay đổi tùy tình huống
 
         [ObservableProperty]
         public string word = "empty";
@@ -36,9 +43,27 @@ namespace TRANSMARIZE.ViewModels
     
         public WordWindowViewModel() 
         {
-
             string input = ConvertString(ShareData.transText);
             TranslateWord(input);
+            // Tra cứu từ đang dịch đã có trong WordBook chưa
+            Task<List<SavedWord>> findedList = App.WordBookDatabase.GetaWord(input);
+            // Nếu có thì đổi trạng thái của Button và gán findedWord bằng từ đã tìm thấy
+            if (findedList.Result.Count > 0)
+            {
+                findedWord = findedList.Result[0];
+                ButtonColor = "Red";
+                ButtonContent = "Remove";
+            }
+        }
+        // Phương thức khởi tạo này được gọi từ SavedWordWindow
+        // Vì từ muốn tra đã có trong WordBook nên ko cần tra lại nữa
+        // Giá trị của findedWord sẽ được truyền vào từ SavedWordWindow
+        public WordWindowViewModel(SavedWord selectedWord)
+        {
+            findedWord = selectedWord;
+            TranslateWord(selectedWord.Content);
+            ButtonContent = "Remove";
+            ButtonColor = "Red";
         }
 
         //Dùng để bỏ dấu xuống dòng
@@ -131,6 +156,27 @@ namespace TRANSMARIZE.ViewModels
             var media = new Media(libvlc, new Uri(Sound));
             var mediaplayer = new MediaPlayer(media);
             mediaplayer.Play();
+        }
+
+        [RelayCommand]
+        public async void AddRemoveWord()
+        {
+            // Nếu từ đang tra chưa có trong WordBook thì Button này sẽ là lưu từ
+            if (findedWord.Content == String.Empty)
+            {
+                SavedWord newWord = new SavedWord(Word);
+                var r = App.WordBookDatabase.SaveWordAsync(newWord);
+                findedWord = newWord;
+                ButtonContent = "Remove";
+                ButtonColor = "Red";
+            }
+            else // Nếu từ đang tra đã có trong WordBook thì Button này là bỏ từ
+            {
+                await App.WordBookDatabase.DeleteTask(findedWord);
+                findedWord.Content = String.Empty;
+                ButtonContent = "Add";
+                ButtonColor = "Blue";
+            }
         }
     }
 }

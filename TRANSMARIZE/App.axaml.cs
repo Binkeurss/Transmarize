@@ -5,6 +5,9 @@ using Avalonia.Markup.Xaml;
 using TRANSMARIZE.Model;
 using TRANSMARIZE.ViewModels;
 using TRANSMARIZE.Views;
+using TRANSMARIZE.Services;
+using System.IO;
+using System;
 
 namespace TRANSMARIZE;
 
@@ -35,8 +38,34 @@ public partial class App : Application
                 DataContext = new MainViewModel()
             };
         }
-    
-
+   
         base.OnFrameworkInitializationCompleted();
+    }
+    // Khai báo biến database, biến này được sử dụng xuyên suốt App
+    static WordBookService wordBookDatabase;
+    public static WordBookService WordBookDatabase
+    {
+        get
+        {
+            // Khi gọi hàm get, nếu database chưa được tạo thì tiến hành tạo
+            if (wordBookDatabase == null)
+            {
+                wordBookDatabase = new WordBookService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WordBookDatabase3.db3"));
+            }
+            return wordBookDatabase;
+        }
+    }
+    private void MainWindowOpenClick(object? sender, System.EventArgs e)
+    {
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            desktop.MainWindow.Show();
+        }
+    }
+
+    private void WordBookOpenClick(object? sender, System.EventArgs e)
+    {
+        SavedWordWindow savedWordWindow = new SavedWordWindow();
+        savedWordWindow.Show();
     }
 }

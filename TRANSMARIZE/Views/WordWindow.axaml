@@ -103,8 +103,14 @@
 						<Setter Property="Height" Value="0"/>
 					</Style>
 				</StackPanel.Styles>
-				<TextBlock Classes="Word" Text="{Binding Word}" Foreground="Black"/>
-
+				
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Classes="Word" Text="{Binding Word}" Foreground="Black"/>
+					<Button Content="{Binding ButtonContent}" Command="{Binding AddRemoveWordCommand}"
+							Background="{Binding ButtonColor}"
+							Margin="10 0 0 0"/>
+				</StackPanel>
+				
 				<StackPanel Orientation="Horizontal">
 					<TextBlock Classes="PhienAm" Text="{Binding Phonetic}" Foreground="Black"/>
 					<Button Classes.HaveSound="{Binding Ishassound}"
