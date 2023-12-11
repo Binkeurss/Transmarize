@@ -11,7 +11,8 @@
 		ExtendClientAreaTitleBarHeightHint="-1"
 		Background="#709BE3"
 		CanResize="False"
-		Deactivated="Window_Deactivated">
+		Deactivated="Window_Deactivated"
+		WindowStartupLocation="CenterScreen">
 
 	<Grid RowDefinitions="Auto, Auto, Auto, *">
 		<!--Row 1 để chứa button exit và hide-->
@@ -141,7 +142,8 @@
 											   FontFamily="{StaticResource VigaFont}"
 											   FontWeight="Bold"
 											   FontSize="25"
-											   Text="{Binding PartOfSpeech}"/>
+											   Text="{Binding PartOfSpeech}"
+											   Foreground="Black"/>
 								</StackPanel>
 
 								<!--DataTemplate này dùng để vô meaning và example (nếu có)-->
@@ -182,13 +184,14 @@
 										<DataTemplate>
 											<Border>
 												<StackPanel>
-													<SelectableTextBlock Classes="Meaning"
+													<SelectableTextBlock Classes="Meaning" Foreground="Black"
 																			Margin="4" TextWrapping="Wrap"
 																			Text="{Binding Meaning}"/>
 													<SelectableTextBlock Classes.NotExample="{Binding !IsHasExample}"
 																			Classes.HaveExample="{Binding IsHasExample}"
 																			Margin="20 0 0 0" TextWrapping="Wrap"
-																			Text="{Binding Example}"/>
+																			Text="{Binding Example}"
+																		    Foreground="Black"/>
 												</StackPanel>						
 											</Border>
 										</DataTemplate>
