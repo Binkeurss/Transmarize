@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Avalonia.Threading;
 using TRANSMARIZE.Model;
 using System.Collections.Generic;
+using System;
 
 namespace TRANSMARIZE.Views;
 
@@ -88,19 +89,13 @@ public partial class MainWindow : Window
     //Exit button and Close window
     public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        //Environment.Exit(0);
         hook.Dispose();
-        this.Close();
+        Environment.Exit(0);
     }
 
     public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         this.Hide();
-    }
-
-    private void Window_Closed(object? sender, System.EventArgs e)
-    {
-        hook.Dispose();
     }
 
     private void OpenBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
