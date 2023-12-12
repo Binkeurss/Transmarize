@@ -26,6 +26,7 @@ namespace TRANSMARIZE.Views
                 if (!(mousePosition.X >= windowPosition.X && mousePosition.X <= windowPosition.X + 751 &&
                     mousePosition.Y >= windowPosition.Y && mousePosition.Y <= windowPosition.Y + 897))
                 {
+                    //await Clipboard.ClearAsync();
                     this.Close();
                     // chờ 1 giây sau đó chuyển currentText = empty để có thể bôi 2 từ giống nhau liên tiếp
                     await Task.Delay(1000);
@@ -38,7 +39,6 @@ namespace TRANSMARIZE.Views
         {
             this.Close();
         }
-
 
         public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
