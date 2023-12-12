@@ -8,6 +8,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using TRANSMARIZE.Model;
+using System.Threading.Tasks;
 
 namespace TRANSMARIZE.Views
 {
@@ -34,9 +35,11 @@ namespace TRANSMARIZE.Views
             return convertInput;
         }
 
-        public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        public async void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             this.Close();
+            await Task.Delay(1000);
+            ShareData.currentText = string.Empty;
         }
 
         public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)

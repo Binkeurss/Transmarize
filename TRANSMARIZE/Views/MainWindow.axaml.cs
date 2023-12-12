@@ -15,7 +15,7 @@ public partial class MainWindow : Window
     EventSimulator simulator = new EventSimulator();
 
     // currentText dùng để tránh popup window mở sai thời điểm
-    string currentText = string.Empty;
+    // string currentText = string.Empty;
     public MainWindow()
     {
         InitializeComponent();
@@ -27,24 +27,24 @@ public partial class MainWindow : Window
         Dispatcher.UIThread.Post(async () =>
         {
             //Có delay task để xử lý delay trong Word
-            await Task.Delay(75);
+            await Task.Delay(100);
             // Press Ctrl + C
             simulator.SimulateKeyPress(KeyCode.VcLeftControl);
             simulator.SimulateKeyPress(KeyCode.VcC);
             // Release 
             simulator.SimulateKeyRelease(KeyCode.VcC);
             simulator.SimulateKeyRelease(KeyCode.VcLeftControl);
-            await Task.Delay(75);
+            await Task.Delay(100);
 
             // Lấy giá trị text đang có trong Clipboard
             string text = await Clipboard.GetTextAsync();
 
-            if (text is null || text == " " || text == currentText)
+            if (text == "" || text == string.Empty || text is null || text == " " || text == ShareData.currentText)
             {
                 return;
             }
 
-            currentText = text;
+            ShareData.currentText = text;
             // gán text cho transText để đưa đi dịch
             ShareData.transText = text;
             // Mở popup window tại vị trí con chuột đang đứng
