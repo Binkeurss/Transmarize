@@ -26,6 +26,7 @@
 				<Grid.Styles>
 
 					<Style Selector="ComboBox.SummarizeTo">
+						<Setter Property="FontSize" Value="20"/>
 						<Setter Property="Width" Value="260"/>
 						<Setter Property="Height" Value="45"/>
 						<Setter Property="HorizontalAlignment" Value="Center"/>
@@ -185,7 +186,7 @@
 				<TextBlock Classes="SourceTextTextBlock" Text="Source Text"/>
 
 				<ScrollViewer>
-					<TextBox Classes="TranslateSourceText" x:Name="SourceText" Foreground="Black"/>
+					<TextBox Classes="TranslateSourceText" x:Name="SourceText" Foreground="Black" IsReadOnly="True"/>
 				</ScrollViewer>
 			</StackPanel>
 		</Grid>
@@ -225,7 +226,7 @@
 				<TextBlock Classes="SummarizeTextBlock" Text="Summarize"/>
 
 				<ScrollViewer>
-					<TextBox Classes="Summarize" x:Name="SumText" Foreground="Black"/>
+					<TextBox Classes="Summarize" x:Name="SumText" Foreground="Black" IsReadOnly="True"/>
 				</ScrollViewer>
 			</StackPanel>
 		</Grid>

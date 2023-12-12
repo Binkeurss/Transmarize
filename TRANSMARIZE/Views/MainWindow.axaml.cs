@@ -15,7 +15,7 @@ public partial class MainWindow : Window
     EventSimulator simulator = new EventSimulator();
 
     // currentText dùng để tránh popup window mở sai thời điểm
-    string currentText = string.Empty;
+    // string currentText = string.Empty;
     public MainWindow()
     {
         InitializeComponent();
@@ -39,12 +39,12 @@ public partial class MainWindow : Window
             // Lấy giá trị text đang có trong Clipboard
             string text = await Clipboard.GetTextAsync();
 
-            if (text is null || text == " " || text == currentText)
+            if (text == "" || text == string.Empty || text is null || text == " " || text == ShareData.currentText)
             {
                 return;
             }
 
-            currentText = text;
+            ShareData.currentText = text;
             // gán text cho transText để đưa đi dịch
             ShareData.transText = text;
             // Mở popup window tại vị trí con chuột đang đứng

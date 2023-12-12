@@ -15,6 +15,7 @@ namespace TRANSMARIZE.Model
         // các biến được sử dụng chung bởi các views
         public static string transText = string.Empty;
         public static string langSecond = "vi";
+        public static string currentText = string.Empty;
 
         public static Dictionary<string, string> languageDictionary = new Dictionary<string, string>
         {
