@@ -186,7 +186,7 @@
 				<TextBlock Classes="SourceTextTextBlock" Text="Source Text"/>
 				
 				<ScrollViewer>
-					<TextBox Classes="TranslateSourceText" x:Name="SourceText" Foreground="Black"/>
+					<TextBox Classes="TranslateSourceText" x:Name="SourceText" Foreground="Black" IsReadOnly="True"/>
 				</ScrollViewer>				
 			</StackPanel>
 		</Grid>
@@ -226,7 +226,7 @@
 				<TextBlock Classes="TranslationTextBlock" Text="Translation"/>
 
 				<ScrollViewer>
-					<TextBox Classes="Translate" x:Name="TransText" Foreground="Black"/>
+					<TextBox Classes="Translate" x:Name="TransText" Foreground="Black" IsReadOnly="True"/>
 				</ScrollViewer>
 			</StackPanel>
 		</Grid>

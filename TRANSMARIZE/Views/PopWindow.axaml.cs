@@ -22,13 +22,13 @@ namespace TRANSMARIZE.Views
             }
             else
             {
-                //TranslateWindow translate = new TranslateWindow();
-                // Gán DataContext của PopWindow cho TransWindow
+                // nếu đang có 1 TransWindow đang mở thì đóng nó để mở cái khác
                 if (App.TranslateWindow.IsVisible == true)
                 {
                     App.TranslateWindow.Close();
                 }
                 App.TranslateWindow.Show();
+                // Gán DataContext của PopWindow cho TransWindow
                 App.TranslateWindow.DataContext = this.DataContext;
                 App.TranslateWindow.Activate();
             }
@@ -37,6 +37,7 @@ namespace TRANSMARIZE.Views
         }
         private void SummarizeButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            // nếu đang có 1 SumWindow đang mở thì đóng nó để mở cái khác
             if (App.SumWindow.IsVisible == true)
             {
                 App.SumWindow.Close();

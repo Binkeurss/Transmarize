@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using TRANSMARIZE.Model;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using System.Threading.Tasks;
 
 namespace TRANSMARIZE.Views
 {
@@ -47,9 +48,11 @@ namespace TRANSMARIZE.Views
             string convertInput = input.Replace(System.Environment.NewLine, " ");
             return convertInput;
         }
-        public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
+        public async void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             this.Close();
+            await Task.Delay(1000);
+            ShareData.currentText = string.Empty;
         }
 
         public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
