@@ -66,10 +66,11 @@ namespace TRANSMARIZE.ViewModels
             ButtonColor = "Red";
         }
 
-        //Dùng để bỏ dấu xuống dòng
+        //Dùng để bỏ dấu trắng
         string ConvertString(string input)
         {
-            string convertInput = input.Replace(System.Environment.NewLine, "");
+            string convertInput = input.Replace(" ", "");
+            convertInput = convertInput.ToLower();
             return convertInput;
         }
 

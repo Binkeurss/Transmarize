@@ -15,8 +15,7 @@
 		ExtendClientAreaTitleBarHeightHint="-1"	
 		Background="#709BE3"
 		CanResize="False"
-		WindowStartupLocation="CenterScreen"
-		Closed="Window_Closed">
+		WindowStartupLocation="CenterScreen">
 	
 	<Grid ColumnDefinitions="Auto, Auto, *, Auto">
 		<!-- Column 0 -->

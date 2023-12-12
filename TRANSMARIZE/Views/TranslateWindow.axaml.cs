@@ -32,6 +32,7 @@ namespace TRANSMARIZE.Views
         string ConvertString(string input)
         {
             string convertInput = input.Replace(System.Environment.NewLine, "");
+            convertInput = convertInput.Replace("#", "");
             return convertInput;
         }
 
