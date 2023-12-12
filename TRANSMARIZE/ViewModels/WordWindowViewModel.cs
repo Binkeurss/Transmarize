@@ -36,7 +36,7 @@ namespace TRANSMARIZE.ViewModels
         public bool ishassound = false;
 
         [ObservableProperty]
-        public string phonetic = "muted";
+        public string phonetic = "nan";
 
         [ObservableProperty]
         public ObservableCollection<Definition> definitions = new ObservableCollection<Definition>();
@@ -78,7 +78,19 @@ namespace TRANSMARIZE.ViewModels
             //Tạo link để gọi API
             string url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + input;
             //Gọi API là lấy kết quả trả về là file json dạng string
-            string result = httpClient.GetStringAsync(url).Result;
+            //string result = httpClient.GetStringAsync(url).Result;
+            string result = String.Empty;
+            HttpResponseMessage response = httpClient.GetAsync(url).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                result = response.Content.ReadAsStringAsync().Result;
+            }
+            else
+            {
+                Word = input;
+                Phonetic = "This word is meaningless";
+                return;
+            }
             JArray jsonArray = JArray.Parse(result);
             foreach (JToken entry in jsonArray)
             {
