@@ -41,6 +41,7 @@ public partial class App : Application
    
         base.OnFrameworkInitializationCompleted();
     }
+
     // Khai báo biến database, biến này được sử dụng xuyên suốt App
     static WordBookService wordBookDatabase;
     public static WordBookService WordBookDatabase
@@ -85,5 +86,43 @@ public partial class App : Application
     {
         SavedWordWindow.Show();
         SavedWordWindow.Activate();
+    }
+
+    static TranslateWindow translateWindow;
+    public static TranslateWindow TranslateWindow
+    {
+        get
+        {
+            if (translateWindow == null)
+            {
+                translateWindow = new TranslateWindow();
+                return translateWindow;
+            }
+            if (translateWindow.IsVisible == false)
+            {
+                translateWindow = new TranslateWindow();
+                return translateWindow;
+            }
+            return translateWindow;
+        }
+    }
+
+    static SumWindow sumWindow;
+    public static SumWindow SumWindow
+    {
+        get
+        {
+            if (sumWindow == null)
+            {
+                sumWindow = new SumWindow();
+                return sumWindow;
+            }
+            if (sumWindow.IsVisible == false)
+            {
+                sumWindow = new SumWindow();
+                return sumWindow;
+            }
+            return sumWindow;
+        }
     }
 }

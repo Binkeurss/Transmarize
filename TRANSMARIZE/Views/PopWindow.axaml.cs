@@ -22,20 +22,29 @@ namespace TRANSMARIZE.Views
             }
             else
             {
-                TranslateWindow translate = new TranslateWindow();
+                //TranslateWindow translate = new TranslateWindow();
                 // Gán DataContext của PopWindow cho TransWindow
-                translate.DataContext = this.DataContext;
-                translate.Show();
+                if (App.TranslateWindow.IsVisible == true)
+                {
+                    App.TranslateWindow.Close();
+                }
+                App.TranslateWindow.Show();
+                App.TranslateWindow.DataContext = this.DataContext;
+                App.TranslateWindow.Activate();
             }
             Task.Delay(25);
             this.Close();
         }
         private void SummarizeButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            SumWindow sumWindow = new SumWindow();
+            if (App.SumWindow.IsVisible == true)
+            {
+                App.SumWindow.Close();
+            }
+            App.SumWindow.Show();
             // Gán DataContext của PopWindow cho SumWindow
-            sumWindow.DataContext = this.DataContext;
-            sumWindow.Show();
+            App.SumWindow.DataContext = this.DataContext;
+            App.SumWindow.Activate();
             this.Close();
         }
         private int CountWord(string inputString)
