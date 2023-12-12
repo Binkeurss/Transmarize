@@ -49,7 +49,6 @@ namespace TRANSMARIZE.Views
         }
         public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            //Environment.Exit(0);
             this.Close();
         }
 
