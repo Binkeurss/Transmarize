@@ -54,8 +54,7 @@
 				<Button Classes="Hide"
 						Name="HideButton"
 						Content="___"
-						Click="HideButton_Click"
-						FontWeight="Bold">
+						Click="HideButton_Click">
 				</Button>
 
 				<Button Classes="Exit"

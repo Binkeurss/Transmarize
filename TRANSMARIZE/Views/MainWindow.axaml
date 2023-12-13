@@ -185,13 +185,13 @@
 							VerticalContentAlignment="Center"
 							Click="RunHookButton">
 						</Button>
-						<Button Content="WordBook"
+						<Button Content="Word Book"
 								Click="OpenBookButton"
 								Margin="18 0 0 0"
 								BorderBrush="Black"
 								BorderThickness="2"
 								Background="#FFFFFF"
-								Width="90"
+								Width="95"
 								Height="43"
 								FontWeight="Bold"
 								FontFamily="VigaFont"
