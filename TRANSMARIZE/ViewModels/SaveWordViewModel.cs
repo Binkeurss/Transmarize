@@ -27,5 +27,12 @@ namespace TRANSMARIZE.ViewModels
         {
             WordList = await App.WordBookDatabase.GetWordsAsync();
         }
+
+        [RelayCommand]
+        private async void ClearWords()
+        {
+            var r = await App.WordBookDatabase.ClearTaskAsync();
+            GetWords();
+        }
     }
 }

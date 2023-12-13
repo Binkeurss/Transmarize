@@ -4,6 +4,7 @@ using SharpHook;
 using System.Diagnostics;
 using TRANSMARIZE.Model;
 using System.Threading.Tasks;
+using Avalonia;
 
 
 namespace TRANSMARIZE.Views
@@ -23,8 +24,11 @@ namespace TRANSMARIZE.Views
             {
                 var mousePosition = new Avalonia.PixelPoint(e.Data.X, e.Data.Y);
                 var windowPosition = this.Position;
-                if (!(mousePosition.X >= windowPosition.X && mousePosition.X <= windowPosition.X + 751 &&
-                    mousePosition.Y >= windowPosition.Y && mousePosition.Y <= windowPosition.Y + 897))
+                var x = this.Bounds.BottomRight;
+                PixelPoint bottomRight = Avalonia.VisualExtensions.PointToScreen(this, x);
+
+                if (!(mousePosition.X >= windowPosition.X && mousePosition.X <= bottomRight.X &&
+                    mousePosition.Y >= windowPosition.Y && mousePosition.Y <= bottomRight.Y))
                 {
   /*                if (Clipboard != null)
                     {

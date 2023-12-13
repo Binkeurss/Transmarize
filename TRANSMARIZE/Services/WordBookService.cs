@@ -38,5 +38,9 @@ namespace TRANSMARIZE.Services
             var query = database.Table<SavedWord>().Where(s => s.Content == word);
             return query.ToListAsync();
         }
+        public Task<int> ClearTaskAsync()
+        {
+            return database.DeleteAllAsync<SavedWord>();
+        }
     }
 }

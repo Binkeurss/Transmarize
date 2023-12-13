@@ -34,5 +34,15 @@ namespace TRANSMARIZE.Views
             wordWindow.DataContext = new WordWindowViewModel(finalWord);
             wordWindow.Show();
         }
+
+        private void HideButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void ExitButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
