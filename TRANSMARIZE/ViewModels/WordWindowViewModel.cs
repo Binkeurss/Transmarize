@@ -21,10 +21,10 @@ namespace TRANSMARIZE.ViewModels
         public SavedWord findedWord = new SavedWord();
 
         [ObservableProperty]
-        public string buttonContent = "Add"; // Nội dung của Button thay đổi tùy tình huống
+        public string buttonContent = "+ Add"; // Nội dung của Button thay đổi tùy tình huống
 
         [ObservableProperty]
-        public string buttonColor = "Blue"; // Màu sắc của Button thay đổi tùy tình huống
+        public string buttonColor = "#00A9FF"; // Màu sắc của Button thay đổi tùy tình huống
 
         [ObservableProperty]
         public string word = "empty";
@@ -51,8 +51,8 @@ namespace TRANSMARIZE.ViewModels
             if (findedList.Result.Count > 0)
             {
                 findedWord = findedList.Result[0];
-                ButtonColor = "Red";
-                ButtonContent = "Remove";
+                ButtonColor = "#65B741";
+                ButtonContent = "Added";
             }
         }
         // Phương thức khởi tạo này được gọi từ SavedWordWindow
@@ -62,14 +62,15 @@ namespace TRANSMARIZE.ViewModels
         {
             findedWord = selectedWord;
             TranslateWord(selectedWord.Content);
-            ButtonContent = "Remove";
-            ButtonColor = "Red";
+            ButtonContent = "Added";
+            ButtonColor = "#65B741";
         }
 
-        //Dùng để bỏ dấu xuống dòng
+        //Dùng để bỏ dấu trắng
         string ConvertString(string input)
         {
-            string convertInput = input.Replace(System.Environment.NewLine, "");
+            string convertInput = input.Replace(" ", "");
+            convertInput = convertInput.ToLower();
             return convertInput;
         }
 
@@ -179,15 +180,15 @@ namespace TRANSMARIZE.ViewModels
                 SavedWord newWord = new SavedWord(Word);
                 var r = App.WordBookDatabase.SaveWordAsync(newWord);
                 findedWord = newWord;
-                ButtonContent = "Remove";
-                ButtonColor = "Red";
+                ButtonContent = "Added";
+                ButtonColor = "#65B741";
             }
             else // Nếu từ đang tra đã có trong WordBook thì Button này là bỏ từ
             {
                 await App.WordBookDatabase.DeleteTask(findedWord);
                 findedWord.Content = String.Empty;
-                ButtonContent = "Add";
-                ButtonColor = "Blue";
+                ButtonContent = "+ Add";
+                ButtonColor = "#00A9FF";
             }
         }
     }

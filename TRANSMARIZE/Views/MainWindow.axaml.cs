@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Avalonia.Threading;
 using TRANSMARIZE.Model;
 using System.Collections.Generic;
+using System;
 
 namespace TRANSMARIZE.Views;
 
@@ -27,19 +28,19 @@ public partial class MainWindow : Window
         Dispatcher.UIThread.Post(async () =>
         {
             //Có delay task để xử lý delay trong Word
-            await Task.Delay(100);
+            await Task.Delay(75);
             // Press Ctrl + C
             simulator.SimulateKeyPress(KeyCode.VcLeftControl);
             simulator.SimulateKeyPress(KeyCode.VcC);
             // Release 
             simulator.SimulateKeyRelease(KeyCode.VcC);
             simulator.SimulateKeyRelease(KeyCode.VcLeftControl);
-            await Task.Delay(100);
+            await Task.Delay(75);
 
             // Lấy giá trị text đang có trong Clipboard
             string text = await Clipboard.GetTextAsync();
 
-            if (text == "" || text == string.Empty || text is null || text == " " || text == ShareData.currentText)
+            if (text == "" || text == String.Empty || text is null || text == " " || text == ShareData.currentText)
             {
                 return;
             }
@@ -88,19 +89,13 @@ public partial class MainWindow : Window
     //Exit button and Close window
     public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        //Environment.Exit(0);
         hook.Dispose();
-        this.Close();
+        Environment.Exit(0);
     }
 
     public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         this.Hide();
-    }
-
-    private void Window_Closed(object? sender, System.EventArgs e)
-    {
-        hook.Dispose();
     }
 
     private void OpenBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
