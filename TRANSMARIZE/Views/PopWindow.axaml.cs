@@ -18,6 +18,7 @@ namespace TRANSMARIZE.Views
             {
                 WordWindow wordWindow = new WordWindow();
                 wordWindow.DataContext = new WordWindowViewModel();
+                Task.Delay(50); // thử delay một chút để xem có hết dựt ko
                 wordWindow.Show();
             }
             else
