@@ -74,7 +74,7 @@
 				<Style Selector="TextBlock.Word">
 					<Setter Property="FontSize" Value="35"/>
 					<Setter Property="FontWeight" Value="Bold"/>
-					<Setter Property="Margin" Value="30 20 20 20"/>
+					<Setter Property="Margin" Value="30 10 20 15"/>
 					<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
 				</Style>
 				<Style Selector="TextBlock.PhienAm">
@@ -108,7 +108,9 @@
 					<TextBlock Classes="Word" Text="{Binding Word}" Foreground="Black"/>
 					<Button Content="{Binding ButtonContent}" Command="{Binding AddRemoveWordCommand}"
 							Background="{Binding ButtonColor}"
-							Margin="10 0 0 0"/>
+							FontFamily="{StaticResource VigaFont}"
+							FontSize="20"
+							Margin="7 0 0 0"/>
 				</StackPanel>
 				
 				<StackPanel Orientation="Horizontal">
@@ -126,12 +128,12 @@
 					BorderBrush="White"
 					CornerRadius="20"
 					BorderThickness="2"
-					Margin="15 0 15 0"/>			
+					Margin="15 -13 15 13"/>			
 		</Grid>
 		<!-- Chứa các definitions của từ đó-->
 		<Grid Grid.Row="3" Background="Transparent">
 
-			<ScrollViewer>
+			<ScrollViewer Margin="0 -13 0 0">
 				<!--Template cho những đại từ-->
 				<ItemsControl ItemsSource="{Binding Definitions}">
 
