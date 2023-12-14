@@ -87,11 +87,11 @@ namespace TRANSMARIZE.Model
             {"Zulu", "zu"}
         };
 
-        // 2 biến Observerble được sử dụng cho các ComboBox
+/*        // 2 biến Observerble được sử dụng cho các ComboBox
         [ObservableProperty]
-        private int selectedIndex = 61;
+        private int selectedIndex = 61;*/
        
-        [ObservableProperty]
+/*        [ObservableProperty]
         private ObservableCollection<string> languageList = new ObservableCollection<string>
         {
             "Afrikaans", 
@@ -159,7 +159,7 @@ namespace TRANSMARIZE.Model
             "Welsh", 
             "Yiddish", 
             "Zulu", 
-        };
+        };*/
 
         // Hàm gọi API google dịch
         public static string TranslateText(string input, string lang_first, string lang_second)

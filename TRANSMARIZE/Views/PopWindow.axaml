@@ -2,8 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="145" d:DesignHeight="50"
-		Width="145" Height="50"
+        mc:Ignorable="d" d:DesignWidth="220" d:DesignHeight="45"
+		Width="220" Height="45"
         x:Class="TRANSMARIZE.Views.PopWindow"
         Title="PopWindow"
 		CornerRadius="30"
@@ -53,6 +53,12 @@
 		<Button Margin="0 0 0 0" Click="SummarizeButton" Foreground="Black">
 			<TextBlock>
 				Sum
+			</TextBlock>
+		</Button>
+
+		<Button Margin="3 0 0 0" Click="ExplainButton" Foreground="Black">
+			<TextBlock>
+				Explain
 			</TextBlock>
 		</Button>
 	</StackPanel>
