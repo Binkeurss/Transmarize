@@ -43,10 +43,7 @@ namespace TRANSMARIZE.ViewModels
 
         private string convertInput = String.Empty;
 
-        public FeaturesWindowViewModel() 
-        {
-
-        }
+        public FeaturesWindowViewModel() { }
 
         public void SetFeatureType(string feature)
         {

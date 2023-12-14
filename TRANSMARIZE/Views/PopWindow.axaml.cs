@@ -11,20 +11,6 @@ namespace TRANSMARIZE.Views
         {
             InitializeComponent();
         }
-        private void ExplainButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            // Gán DataContext
-            FeaturesWindowViewModel viewmodel = this.DataContext as FeaturesWindowViewModel;
-            viewmodel.SetFeatureType("Explain");
-            App.FeaturesWindow.DataContext = viewmodel;
-            App.FeaturesWindow.Show();
-            if (App.FeaturesWindow.IsActive == false)
-            {
-                App.FeaturesWindow.Topmost = true;
-                App.FeaturesWindow.Activate();
-                App.FeaturesWindow.Topmost = false;
-            }
-        }
         private void TranslateButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             int numWord = CountWord(ShareData.transText);
@@ -64,6 +50,20 @@ namespace TRANSMARIZE.Views
                 App.FeaturesWindow.Topmost = false;
             }
         }
+        private void ExplainButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            // Gán DataContext
+            FeaturesWindowViewModel viewmodel = this.DataContext as FeaturesWindowViewModel;
+            viewmodel.SetFeatureType("Explain");
+            App.FeaturesWindow.DataContext = viewmodel;
+            App.FeaturesWindow.Show();
+            if (App.FeaturesWindow.IsActive == false)
+            {
+                App.FeaturesWindow.Topmost = true;
+                App.FeaturesWindow.Activate();
+                App.FeaturesWindow.Topmost = false;
+            }
+        }
         private int CountWord(string inputString)
         {
             int wordCount = 0;
@@ -87,44 +87,5 @@ namespace TRANSMARIZE.Views
         {
             this.Close();
         }
-
-        /*        private void TranslateButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            int numWord = CountWord(ShareData.transText);
-            if (numWord == 1)
-            {
-                WordWindow wordWindow = new WordWindow();
-                wordWindow.DataContext = new WordWindowViewModel();
-                Task.Delay(50); // thử delay một chút để xem có hết dựt ko
-                wordWindow.Show();
-            }
-            else
-            {
-                // nếu đang có 1 TransWindow đang mở thì đóng nó để mở cái khác
-                if (App.TranslateWindow.IsVisible == true)
-                {
-                    App.TranslateWindow.Close();
-                }
-                App.TranslateWindow.Show();
-                // Gán DataContext của PopWindow cho TransWindow
-                App.TranslateWindow.DataContext = this.DataContext;
-                App.TranslateWindow.Activate();
-            }
-            Task.Delay(25);
-            this.Close();
-        }
-        private void SummarizeButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            // nếu đang có 1 SumWindow đang mở thì đóng nó để mở cái khác
-            if (App.SumWindow.IsVisible == true)
-            {
-                App.SumWindow.Close();
-            }
-            App.SumWindow.Show();
-            // Gán DataContext của PopWindow cho SumWindow
-            App.SumWindow.DataContext = this.DataContext;
-            App.SumWindow.Activate();
-            this.Close();
-        }*/
     }
 }

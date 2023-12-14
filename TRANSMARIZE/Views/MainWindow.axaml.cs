@@ -17,7 +17,7 @@ public partial class MainWindow : Window
     EventSimulator simulator = new EventSimulator();
 
     // currentText dùng để tránh popup window mở sai thời điểm
-    // string currentText = string.Empty;
+    // string currentText = string.Empty; // note: đã được chuyển sang ShareData
     public MainWindow()
     {
         InitializeComponent();
@@ -102,11 +102,11 @@ public partial class MainWindow : Window
     private void OpenBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         App.SavedWordWindow.Show();
-        App.SavedWordWindow.Activate();
-    }
-
-    private void Window_Activated(object? sender, System.EventArgs e)
-    {
-        //this.DataContext = new FeaturesWindowViewModel();
+        if (App.SavedWordWindow.IsActive == false)
+        {
+            App.SavedWordWindow.Topmost = true;
+            App.SavedWordWindow.Activate();
+            App.SavedWordWindow.Topmost = false;
+        }
     }
 }
