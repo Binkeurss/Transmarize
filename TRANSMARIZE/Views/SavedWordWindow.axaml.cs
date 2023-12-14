@@ -42,7 +42,7 @@ namespace TRANSMARIZE.Views
 
         private void ExitButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
     }
 }

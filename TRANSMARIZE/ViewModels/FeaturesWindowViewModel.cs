@@ -55,6 +55,7 @@ namespace TRANSMARIZE.ViewModels
 
             if (feature == "Translate")
             {
+                FirstBox = "Source Text";
                 SecondBox = "Translation";
                 SourceText = convertInput;
                 convertInput = convertInput.Replace("#", "");
@@ -62,7 +63,8 @@ namespace TRANSMARIZE.ViewModels
             }
             if (feature == "Summarize")
             {
-                SecondBox = "Summarization";
+                FirstBox = "Source Text";
+                SecondBox = "Summarized Text";
                 SourceText = convertInput;
                 OutputText = SummarizeText(convertInput);
             }
@@ -72,7 +74,7 @@ namespace TRANSMARIZE.ViewModels
                 SecondBox = "Translation";
 
                 string explainText = ExplainText(convertInput);
-                explainText = explainText.Replace(System.Environment.NewLine, "");
+                explainText = explainText.Replace("\n", "");
 
                 SourceText = explainText;
                 explainText = explainText.Replace("#", "");
