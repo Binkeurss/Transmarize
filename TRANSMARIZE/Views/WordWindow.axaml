@@ -116,8 +116,10 @@
 					<TextBlock Classes="PhienAm" Text="{Binding Phonetic}" Foreground="Black"/>
 					<Button Classes.HaveSound="{Binding Ishassound}"
 							Classes.NotHaveSound="{Binding !Ishassound}"
-							Command="{Binding AudioPlayCommand}" >
-						<Image Source="avares://TRANSMARIZE/Assets/WordWindow/volume.png"/>
+							Command="{Binding AudioPlayCommand}">
+						<Image Source="{SvgImage avares://TRANSMARIZE/Assets/speaker.svg}"
+							   Width="35"
+							   Height="35"/>
 					</Button>
 				</StackPanel>
 			</StackPanel>
