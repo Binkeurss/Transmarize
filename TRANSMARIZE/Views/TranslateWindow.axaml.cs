@@ -47,5 +47,25 @@ namespace TRANSMARIZE.Views
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private async void CopySourceButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            await Task.Delay(1000);
+            Clipboard.SetTextAsync(SourceText.Text);
+        }
+
+        private async void CopyTransedButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            await Task.Delay(1000);
+            Clipboard.SetTextAsync(TransText.Text);
+            ShareData.currentText = TransText.Text;        
+        }
+
+        private async void Flyout_Opened(object? sender, System.EventArgs e)
+        {
+            var flyOut = sender as Flyout;
+            await Task.Delay(2000);
+            flyOut.Hide();
+        }
     }
 }
