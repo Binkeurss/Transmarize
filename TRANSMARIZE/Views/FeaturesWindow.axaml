@@ -1,0 +1,285 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1130" d:DesignHeight="800"
+		Width="1130"
+		Height="800"
+        x:Class="TRANSMARIZE.Views.FeaturesWindow"
+        Title="FeaturesWindow"
+		CornerRadius="25"
+		ExtendClientAreaToDecorationsHint="True"
+		ExtendClientAreaChromeHints="NoChrome"
+		ExtendClientAreaTitleBarHeightHint="-1"	
+		Background="#709BE3"
+		CanResize="False"
+		WindowStartupLocation="CenterScreen">
+	<Grid RowDefinitions="Auto, Auto, *, Auto, *">
+		<!--Row 0 gồm comboBox và các button-->
+		<Grid Grid.Row="0">
+			<Grid.Styles>
+				<Style Selector="Grid.Tong">
+					<Setter Property="Width" Value="1130"/>
+					<Setter Property="Height" Value="70"/>
+					<Setter Property="Margin" Value="0 0 0 7"/>
+				</Style>
+			</Grid.Styles>
+			<Grid Classes="Tong" ColumnDefinitions="Auto, Auto, Auto, *, Auto">
+				<Grid.Styles>
+
+					<Style Selector="ComboBox.TranslateTo">
+						<Setter Property="FontSize" Value="20"/>
+						<Setter Property="Width" Value="260"/>
+						<Setter Property="Height" Value="45"/>
+						<Setter Property="HorizontalAlignment" Value="Center"/>
+						<Setter Property="VerticalAlignment" Value="Center"/>
+						<Setter Property="Margin" Value="20 25 0 0"/>
+						<Setter Property="Background" Value="White"/>
+						<Setter Property="CornerRadius" Value="25"/>
+						<Setter Property="BorderBrush" Value="Black"/>
+						<Setter Property="BorderThickness" Value="2"/>
+						<Setter Property="Effect">
+							<DropShadowEffect Color="Black"
+											  BlurRadius="5"
+											  OffsetX="-1"
+											  OffsetY="3"/>
+						</Setter>
+					</Style>
+
+					<Style Selector="Button.Translate">
+						<!--Translate-->
+						<Setter Property="HorizontalContentAlignment" Value="Center"/>
+						<Setter Property="VerticalContentAlignment" Value="Center"/>
+						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+						<Setter Property="FontWeight" Value="Bold"/>
+						<Setter Property="FontSize" Value="20"/>
+						<!--Button-->
+						<Setter Property="Height" Value="45"/>
+						<Setter Property="Width" Value="130"/>
+						<Setter Property="Margin" Value="15 25 0 0"/>
+						<Setter Property="Background" Value="White"/>
+						<Setter Property="CornerRadius" Value="25"/>
+						<Setter Property="BorderBrush" Value="Black"/>
+						<Setter Property="BorderThickness" Value="2"/>
+						<Setter Property="Effect">
+							<DropShadowEffect Color="Black"
+											  BlurRadius="5"
+											  OffsetX="-1"
+											  OffsetY="3"/>
+						</Setter>
+					</Style>
+
+					<Style Selector="TextBlock.Trans">
+						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+						<Setter Property="Margin" Value="50 12 5 -12"/>
+						<Setter Property="FontWeight" Value="Bold"/>
+						<Setter Property="HorizontalAlignment" Value="Center"/>
+						<Setter Property="VerticalAlignment" Value="Center"/>
+						<Setter Property="FontSize" Value="25"/>
+					</Style>
+				</Grid.Styles>
+				<!--Column 0 có chữa Translate to-->
+				<Grid Grid.Column="0">
+					<TextBlock Classes="Trans" Text="{Binding ComboboxText}"/>
+				</Grid>
+				<!--Column 1 chứa comboBox để chứa ngôn ngữ cần chuyển sang-->
+				<Grid Grid.Column="1">
+					<ComboBox Classes="TranslateTo"
+							  ItemsSource="{Binding LanguageList}"
+							  SelectedIndex="{Binding SelectedIndex}"
+							  Foreground="Black"
+							  MaxDropDownHeight="200">
+					</ComboBox>
+				</Grid>
+				<!--Column 2 chứa button translate-->
+				<Grid Grid.Column="2">
+					<Button Classes="Translate"
+							Foreground="Black"
+							Content="{Binding MyFeature}"
+							Command="{Binding FeatureButtonCommand}">
+					</Button>
+				</Grid>
+				<!--Column 3 chứa khoảng trống-->
+				<Grid Grid.Column="3"></Grid>
+				<!--Colmn 5 chứa Hide button và Exit Button-->
+				<Grid Grid.Column="4"  Width="80">
+					<StackPanel Orientation="Horizontal"
+								Height="80"
+								Width="80"
+								HorizontalAlignment="Right"
+								VerticalAlignment="Top">
+						<StackPanel.Styles>
+							<Style Selector="Button.Hide">
+								<Setter Property="HorizontalAlignment" Value="Right"/>
+								<Setter Property="VerticalAlignment" Value="Top"/>
+								<Setter Property="Margin" Value="0 -15 -4 0"/>
+								<Setter Property="Height" Value="40"/>
+								<Setter Property="Width" Value="40"/>
+								<Setter Property="VerticalContentAlignment" Value="Center"/>
+								<Setter Property="HorizontalContentAlignment" Value="Center"/>
+								<Setter Property="Background" Value="Transparent"/>
+								<Setter Property="FontSize" Value="15"/>
+								<Setter Property="Foreground" Value="Black"/>
+								<Setter Property="FontWeight" Value="UltraBold"/>
+							</Style>
+
+							<Style Selector="Button.Exit">
+								<Setter Property="HorizontalAlignment" Value="Right"/>
+								<Setter Property="VerticalAlignment" Value="Top"/>
+								<Setter Property="Height" Value="40"/>
+								<Setter Property="Width" Value="40"/>
+								<Setter Property="Margin" Value="10 -15 0 0"/>
+								<Setter Property="VerticalContentAlignment" Value="Bottom"/>
+								<Setter Property="HorizontalContentAlignment" Value="Center"/>
+								<Setter Property="FontWeight" Value="UltraBold"/>
+								<Setter Property="Background" Value="Transparent"/>
+								<Setter Property="Foreground" Value="Black"/>
+							</Style>
+						</StackPanel.Styles>
+
+						<Button Classes="Hide"
+								Name="HideButton"
+								Content="___"
+								Click="HideButton_Click">
+						</Button>
+
+						<Button Classes="Exit"
+								Name="ExitButton"
+								Click="ExitButton_Click">
+							<Image Source="avares://TRANSMARIZE/Assets/MainWindow/close.png"
+								   Margin="0 0 0 -3"/>
+						</Button>
+
+					</StackPanel>
+				</Grid>
+			</Grid>
+		</Grid>
+
+		<!--Row 1 gồm TextBlock chứa những từ, câu trong clipboard-->
+		<Grid Grid.Row="1" Height="350" Width="1130">
+			<StackPanel Orientation="Vertical">
+				<StackPanel.Styles>
+
+					<Style Selector="TextBlock.SourceTextTextBlock">
+						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+						<Setter Property="Margin" Value="50 12 5 -12"/>
+						<Setter Property="FontWeight" Value="Bold"/>
+						<Setter Property="HorizontalAlignment" Value="Left"/>
+						<Setter Property="VerticalAlignment" Value="Center"/>
+						<Setter Property="FontSize" Value="25"/>
+					</Style>
+
+					<Style Selector="TextBox.TranslateSourceText">
+						<!--TextBox-->
+						<Setter Property="Background" Value="White"/>
+						<Setter	Property="Height" Value="300"/>
+						<Setter Property="Width" Value="1100"/>
+						<Setter Property="Margin" Value="0 20 0 0"/>
+						<Setter Property="CornerRadius" Value="25"/>
+						<Setter Property="BorderBrush" Value="Black"/>
+						<Setter Property="BorderThickness" Value="3.5"/>
+						<Setter Property="TextWrapping" Value="Wrap"/>
+						<!--Chữ trong TextBox-->
+						<Setter Property="FontFamily" Value="{StaticResource SecondaRoundFont}"/>
+						<Setter Property="FontSize" Value="23"/>
+						<Setter Property="FontWeight" Value="SemiBold"/>
+					</Style>
+				</StackPanel.Styles>
+
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Classes="SourceTextTextBlock" Text="{Binding FirstBox}"/>
+					<Button VerticalContentAlignment="Center"
+							HorizontalContentAlignment="Center"
+							Background="Transparent"
+							Margin="10 0 0 -20"
+							Click="CopySourceButton">
+						<Image Source="{SvgImage avares://TRANSMARIZE/Assets/copy.svg}"
+								   Width="30" Height="30"/>
+						<Button.Flyout>
+							<Flyout Placement="Top" Opened="Flyout_Opened">
+								<TextBlock Text="Copied!"
+										   FontWeight="Bold"
+										   HorizontalAlignment="Center"
+										   TextAlignment="Center"
+										   FontSize="15"/>
+							</Flyout>
+						</Button.Flyout>
+					</Button>
+				</StackPanel>
+
+				<ScrollViewer>
+					<TextBox Classes="TranslateSourceText" Foreground="Black" IsReadOnly="True"
+							 x:Name="SourceText"
+							 Text="{Binding SourceText}"/>
+				</ScrollViewer>
+			</StackPanel>
+		</Grid>
+
+		<!--Row 2 chọn ngôn ngữ đích-->
+		<Grid Grid.Row="2">
+			<StackPanel Orientation="Vertical">
+				<StackPanel.Styles>
+
+					<Style Selector="TextBlock.TranslationTextBlock">
+						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
+						<Setter Property="Margin" Value="50 12 5 -12"/>
+						<Setter Property="FontWeight" Value="Bold"/>
+						<Setter Property="HorizontalAlignment" Value="Left"/>
+						<Setter Property="VerticalAlignment" Value="Center"/>
+						<Setter Property="FontSize" Value="25"/>
+					</Style>
+
+					<Style Selector="TextBox.Translate">
+						<!--TextBox-->
+						<Setter Property="Background" Value="White"/>
+						<Setter	Property="Height" Value="300"/>
+						<Setter Property="Width" Value="1100"/>
+						<Setter Property="Margin" Value="0 20 0 0"/>
+						<Setter Property="CornerRadius" Value="25"/>
+						<Setter Property="BorderBrush" Value="Black"/>
+						<Setter Property="BorderThickness" Value="3.5"/>
+						<Setter Property="TextWrapping" Value="Wrap"/>
+						<!--Chữ trong TextBox-->
+						<Setter Property="FontFamily" Value="{StaticResource SecondaRoundFont}"/>
+						<Setter Property="FontSize" Value="23"/>
+						<Setter Property="FontWeight" Value="SemiBold"/>
+
+					</Style>
+				</StackPanel.Styles>
+
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Classes="TranslationTextBlock" Text="{Binding SecondBox}"/>
+					<Button VerticalContentAlignment="Center"
+							HorizontalContentAlignment="Center"
+							Background="Transparent"
+							Margin="10 3 0 -20"
+							Click="CopyTransedButton">
+						<Image Source="{SvgImage avares://TRANSMARIZE/Assets/copy.svg}"
+								   Width="30" Height="30"/>
+						<Button.Flyout>
+							<Flyout Placement="Top" Opened="Flyout_Opened">
+								<TextBlock Text="Copied!"
+										   FontWeight="Bold"
+										   HorizontalAlignment="Center"
+										   TextAlignment="Center"
+										   FontSize="15"/>
+							</Flyout>
+						</Button.Flyout>
+					</Button>
+				</StackPanel>
+
+				<ScrollViewer>
+					<TextBox Classes="Translate" Foreground="Black" IsReadOnly="True"
+							 x:Name="OutputText"
+							 Text="{Binding OutputText}"/>
+				</ScrollViewer>
+			</StackPanel>
+		</Grid>
+
+		<!--Row 3 gồm TextBlock chứa những từ được dịch-->
+		<Grid Grid.Row="3"></Grid>
+
+		<!--Row 4 Khoảng trống-->
+		<Grid Grid.Row="4"></Grid>
+	</Grid>
+</Window>

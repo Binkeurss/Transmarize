@@ -28,7 +28,7 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new ShareData()
+                DataContext = new FeaturesWindowViewModel()
             };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
@@ -88,7 +88,7 @@ public partial class App : Application
         SavedWordWindow.Activate();
     }
 
-    static TranslateWindow translateWindow;
+ /*   static TranslateWindow translateWindow;
     public static TranslateWindow TranslateWindow
     {
         get
@@ -123,6 +123,19 @@ public partial class App : Application
                 return sumWindow;
             }
             return sumWindow;
+        }
+    }*/
+
+    static FeaturesWindow featuresWindow;
+    public static FeaturesWindow FeaturesWindow
+    {
+        get
+        {
+            if (featuresWindow == null)
+            {
+                featuresWindow = new FeaturesWindow();
+            }
+            return featuresWindow;
         }
     }
 

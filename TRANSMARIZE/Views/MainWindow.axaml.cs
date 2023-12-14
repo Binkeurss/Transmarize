@@ -4,6 +4,7 @@ using SharpHook.Native;
 using System.Threading.Tasks;
 using Avalonia.Threading;
 using TRANSMARIZE.Model;
+using TRANSMARIZE.ViewModels;
 using System.Collections.Generic;
 using System;
 
@@ -102,5 +103,10 @@ public partial class MainWindow : Window
     {
         App.SavedWordWindow.Show();
         App.SavedWordWindow.Activate();
+    }
+
+    private void Window_Activated(object? sender, System.EventArgs e)
+    {
+        //this.DataContext = new FeaturesWindowViewModel();
     }
 }

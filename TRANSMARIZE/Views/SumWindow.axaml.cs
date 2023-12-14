@@ -41,7 +41,9 @@ namespace TRANSMARIZE.Views
         }
         private void SummarizeButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            SumText.Text = ShareData.TranslateText(SumText.Text, "auto", ShareData.langSecond);
+            string sumText = String.Copy(SumText.Text);
+            sumText = sumText.Replace("#", "");
+            SumText.Text = ShareData.TranslateText(sumText, "auto", ShareData.langSecond);
         }
         string ConvertString(string input)
         {
