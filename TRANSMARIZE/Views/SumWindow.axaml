@@ -20,6 +20,7 @@
 				<Style Selector="Grid.Tong">
 					<Setter Property="Width" Value="1130"/>
 					<Setter Property="Height" Value="70"/>
+					<Setter Property="Margin" Value="0 0 0 7"/>
 				</Style>
 			</Grid.Styles>
 			<Grid Classes="Tong" ColumnDefinitions="Auto, Auto, Auto, *, Auto">
@@ -86,7 +87,8 @@
 					<ComboBox Classes="SummarizeTo" 
 							  ItemsSource="{Binding LanguageList}"
 							  SelectedIndex="{Binding SelectedIndex}"
-							  Foreground="Black">					
+							  Foreground="Black"
+							  MaxDropDownHeight="200">					
 					</ComboBox>
 				</Grid>
 				<!--Column 2 chứa button Summarize-->
@@ -174,16 +176,35 @@
 						<Setter Property="Margin" Value="0 20 0 0"/>
 						<Setter Property="CornerRadius" Value="25"/>
 						<Setter Property="BorderBrush" Value="Black"/>
-						<Setter Property="BorderThickness" Value="4"/>
+						<Setter Property="BorderThickness" Value="3.5"/>
 						<Setter Property="TextWrapping" Value="Wrap"/>
 						<!--Chữ trong TextBox-->
-						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
-						<Setter Property="FontSize" Value="20"/>
+						<Setter Property="FontFamily" Value="{StaticResource SecondaRoundFont}"/>
+						<Setter Property="FontSize" Value="23"/>
 						<Setter Property="FontWeight" Value="SemiBold"/>
 					</Style>
 				</StackPanel.Styles>
 
-				<TextBlock Classes="SourceTextTextBlock" Text="Source Text"/>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Classes="SourceTextTextBlock" Text="Source Text"/>
+					<Button VerticalContentAlignment="Center"
+							HorizontalContentAlignment="Center"
+							Background="Transparent"
+							Margin="10 0 0 -20"
+							Click="CopySource2Button">
+						<Image Source="{SvgImage avares://TRANSMARIZE/Assets/copy.svg}"
+								   Width="30" Height="30"/>
+						<Button.Flyout>
+							<Flyout Placement="Top" Opened="Flyout_Opened_1">
+								<TextBlock Text="Copied!"
+										   FontWeight="Bold"
+										   HorizontalAlignment="Center"
+										   TextAlignment="Center"
+										   FontSize="15"/>
+							</Flyout>
+						</Button.Flyout>
+					</Button>
+				</StackPanel>
 
 				<ScrollViewer>
 					<TextBox Classes="TranslateSourceText" x:Name="SourceText" Foreground="Black" IsReadOnly="True"/>
@@ -213,17 +234,36 @@
 						<Setter Property="Margin" Value="0 20 0 0"/>
 						<Setter Property="CornerRadius" Value="25"/>
 						<Setter Property="BorderBrush" Value="Black"/>
-						<Setter Property="BorderThickness" Value="4"/>
+						<Setter Property="BorderThickness" Value="3.5"/>
 						<Setter Property="TextWrapping" Value="Wrap"/>
 						<!--Chữ trong TextBox-->
-						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
-						<Setter Property="FontSize" Value="20"/>
+						<Setter Property="FontFamily" Value="{StaticResource SecondaRoundFont}"/>
+						<Setter Property="FontSize" Value="23"/>
 						<Setter Property="FontWeight" Value="SemiBold"/>
 
 					</Style>
 				</StackPanel.Styles>
 
-				<TextBlock Classes="SummarizeTextBlock" Text="Summarize"/>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Classes="SummarizeTextBlock" Text="Summarize"/>
+					<Button VerticalContentAlignment="Center"
+							HorizontalContentAlignment="Center"
+							Background="Transparent"
+							Margin="10 3 0 -20"
+							Click="CopySumedButton">
+						<Image Source="{SvgImage avares://TRANSMARIZE/Assets/copy.svg}"
+								   Width="30" Height="30"/>
+						<Button.Flyout>
+							<Flyout Placement="Top" Opened="Flyout_Opened_1">
+								<TextBlock Text="Copied!"
+										   FontWeight="Bold"
+										   HorizontalAlignment="Center"
+										   TextAlignment="Center"
+										   FontSize="15"/>
+							</Flyout>
+						</Button.Flyout>
+					</Button>
+				</StackPanel>
 
 				<ScrollViewer>
 					<TextBox Classes="Summarize" x:Name="SumText" Foreground="Black" IsReadOnly="True"/>
