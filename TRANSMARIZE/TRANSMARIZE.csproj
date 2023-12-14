@@ -12,6 +12,10 @@
 
   
   <ItemGroup>
+    <None Remove="Assets\copy.ico" />
+    <None Remove="Assets\copy.svg" />
+    <None Remove="Assets\Fonts\SecondaRound-Medium.ttf" />
+    <None Remove="Assets\Fonts\SecondaRound-Regular.ttf" />
     <None Remove="Assets\Fonts\ZenKakuGothicAntique-Black.ttf" />
     <None Remove="Assets\Fonts\ZenKakuGothicAntique-Bold.ttf" />
     <None Remove="Assets\Fonts\ZenKakuGothicAntique-Light.ttf" />
@@ -21,6 +25,8 @@
     <None Remove="Assets\MainWindow\close.png" />
     <None Remove="Assets\MainWindow\logo_transparent.ico" />
     <None Remove="Assets\PopWindow\right_arrow.png" />
+    <None Remove="Assets\speaker.svg" />
+    <None Remove="Assets\star.svg" />
     <None Remove="Assets\WordWindow\star.png" />
     <None Remove="Assets\WordWindow\volume.png" />
   </ItemGroup>
@@ -28,6 +34,7 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.0.5" />
     <PackageReference Include="Avalonia.Desktop" Version="11.0.5" />
+    <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0.7" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.5" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.5" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />

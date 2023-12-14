@@ -125,4 +125,9 @@ public partial class App : Application
             return sumWindow;
         }
     }
+
+    private void ExitButtonClick(object? sender, System.EventArgs e)
+    {
+        Environment.Exit(0);
+    }
 }

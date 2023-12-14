@@ -54,10 +54,27 @@ namespace TRANSMARIZE.Views
             await Task.Delay(1000);
             ShareData.currentText = string.Empty;
         }
-
         public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+        private async void CopySource2Button(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            await Task.Delay(1000);
+            Clipboard.SetTextAsync(SourceText.Text);
+        }
+
+        private async void CopySumedButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            await Task.Delay(1000);
+            Clipboard.SetTextAsync(SumText.Text);
+            ShareData.currentText = SumText.Text;
+        }
+        private async void Flyout_Opened_1(object? sender, System.EventArgs e)
+        {
+            var flyOut = sender as Flyout;
+            await Task.Delay(2000);
+            flyOut.Hide();
         }
     }
 }

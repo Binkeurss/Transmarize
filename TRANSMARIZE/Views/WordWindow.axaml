@@ -116,8 +116,10 @@
 					<TextBlock Classes="PhienAm" Text="{Binding Phonetic}" Foreground="Black"/>
 					<Button Classes.HaveSound="{Binding Ishassound}"
 							Classes.NotHaveSound="{Binding !Ishassound}"
-							Command="{Binding AudioPlayCommand}" >
-						<Image Source="avares://TRANSMARIZE/Assets/WordWindow/volume.png"/>
+							Command="{Binding AudioPlayCommand}">
+						<Image Source="{SvgImage avares://TRANSMARIZE/Assets/speaker.svg}"
+							   Width="35"
+							   Height="35"/>
 					</Button>
 				</StackPanel>
 			</StackPanel>
@@ -132,7 +134,7 @@
 		<!-- Chứa các definitions của từ đó-->
 		<Grid Grid.Row="3" Background="Transparent">
 
-			<ScrollViewer Margin="0 -13 0 0">
+			<ScrollViewer Margin="0 -13 0 10">
 				<!--Template cho những đại từ-->
 				<ItemsControl ItemsSource="{Binding Definitions}">
 
@@ -174,8 +176,8 @@
 							<StackPanel>
 								<!--DataTempalte này dùng để phân loại nó thuộc loại đại từ nào-->
 								<StackPanel Orientation="Horizontal" VerticalAlignment="Center"
-											Margin="10 0 0 0">
-									<Image Source="avares://TRANSMARIZE/Assets/WordWindow/star.png"
+											Margin="15 0 0 0">
+									<Image Source="{SvgImage avares://TRANSMARIZE/Assets/star.svg}"
 										   Width="30"
 										   Height="30"/>
 									<!--Gồm star icon và đại từ, nằm ngang-->
