@@ -25,6 +25,7 @@
     <None Remove="Assets\MainWindow\close.png" />
     <None Remove="Assets\MainWindow\logo_transparent.ico" />
     <None Remove="Assets\PopWindow\right_arrow.png" />
+    <None Remove="Assets\speaker.svg" />
     <None Remove="Assets\star.svg" />
     <None Remove="Assets\WordWindow\star.png" />
     <None Remove="Assets\WordWindow\volume.png" />
