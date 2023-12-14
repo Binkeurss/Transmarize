@@ -56,13 +56,6 @@ public partial class App : Application
             return wordBookDatabase;
         }
     }
-    private void MainWindowOpenClick(object? sender, System.EventArgs e)
-    {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-        {
-            desktop.MainWindow.Show();
-        }
-    }
 
     static SavedWordWindow savedWordWindow;
     public static SavedWordWindow SavedWordWindow
@@ -72,59 +65,10 @@ public partial class App : Application
             if (savedWordWindow == null)
             {
                 savedWordWindow = new SavedWordWindow();
-                return savedWordWindow;
-            }
-            if (savedWordWindow.IsVisible == false)
-            {
-                savedWordWindow = new SavedWordWindow();
-                return savedWordWindow;
             }
             return savedWordWindow;
         }
     }
-    private void WordBookOpenClick(object? sender, System.EventArgs e)
-    {
-        SavedWordWindow.Show();
-        SavedWordWindow.Activate();
-    }
-
- /*   static TranslateWindow translateWindow;
-    public static TranslateWindow TranslateWindow
-    {
-        get
-        {
-            if (translateWindow == null)
-            {
-                translateWindow = new TranslateWindow();
-                return translateWindow;
-            }
-            if (translateWindow.IsVisible == false)
-            {
-                translateWindow = new TranslateWindow();
-                return translateWindow;
-            }
-            return translateWindow;
-        }
-    }
-
-    static SumWindow sumWindow;
-    public static SumWindow SumWindow
-    {
-        get
-        {
-            if (sumWindow == null)
-            {
-                sumWindow = new SumWindow();
-                return sumWindow;
-            }
-            if (sumWindow.IsVisible == false)
-            {
-                sumWindow = new SumWindow();
-                return sumWindow;
-            }
-            return sumWindow;
-        }
-    }*/
 
     static FeaturesWindow featuresWindow;
     public static FeaturesWindow FeaturesWindow
@@ -138,7 +82,23 @@ public partial class App : Application
             return featuresWindow;
         }
     }
-
+    private void WordBookOpenClick(object? sender, System.EventArgs e)
+    {
+        SavedWordWindow.Show();
+        if (SavedWordWindow.IsActive == false)
+        {
+            SavedWordWindow.Topmost = true;
+            SavedWordWindow.Activate();
+            SavedWordWindow.Topmost = false;
+        }
+    }
+    private void MainWindowOpenClick(object? sender, System.EventArgs e)
+    {
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        {
+            desktop.MainWindow.Show();
+        }
+    }
     private void ExitButtonClick(object? sender, System.EventArgs e)
     {
         Environment.Exit(0);
