@@ -3,8 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:progRing="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
-        mc:Ignorable="d" d:DesignWidth="220" d:DesignHeight="45"
-		Width="220" Height="45"
+        mc:Ignorable="d" d:DesignWidth="160" d:DesignHeight="50"
+		Width="160" Height="50"
         x:Class="TRANSMARIZE.Views.PopWindow"
         Title="PopWindow"
 		CornerRadius="30"
@@ -23,10 +23,10 @@
 			<Style Selector="Button">
 				<!--Button-->
 				<Setter Property="Background" Value="#709BE3"/>
-				<Setter Property="Height" Value="40"/>
-				<Setter Property="Width" Value="70"/>
+				<Setter Property="Height" Value="45"/>
+				<Setter Property="Width" Value="50"/>
 				<Setter Property="BorderBrush" Value="Black"/>
-				<Setter Property="BorderThickness" Value="1"/>
+				<Setter Property="BorderThickness" Value="2"/>
 				<Setter Property="CornerRadius" Value="10"/>
 				<!--<Setter Property="Effect">
 					<DropShadowEffect Color="Black"
@@ -45,24 +45,21 @@
 				<Setter Property="Foreground" Value="White"/>
 			</Style>
 		</StackPanel.Styles>
-		<Button Margin="0 0 3 0" Click="TranslateButton" Foreground="Black">
-			<TextBlock>
-				Trans
-			</TextBlock>
+		<Button Margin="0 0 2 0" Click="TranslateButton" Foreground="Black">
+			<Image Source="{SvgImage avares://TRANSMARIZE/Assets/translate.svg}"
+					   Width="30" Height="30"/>
 		</Button>
 
 		<Button Margin="0 0 0 0" Click="SummarizeButton" Foreground="Black">
-			<TextBlock>
-				Sum
-			</TextBlock>
+			<Image Source="{SvgImage avares://TRANSMARIZE/Assets/summarize.svg}"
+					   Width="30" Height="30"/>
 		</Button>
 
-		<Button Margin="3 0 0 0" Click="ExplainButton" Foreground="Black"
+		<Button Margin="2 0 0 0" Click="ExplainButton" Foreground="Black"
 				HorizontalContentAlignment="Center"
 				VerticalContentAlignment="Center">
-			<TextBlock>
-				Explain
-			</TextBlock>
+			<Image Source="{SvgImage avares://TRANSMARIZE/Assets/explain.svg}"
+					   Width="30" Height="30"/>
 		</Button>
 	</StackPanel>
 	
