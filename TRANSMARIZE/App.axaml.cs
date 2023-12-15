@@ -28,14 +28,14 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new FeaturesWindowViewModel()
+                DataContext = new FeaturesViewModel()
             };
         }
         else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
         {
-            singleViewPlatform.MainView = new MainView
+            singleViewPlatform.MainView = new MainWindow
             {
-                DataContext = new MainViewModel()
+                DataContext = new FeaturesViewModel()
             };
         }
    
@@ -70,16 +70,16 @@ public partial class App : Application
         }
     }
 
-    static FeaturesWindow featuresWindow;
-    public static FeaturesWindow FeaturesWindow
+    static NaviFeaturesWindow naviFeaturesWindow;
+    public static NaviFeaturesWindow NaviFeaturesWindow
     {
         get
         {
-            if (featuresWindow == null)
+            if (naviFeaturesWindow == null)
             {
-                featuresWindow = new FeaturesWindow();
+                naviFeaturesWindow = new NaviFeaturesWindow();
             }
-            return featuresWindow;
+            return naviFeaturesWindow;
         }
     }
     private void WordBookOpenClick(object? sender, System.EventArgs e)

@@ -36,7 +36,10 @@ namespace TRANSMARIZE.ViewModels
         public bool ishassound = false;
 
         [ObservableProperty]
-        public string phonetic = "nan";
+        public string phonetic = "Loading";
+
+        [ObservableProperty]
+        public bool isComplete = false;
 
         [ObservableProperty]
         public ObservableCollection<Definition> definitions = new ObservableCollection<Definition>();
@@ -44,6 +47,7 @@ namespace TRANSMARIZE.ViewModels
         public WordWindowViewModel() 
         {
             string input = ConvertString(ShareData.transText);
+            Word = input;
             TranslateWord(input);
             // Tra cứu từ đang dịch đã có trong WordBook chưa
             Task<List<SavedWord>> findedList = App.WordBookDatabase.GetaWord(input);
@@ -61,6 +65,7 @@ namespace TRANSMARIZE.ViewModels
         public WordWindowViewModel(SavedWord selectedWord)
         {
             findedWord = selectedWord;
+            Word = selectedWord.Content;
             TranslateWord(selectedWord.Content);
             ButtonContent = "Added";
             ButtonColor = "#65B741";
@@ -74,22 +79,27 @@ namespace TRANSMARIZE.ViewModels
             return convertInput;
         }
 
-        public void TranslateWord(string input)
+        public async void TranslateWord(string input)
         {
             //Tạo link để gọi API
             string url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + input;
             //Gọi API là lấy kết quả trả về là file json dạng string
             //string result = httpClient.GetStringAsync(url).Result;
             string result = String.Empty;
-            HttpResponseMessage response = httpClient.GetAsync(url).Result;
+            Task<HttpResponseMessage> task = httpClient.GetAsync(url);
+            HttpResponseMessage response = await task;
+            if (task.IsCompleted == true)
+            {
+                IsComplete = true;
+            }
             if (response.IsSuccessStatusCode)
             {
-                result = response.Content.ReadAsStringAsync().Result;
+                result = await response.Content.ReadAsStringAsync();
             }
             else
             {
                 Word = input;
-                Phonetic = "This word is meaningless";
+                Phonetic = "This word doesn't exist in database";
                 return;
             }
             JArray jsonArray = JArray.Parse(result);
@@ -100,8 +110,7 @@ namespace TRANSMARIZE.ViewModels
                 // lấy cách đọc
                 if (entry["phonetic"] != null)
                 {
-                    Phonetic = entry["phonetic"].ToString();
-                    
+                    Phonetic = entry["phonetic"].ToString();                  
                 }
                 // lấy file audio
                 JToken phonetics = entry["phonetics"];
@@ -110,7 +119,7 @@ namespace TRANSMARIZE.ViewModels
                     if (phonetic["audio"].ToString() != "")
                     {
                         Sound = phonetic["audio"].ToString();
-                        ishassound = true;
+                        Ishassound = true;
                         break;
                     }
                 }
@@ -159,6 +168,10 @@ namespace TRANSMARIZE.ViewModels
 
                     Definitions.Add(item);
                 }
+            }
+            if (Phonetic == "Loading")
+            {
+                Phonetic = "nan";
             }
         }
 
