@@ -44,6 +44,8 @@ namespace TRANSMARIZE.Views
 
         public async void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            // delay 1 tí để chương trình Ctrl C rồi mới tắt, tránh bug lặp PopWindow
+            await Task.Delay(100);
             this.Close();
         }
 

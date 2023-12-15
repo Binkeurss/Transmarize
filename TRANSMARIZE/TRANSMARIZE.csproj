@@ -14,6 +14,7 @@
   <ItemGroup>
     <None Remove="Assets\copy.ico" />
     <None Remove="Assets\copy.svg" />
+    <None Remove="Assets\explain.svg" />
     <None Remove="Assets\Fonts\SecondaRound-Medium.ttf" />
     <None Remove="Assets\Fonts\SecondaRound-Regular.ttf" />
     <None Remove="Assets\Fonts\ZenKakuGothicAntique-Black.ttf" />
@@ -27,6 +28,8 @@
     <None Remove="Assets\PopWindow\right_arrow.png" />
     <None Remove="Assets\speaker.svg" />
     <None Remove="Assets\star.svg" />
+    <None Remove="Assets\summarize.svg" />
+    <None Remove="Assets\translate.svg" />
     <None Remove="Assets\WordWindow\star.png" />
     <None Remove="Assets\WordWindow\volume.png" />
   </ItemGroup>
