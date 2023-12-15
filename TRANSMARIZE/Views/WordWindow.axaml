@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:progRing="clr-namespace:AvaloniaProgressRing;assembly=AvaloniaProgressRing"
         mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
 		Height="600" Width="500"
         x:Class="TRANSMARIZE.Views.WordWindow"
@@ -113,7 +114,8 @@
 				</StackPanel>
 				
 				<StackPanel Orientation="Horizontal">
-					<TextBlock Classes="PhienAm" Text="{Binding Phonetic}" Foreground="Black"/>
+					<TextBlock Classes="PhienAm" Text="{Binding Phonetic}" Foreground="Black"
+							   TextWrapping="Wrap"/>
 					<Button Classes.HaveSound="{Binding Ishassound}"
 							Classes.NotHaveSound="{Binding !Ishassound}"
 							Command="{Binding AudioPlayCommand}">
@@ -121,6 +123,14 @@
 							   Width="35"
 							   Height="35"/>
 					</Button>
+					<progRing:ProgressRing Width="35"
+										   Height="35"
+										   IsActive="{Binding !IsComplete}"
+										   HorizontalAlignment="Left"
+										   VerticalAlignment="Top"
+										   Foreground="Green"
+										   Background="Transparent"
+										   Margin="-15,0,0,-5"/>
 				</StackPanel>
 			</StackPanel>
 		</Grid>

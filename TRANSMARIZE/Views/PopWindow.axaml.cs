@@ -18,50 +18,42 @@ namespace TRANSMARIZE.Views
             {
                 WordWindow wordWindow = new WordWindow();
                 wordWindow.DataContext = new WordWindowViewModel();
-                Task.Delay(50); // thử delay một chút để xem có hết dựt ko
                 wordWindow.Show();
             }
             else
             {
-                FeaturesWindowViewModel viewmodel = this.DataContext as FeaturesWindowViewModel;
-                viewmodel.SetFeatureType("Translate");
-                App.FeaturesWindow.DataContext = viewmodel;
-                App.FeaturesWindow.Show();
-                if (App.FeaturesWindow.IsActive == false)
-                {
-                    App.FeaturesWindow.Topmost = true;
-                    App.FeaturesWindow.Activate();
-                    App.FeaturesWindow.Topmost = false;
-                }
+                AiFeature("Translate");
             }
-            Task.Delay(25);
-            this.Close();
+            // Task.Delay(25);
         }
-        private void SummarizeButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void SummarizeButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            FeaturesWindowViewModel viewmodel = this.DataContext as FeaturesWindowViewModel;
-            viewmodel.SetFeatureType("Summarize");
-            App.FeaturesWindow.DataContext = viewmodel; 
-            App.FeaturesWindow.Show();
-            if (App.FeaturesWindow.IsActive == false)
-            {
-                App.FeaturesWindow.Topmost = true;
-                App.FeaturesWindow.Activate();
-                App.FeaturesWindow.Topmost = false;
-            }
+            AiFeature("Summarize");
         }
         private void ExplainButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            // Gán DataContext
-            FeaturesWindowViewModel viewmodel = this.DataContext as FeaturesWindowViewModel;
-            viewmodel.SetFeatureType("Explain");
-            App.FeaturesWindow.DataContext = viewmodel;
-            App.FeaturesWindow.Show();
-            if (App.FeaturesWindow.IsActive == false)
+            AiFeature("Explain");
+        }
+        private void AiFeature(string feature)
+        {
+            // mainVM là Datacontext của NaviFeaturesWindow
+            NaviFeaturesWindowViewModel mainVM = new NaviFeaturesWindowViewModel();
+            // featureVM là ViewModel của FeaturesView, được truyền lại từ MainWindow thông qua PopWindow
+            FeaturesViewModel featureVM = this.DataContext as FeaturesViewModel;
+            featureVM.SetFeatureType(feature);
+
+            // Content là  1 thuộc tính kiểu ViewModelBase, là nội dung sẽ hiển thị lên Window
+            mainVM.Content = featureVM;
+            // ViewLocator sẽ tìm View ứng với kiểu của Content, tức FeaturesView
+            // Khi đó Window sẽ hiện thị UI ứng với View tương ứng của Content bấy giờ
+            App.NaviFeaturesWindow.DataContext = mainVM;
+
+            App.NaviFeaturesWindow.Show();
+            if (App.NaviFeaturesWindow.IsActive == false)
             {
-                App.FeaturesWindow.Topmost = true;
-                App.FeaturesWindow.Activate();
-                App.FeaturesWindow.Topmost = false;
+                App.NaviFeaturesWindow.Topmost = true;
+                App.NaviFeaturesWindow.Activate();
+                App.NaviFeaturesWindow.Topmost = false;
             }
         }
         private int CountWord(string inputString)

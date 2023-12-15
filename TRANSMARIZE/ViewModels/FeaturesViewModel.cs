@@ -1,24 +1,23 @@
-﻿using Avalonia.Input.Platform;
+﻿using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HarfBuzzSharp;
-using Newtonsoft.Json;
+using Microsoft.CodeAnalysis.Text;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using RestSharp;
-using Svg;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
 using TRANSMARIZE.Model;
+using System.Threading.Tasks;
+using Avalonia.Controls.Templates;
 
 namespace TRANSMARIZE.ViewModels
 {
-	public partial class FeaturesWindowViewModel : ViewModelBase
+	public partial class FeaturesViewModel : ViewModelBase
 	{
-
         // biến Observerble được sử dụng cho các ComboBox
         [ObservableProperty]
         private static int selectedIndex = 61;
@@ -41,14 +40,24 @@ namespace TRANSMARIZE.ViewModels
         [ObservableProperty]
         private string secondBox = String.Empty;
 
+        [ObservableProperty]
+        private bool isComplete1 = false;
+
+        [ObservableProperty]
+        private bool isComplete2 = false;
+
+
         private string convertInput = String.Empty;
 
-        public FeaturesWindowViewModel() { }
+        public FeaturesViewModel() { }
 
-        public void SetFeatureType(string feature)
+        public async void SetFeatureType(string feature)
         {
+            IsComplete1 = true;
+            IsComplete2 = false;
             MyFeature = feature;
             ComboboxText = MyFeature + " to:";
+            OutputText = " ";
 
             string input = String.Copy(ShareData.transText);
             convertInput = input.Replace(System.Environment.NewLine, "");
@@ -59,50 +68,75 @@ namespace TRANSMARIZE.ViewModels
                 SecondBox = "Translation";
                 SourceText = convertInput;
                 convertInput = convertInput.Replace("#", "");
-                OutputText = TranslateText(convertInput, "auto", ShareData.langSecond);
+                Task<string> task = TranslateText(convertInput, "auto", ShareData.langSecond);
+                OutputText = await task;
+                if (task.IsCompleted == true)
+                {
+                    IsComplete2 = true;
+                }
             }
             if (feature == "Summarize")
             {
                 FirstBox = "Source Text";
                 SecondBox = "Summarized Text";
                 SourceText = convertInput;
-                OutputText = SummarizeText(convertInput);
+                Task<string> task = SummarizeText(convertInput);
+                OutputText = await task;
+                if (task.IsCompleted == true)
+                {
+                    IsComplete2 = true;
+                }
             }
             if (feature == "Explain")
             {
+                IsComplete1 = false;
                 FirstBox = "Explaination";
                 SecondBox = "Translation";
+                SourceText = " ";
 
-                string explainText = ExplainText(convertInput);
+                Task<string> task1 = ExplainText(convertInput);
+                string explainText = await task1;
+                if (task1.IsCompleted == true)
+                {
+                    IsComplete1 = true;
+                }
                 explainText = explainText.Replace("\n", "");
-
                 SourceText = explainText;
+
                 explainText = explainText.Replace("#", "");
-                OutputText = TranslateText(explainText, "auto", ShareData.langSecond);
+                Task<string> task2 = TranslateText(explainText, "auto", ShareData.langSecond);
+                OutputText = await task2;
+                if (task2.IsCompleted == true)
+                {
+                    IsComplete2 = true;
+                }
             }
         }
 
         [RelayCommand]
-        public void FeatureButton()
+        public async void FeatureButton()
         {
             if (MyFeature == "Translate")
             {
-                OutputText = TranslateText(convertInput, "auto", ShareData.langSecond);
+                Task<string> task = TranslateText(SourceText, "auto", ShareData.langSecond);
+                OutputText = await task;
             }
             if (MyFeature == "Summarize")
             {
                 string sumText = String.Copy(OutputText);
                 sumText = sumText.Replace("#", "");
-                OutputText = TranslateText(sumText, "auto", ShareData.langSecond);
+                Task<string> task = TranslateText(sumText, "auto", ShareData.langSecond);
+                OutputText = await task;
             }
             if (MyFeature == "Explain")
             {
-                OutputText = TranslateText(OutputText, "auto", ShareData.langSecond);
+                Task<string> task = TranslateText(SourceText, "auto", ShareData.langSecond);
+                OutputText = await task;
             }
         }
-       
+
         // Hàm gọi API google dịch
-        public static string TranslateText(string input, string lang_first, string lang_second)
+        public async Task<string> TranslateText(string input, string lang_first, string lang_second)
         {
             HttpClient httpClient = new HttpClient();
             // tạo link để gọi API
@@ -110,7 +144,7 @@ namespace TRANSMARIZE.ViewModels
            ("https://translate.googleapis.com/translate_a/single?client=gtx&sl={0}&tl={1}&dt=t&q={2}",
             lang_first, lang_second, Uri.EscapeUriString(input));
             // gọi API và lấy kết quả trả về
-            string result = httpClient.GetStringAsync(url).Result;
+            string result = await httpClient.GetStringAsync(url);
             // trích xuất thông tin từ kiểu dữ liệu json được trả về
             var jsonData = JsonConvert.DeserializeObject<List<dynamic>>(result);
             var translationItems = jsonData[0];
@@ -127,7 +161,7 @@ namespace TRANSMARIZE.ViewModels
         }
 
         // API Summarize
-        public string SummarizeText(string input)
+        public async Task<string> SummarizeText(string input)
         {
             var YOUR_API_KEY = "gAAAAABlZErp8klOmJLj0tYZwK9XD3waVoUGOcpfeD94pVkNx1dmpoNTySCyrBfhlN-jaXmWcejKbAzG_pBhTObpujyqUBmMhv-CnA1IDRGCnw-pUwspGwXftUVT66bMDnOx27ctgC0K";
             var client = new RestClient("https://api.textcortex.com/v1");
@@ -137,13 +171,13 @@ namespace TRANSMARIZE.ViewModels
             //request.AddParameter("application/json", $"{{\n  \"target_lang\": \"en\", \n  \"text\": \"{input}\"\n}}", ParameterType.RequestBody);
             request.AddJsonBody(new { model = "gpt-3.5-turbo-16k", target_lang = "en", text = input });
             //request.AddParameter("application/json", new { target_lang = "en", text = input }, ParameterType.RequestBody);
-            var response = client.Execute(request);
+            RestResponse response = await client.ExecuteAsync(request);
             var responseData = JObject.Parse(response.Content);
             string output = responseData["data"]["outputs"][0]["text"].ToString();
             return output;
         }
         // API Explain
-        public string ExplainText(string input)
+        public async Task<string> ExplainText(string input)
         {
             var YOUR_API_KEY = "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";
             string userInput = "What is " + input;
@@ -152,7 +186,7 @@ namespace TRANSMARIZE.ViewModels
             request.AddHeader("Content-Type", "application/json");
             request.AddHeader("Authorization", $"Bearer {YOUR_API_KEY}");
             request.AddJsonBody(new { prompt = userInput, max_tokens = 4000, temperature = 0 });
-            var response = client.Execute(request);
+            RestResponse response = await client.ExecuteAsync(request);
             var responseData = JObject.Parse(response.Content);
             string output = responseData["choices"][0]["text"].ToString();
             return output;
