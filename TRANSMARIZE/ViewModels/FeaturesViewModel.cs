@@ -67,7 +67,7 @@ namespace TRANSMARIZE.ViewModels
                 FirstBox = "Source Text";
                 SecondBox = "Translation";
                 SourceText = convertInput;
-                convertInput = convertInput.Replace("#", "");
+                convertInput = convertInput.Replace("#", "").Replace("&"," ");
                 Task<string> task = TranslateText(convertInput, "auto", ShareData.langSecond);
                 OutputText = await task;
                 if (task.IsCompleted == true)
@@ -103,7 +103,7 @@ namespace TRANSMARIZE.ViewModels
                 explainText = explainText.Replace("\n", "");
                 SourceText = explainText;
 
-                explainText = explainText.Replace("#", "");
+                explainText = explainText.Replace("#", "").Replace("&"," ");
                 Task<string> task2 = TranslateText(explainText, "auto", ShareData.langSecond);
                 OutputText = await task2;
                 if (task2.IsCompleted == true)

@@ -55,6 +55,7 @@ namespace TRANSMARIZE.Views
                 App.NaviFeaturesWindow.Topmost = true;
                 App.NaviFeaturesWindow.Activate();
                 App.NaviFeaturesWindow.Topmost = false;
+                //App.NaviFeaturesWindow.Activate();
             }
         }
         private int CountWord(string inputString)

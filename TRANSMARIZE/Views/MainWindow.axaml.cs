@@ -36,8 +36,8 @@ public partial class MainWindow : Window
             // Release 
             simulator.SimulateKeyRelease(KeyCode.VcC);
             simulator.SimulateKeyRelease(KeyCode.VcLeftControl);
-            await Task.Delay(75);
 
+            await Task.Delay(75);
             // Lấy giá trị text đang có trong Clipboard
             string text = await Clipboard.GetTextAsync();
 
