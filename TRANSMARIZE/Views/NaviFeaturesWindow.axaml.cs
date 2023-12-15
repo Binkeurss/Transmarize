@@ -14,7 +14,7 @@ namespace TRANSMARIZE.Views
         {
             this.Hide();
             await Task.Delay(1000);
-            ShareData.currentText = string.Empty;
+            //ShareData.currentText = string.Empty;
         }
 
         public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)

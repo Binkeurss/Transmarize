@@ -50,12 +50,12 @@ namespace TRANSMARIZE.Views
             App.NaviFeaturesWindow.DataContext = mainVM;
 
             App.NaviFeaturesWindow.Show();
-            if (App.NaviFeaturesWindow.IsActive == false)
+            if (App.NaviFeaturesWindow.IsActive == false || App.NaviFeaturesWindow.WindowState == WindowState.Minimized)
             {
                 App.NaviFeaturesWindow.Topmost = true;
+                App.NaviFeaturesWindow.WindowState = WindowState.Normal;
                 App.NaviFeaturesWindow.Activate();
                 App.NaviFeaturesWindow.Topmost = false;
-                //App.NaviFeaturesWindow.Activate();
             }
         }
         private int CountWord(string inputString)
