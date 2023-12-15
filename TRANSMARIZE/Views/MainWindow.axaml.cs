@@ -36,8 +36,8 @@ public partial class MainWindow : Window
             // Release 
             simulator.SimulateKeyRelease(KeyCode.VcC);
             simulator.SimulateKeyRelease(KeyCode.VcLeftControl);
-            await Task.Delay(75);
 
+            await Task.Delay(75);
             // Lấy giá trị text đang có trong Clipboard
             string text = await Clipboard.GetTextAsync();
 
@@ -102,9 +102,10 @@ public partial class MainWindow : Window
     private void OpenBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         App.SavedWordWindow.Show();
-        if (App.SavedWordWindow.IsActive == false)
+        if (App.SavedWordWindow.IsActive == false || App.SavedWordWindow.WindowState == WindowState.Minimized)
         {
             App.SavedWordWindow.Topmost = true;
+            App.SavedWordWindow.WindowState = WindowState.Normal;
             App.SavedWordWindow.Activate();
             App.SavedWordWindow.Topmost = false;
         }

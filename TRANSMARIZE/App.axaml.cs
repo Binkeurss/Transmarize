@@ -85,9 +85,10 @@ public partial class App : Application
     private void WordBookOpenClick(object? sender, System.EventArgs e)
     {
         SavedWordWindow.Show();
-        if (SavedWordWindow.IsActive == false)
+        if (SavedWordWindow.IsActive == false || SavedWordWindow.WindowState == Avalonia.Controls.WindowState.Minimized)
         {
             SavedWordWindow.Topmost = true;
+            SavedWordWindow.WindowState = Avalonia.Controls.WindowState.Normal;
             SavedWordWindow.Activate();
             SavedWordWindow.Topmost = false;
         }
