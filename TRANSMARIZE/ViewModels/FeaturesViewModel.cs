@@ -193,6 +193,23 @@ namespace TRANSMARIZE.ViewModels
         }
 
         [ObservableProperty]
+        private bool isStartUp = ShareData.GetBool(ShareData.settingPath);
+        [RelayCommand]
+        public void StartUp()
+        {
+            if (IsStartUp == true)
+            {
+                ShareData.SetToStartup(true);
+                ShareData.SaveBool(ShareData.settingPath, true);
+            }
+            if (IsStartUp == false)
+            {
+                ShareData.SetToStartup(false);
+                ShareData.SaveBool(ShareData.settingPath, false);
+            }
+        }
+
+        [ObservableProperty]
         public static ObservableCollection<string> languageList = new ObservableCollection<string>
         {
             "Afrikaans",
