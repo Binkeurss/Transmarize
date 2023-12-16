@@ -86,6 +86,17 @@ public partial class MainWindow : Window
             ShareData.langSecond = ShareData.languageDictionary[langSelected];
         }
     }
+    private void OpenBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        App.SavedWordWindow.Show();
+        if (App.SavedWordWindow.IsActive == false || App.SavedWordWindow.WindowState == WindowState.Minimized)
+        {
+            App.SavedWordWindow.Topmost = true;
+            App.SavedWordWindow.WindowState = WindowState.Normal;
+            App.SavedWordWindow.Activate();
+            App.SavedWordWindow.Topmost = false;
+        }
+    }
 
     //Exit button and Close window
     public void ExitButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -97,17 +108,5 @@ public partial class MainWindow : Window
     public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         this.Hide();
-    }
-
-    private void OpenBookButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-    {
-        App.SavedWordWindow.Show();
-        if (App.SavedWordWindow.IsActive == false || App.SavedWordWindow.WindowState == WindowState.Minimized)
-        {
-            App.SavedWordWindow.Topmost = true;
-            App.SavedWordWindow.WindowState = WindowState.Normal;
-            App.SavedWordWindow.Activate();
-            App.SavedWordWindow.Topmost = false;
-        }
     }
 }
