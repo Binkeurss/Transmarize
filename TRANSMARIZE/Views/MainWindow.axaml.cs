@@ -29,7 +29,7 @@ public partial class MainWindow : Window
         Dispatcher.UIThread.Post(async () =>
         {
             //Có delay task để xử lý delay trong Word
-            await Task.Delay(1000);
+            await Task.Delay(75);
             // Press Ctrl + C
             simulator.SimulateKeyPress(KeyCode.VcLeftControl);
             simulator.SimulateKeyPress(KeyCode.VcC);
@@ -37,7 +37,7 @@ public partial class MainWindow : Window
             simulator.SimulateKeyRelease(KeyCode.VcC);
             simulator.SimulateKeyRelease(KeyCode.VcLeftControl);
 
-            await Task.Delay(1000);
+            await Task.Delay(75);
             // Lấy giá trị text đang có trong Clipboard
             string text = await Clipboard.GetTextAsync();
 
@@ -68,7 +68,7 @@ public partial class MainWindow : Window
             hook.MouseReleased += OnMouseRelease;
             hook.RunAsync();
             button.Content = "STOP";
-            this.Hide();
+            //this.Hide();
         }
         else
         {

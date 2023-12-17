@@ -73,7 +73,7 @@
 			<Grid Grid.Row="1" 
 				  Height="71">
 				<Grid.Styles>
-					<Style Selector="TextBlock">
+					<Style Selector="SelectableTextBlock">
 						<Setter Property="Margin" Value="-98 -5 0 0"/>
 						<Setter Property="FontSize" Value="22.5"/>
 						<Setter Property="FontFamily" Value="{StaticResource VigaFont}"/>
