@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 namespace TRANSMARIZE.Model
 {
@@ -16,6 +19,44 @@ namespace TRANSMARIZE.Model
         public static string transText = string.Empty;
         public static string langSecond = "vi";
         public static string currentText = string.Empty;
+
+        public static string settingPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Setting.txt");
+        public static void SetToStartup(bool enabled)
+        {
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+            if (enabled)
+            {
+                key.SetValue("Transmarize-Beta", System.Environment.ProcessPath);
+            }
+            else
+            {
+                key.DeleteValue("Transmarize-Beta", false);
+            }
+        }
+        public static void SaveBool(string filename, bool value)
+        {
+            StreamWriter settingFile = new StreamWriter(filename, false);
+            settingFile.Write(value);
+            settingFile.Close();
+        }
+        public static bool GetBool(string filename)
+        {
+            try
+            {
+                StreamReader settingFile = new StreamReader(filename);
+                string ret = settingFile.ReadToEnd();
+                settingFile.Close();
+                if (ret == "True")
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (FileNotFoundException ex)
+            {
+                return false;
+            }
+        }
 
         public static Dictionary<string, string> languageDictionary = new Dictionary<string, string>
         {

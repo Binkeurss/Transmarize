@@ -8,6 +8,7 @@ using TRANSMARIZE.Views;
 using TRANSMARIZE.Services;
 using System.IO;
 using System;
+using Microsoft.Win32;
 
 namespace TRANSMARIZE;
 

@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using HarfBuzzSharp;
-using Microsoft.CodeAnalysis.Text;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using RestSharp;
@@ -190,6 +189,23 @@ namespace TRANSMARIZE.ViewModels
             var responseData = JObject.Parse(response.Content);
             string output = responseData["choices"][0]["text"].ToString();
             return output;
+        }
+
+        [ObservableProperty]
+        private bool isStartUp = ShareData.GetBool(ShareData.settingPath);
+        [RelayCommand]
+        public void StartUp()
+        {
+            if (IsStartUp == true)
+            {
+                ShareData.SetToStartup(true);
+                ShareData.SaveBool(ShareData.settingPath, true);
+            }
+            if (IsStartUp == false)
+            {
+                ShareData.SetToStartup(false);
+                ShareData.SaveBool(ShareData.settingPath, false);
+            }
         }
 
         [ObservableProperty]
