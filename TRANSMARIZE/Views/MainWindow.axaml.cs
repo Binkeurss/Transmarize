@@ -68,7 +68,7 @@ public partial class MainWindow : Window
             hook.MouseReleased += OnMouseRelease;
             hook.RunAsync();
             button.Content = "STOP";
-            //this.Hide();
+            this.Hide();
         }
         else
         {
