@@ -162,7 +162,7 @@ namespace TRANSMARIZE.ViewModels
         // API Summarize
         public async Task<string> SummarizeText(string input)
         {
-            var YOUR_API_KEY = "gAAAAABlZErp8klOmJLj0tYZwK9XD3waVoUGOcpfeD94pVkNx1dmpoNTySCyrBfhlN-jaXmWcejKbAzG_pBhTObpujyqUBmMhv-CnA1IDRGCnw-pUwspGwXftUVT66bMDnOx27ctgC0K";
+            var YOUR_API_KEY = "gAAAAABlgVumaDZSd20dwtQdCzzxe-6i_a_6z4jyWl533NgMjeMgWpQlnqJQP_HVx_9K0xSw4ZBYKUWdm8MlJVh5up8pTrNAyk07YNCi7blu9ThB_xww1KQWsPPavNdNX7Ki-8kiJCKv";
             var client = new RestClient("https://api.textcortex.com/v1");
             var request = new RestRequest("texts/summarizations", Method.Post);
             request.AddHeader("Content-Type", "application/json");
