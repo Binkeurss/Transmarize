@@ -12,6 +12,7 @@ using System.Net.Http;
 using TRANSMARIZE.Model;
 using System.Threading.Tasks;
 using Avalonia.Controls.Templates;
+using System.Speech.Synthesis;
 
 namespace TRANSMARIZE.ViewModels
 {
@@ -206,6 +207,12 @@ namespace TRANSMARIZE.ViewModels
                 ShareData.SetToStartup(false);
                 ShareData.SaveBool(ShareData.settingPath, false);
             }
+        }
+        [RelayCommand]
+        public void ReadWord1()
+        {
+            SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+            synthesizer.SpeakAsync(SourceText);
         }
 
         [ObservableProperty]

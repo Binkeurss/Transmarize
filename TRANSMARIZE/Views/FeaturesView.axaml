@@ -137,6 +137,14 @@
 					<Button VerticalContentAlignment="Center"
 							HorizontalContentAlignment="Center"
 							Background="Transparent"
+							Margin="10 5 0 -20"
+							Command="{Binding ReadWord1Command}">
+						<Image Source="{SvgImage avares://TRANSMARIZE/Assets/speaker.svg}"
+								   Width="30" Height="30"/>
+					</Button>
+					<Button VerticalContentAlignment="Center"
+							HorizontalContentAlignment="Center"
+							Background="Transparent"
 							Margin="10 0 0 -20"
 							Click="CopySourceButton">
 						<Image Source="{SvgImage avares://TRANSMARIZE/Assets/copy.svg}"

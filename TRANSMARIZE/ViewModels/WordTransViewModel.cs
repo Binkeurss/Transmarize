@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using TRANSMARIZE.Model;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
-using LibVLCSharp.Shared;
+using System.Speech.Synthesis;
 
 namespace TRANSMARIZE.ViewModels
 {
-    public partial class WordWindowViewModel : ViewModelBase
+    public partial class WordTransViewModel : ViewModelBase
     {
         private HttpClient httpClient = new HttpClient();
+        private SpeechSynthesizer synthesizer = new SpeechSynthesizer();
 
         // biến savedword có giá trị khi từ đang tra đã được lưu vào WordBook
         public SavedWord findedWord = new SavedWord();
@@ -44,7 +45,7 @@ namespace TRANSMARIZE.ViewModels
         [ObservableProperty]
         public ObservableCollection<Definition> definitions = new ObservableCollection<Definition>();
     
-        public WordWindowViewModel() 
+        public WordTransViewModel() 
         {
             string input = ConvertString(ShareData.transText);
             Word = input;
@@ -62,7 +63,7 @@ namespace TRANSMARIZE.ViewModels
         // Phương thức khởi tạo này được gọi từ SavedWordWindow
         // Vì từ muốn tra đã có trong WordBook nên ko cần tra lại nữa
         // Giá trị của findedWord sẽ được truyền vào từ SavedWordWindow
-        public WordWindowViewModel(SavedWord selectedWord)
+        public WordTransViewModel(SavedWord selectedWord)
         {
             findedWord = selectedWord;
             Word = selectedWord.Content;
@@ -114,12 +115,13 @@ namespace TRANSMARIZE.ViewModels
                 }
                 // lấy file audio
                 JToken phonetics = entry["phonetics"];
+                Ishassound = true;
                 foreach (JToken phonetic in phonetics)
                 {
                     if (phonetic["audio"].ToString() != "")
                     {
                         Sound = phonetic["audio"].ToString();
-                        Ishassound = true;
+                        // Ishassound = true;
                         break;
                     }
                 }
@@ -178,10 +180,12 @@ namespace TRANSMARIZE.ViewModels
         [RelayCommand]
         public void AudioPlay()
         {
-            var libvlc = new LibVLC(enableDebugLogs: true);
-            var media = new Media(libvlc, new Uri(Sound));
-            var mediaplayer = new MediaPlayer(media);
-            mediaplayer.Play();
+            /*            var libvlc = new LibVLC(enableDebugLogs: true);
+                        var media = new Media(libvlc, new Uri(Sound));
+                        var mediaplayer = new MediaPlayer(media);
+                        mediaplayer.Play();*/
+
+            synthesizer.SpeakAsync(Word);
         }
 
         [RelayCommand]
@@ -190,7 +194,7 @@ namespace TRANSMARIZE.ViewModels
             // Nếu từ đang tra chưa có trong WordBook thì Button này sẽ là lưu từ
             if (findedWord.Content == String.Empty)
             {
-                SavedWord newWord = new SavedWord(Word);
+                SavedWord newWord = new SavedWord(Word, Phonetic);
                 var r = App.WordBookDatabase.SaveWordAsync(newWord);
                 findedWord = newWord;
                 ButtonContent = "Added";

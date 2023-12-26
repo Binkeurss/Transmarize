@@ -52,7 +52,7 @@ public partial class App : Application
             // Khi gọi hàm get, nếu database chưa được tạo thì tiến hành tạo
             if (wordBookDatabase == null)
             {
-                wordBookDatabase = new WordBookService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WordBookDatabase3.db3"));
+                wordBookDatabase = new WordBookService(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WordBookDatabase333.db3"));
             }
             return wordBookDatabase;
         }

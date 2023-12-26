@@ -1,17 +1,21 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
+using TRANSMARIZE.Model;
 
 namespace TRANSMARIZE.ViewModels
 {
 	public partial class ReviseWordViewModel : ViewModelBase
 	{
 		[ObservableProperty]
-		private string learnWord = "abstract";
+		private string learnContent = "abstract";
+		[ObservableProperty]
+		private string learnPhonetic = "nan";
 		public ReviseWordViewModel() { }
-		public ReviseWordViewModel(string word)
+		public ReviseWordViewModel(SavedWord learnWord)
 		{
-			LearnWord = word;
+			LearnContent = learnWord.Content;
+			LearnPhonetic = learnWord.Phonetic;
 		}
 	}
 }
