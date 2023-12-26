@@ -22,7 +22,7 @@ namespace TRANSMARIZE.Views
             // Nếu có giá trị thì mở WordWindow để hiện thị nghĩa của từ
             SavedWord finalWord = selectedWord;
             WordWindow wordWindow = new WordWindow();
-            wordWindow.DataContext = new WordWindowViewModel(finalWord);
+            wordWindow.DataContext = new WordTransViewModel(finalWord);
             wordWindow.Show();
         }
     }

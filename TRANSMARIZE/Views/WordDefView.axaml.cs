@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace TRANSMARIZE.Views
 {
-    public partial class RevealWordView : UserControl
+    public partial class WordDefView : UserControl
     {
-        public RevealWordView()
+        public WordDefView()
         {
             InitializeComponent();
         }

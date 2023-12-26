@@ -2,11 +2,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="550"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
              x:Class="TRANSMARIZE.Views.ReviseWordView">
-	<StackPanel>
-		<TextBlock Text="{Binding LearnWord}"/>
-		<Button Content="Reveal"
-				Command="{Binding $parent[Window].DataContext.NaviRevealCommand}"/>
-	</StackPanel>
+	<Border CornerRadius="20"
+			BorderThickness="5"
+			BorderBrush="Black"
+			Background="White"
+			Margin="20 30 20 10">
+		<Grid RowDefinitions="Auto, Auto, Auto"
+			  Height="440">
+			<TextBlock Grid.Row="0"
+					   Text="{Binding LearnContent}"
+					   HorizontalAlignment="Center"
+					   FontSize="60"
+					   FontFamily="{StaticResource VigaFont}"
+					   FontWeight="Bold"
+					   Margin="0 50 0 0"/>
+			<TextBlock Grid.Row="1"
+					   Text="{Binding LearnPhonetic}"
+					   HorizontalAlignment="Center"
+					   FontSize="60"
+					   FontFamily="{StaticResource VigaFont}"
+					   FontWeight="DemiBold"
+					   Margin="0 25 0 0"/>
+			<Button Grid.Row="2"
+					Content="Reveal"
+					HorizontalAlignment="Center"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					FontSize="40"
+					Margin="0 35 0 0"
+					Command="{Binding $parent[Window].DataContext.NaviRevealCommand}"/>
+		</Grid>
+	</Border>
 </UserControl>
