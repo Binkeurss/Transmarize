@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Avalonia.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -8,31 +9,63 @@ namespace TRANSMARIZE.ViewModels
 {
     public partial class SaveWordViewModel : ViewModelBase
     {
-        // Danh sách các từ hiển thị trong WordBook
-        [ObservableProperty]
-        private List<SavedWord> wordList = new List<SavedWord>();
+        public static string learnWord;
+        public static int i = 0;
 
-        // Biến selectedWord dùng để lưu từ mà người dùng chọn trong danh sách
         [ObservableProperty]
-        private SavedWord selectedWord;
+        ViewModelBase content = new ListWordViewModel();
 
-        public SaveWordViewModel()
+        [RelayCommand]
+        public async void NaviRevise()
         {
-            // Mỗi lần WordBook được mở thì cập nhật danh sách 
-            GetWords();
+            List<SavedWord> wordList = await App.WordBookDatabase.GetWordsAsync();
+            learnWord = wordList[i++].Content;
+            Content = new ReviseWordViewModel(learnWord);
         }
 
         [RelayCommand]
-        public async void GetWords()
+        public void NaviReveal()
         {
-            WordList = await App.WordBookDatabase.GetWordsAsync();
+            Content = new RevealWordViewModel(learnWord);
+        }
+        [RelayCommand]
+        public void NaviList()
+        {
+            Content = new ListWordViewModel();
+        }
+        public SaveWordViewModel() 
+        {
+        }
+        public SaveWordViewModel(ViewModelBase view)
+        {
+            Content = view;
         }
 
-        [RelayCommand]
-        private async void ClearWords()
-        {
-            var r = await App.WordBookDatabase.ClearTaskAsync();
-            GetWords();
-        }
+        /*        // Danh sách các từ hiển thị trong WordBook
+                [ObservableProperty]
+                private List<SavedWord> wordList = new List<SavedWord>();
+
+                // Biến selectedWord dùng để lưu từ mà người dùng chọn trong danh sách
+                [ObservableProperty]
+                private SavedWord selectedWord;
+
+                public SaveWordViewModel()
+                {
+                    // Mỗi lần WordBook được mở thì cập nhật danh sách 
+                    GetWords();
+                }
+
+                [RelayCommand]
+                public async void GetWords()
+                {
+                    WordList = await App.WordBookDatabase.GetWordsAsync();
+                }
+
+                [RelayCommand]
+                private async void ClearWords()
+                {
+                    var r = await App.WordBookDatabase.ClearTaskAsync();
+                    GetWords();
+                }*/
     }
 }
