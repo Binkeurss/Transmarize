@@ -40,7 +40,7 @@ namespace TRANSMARIZE.Services
         }
         public Task<List<SavedWord>> GetWordsAtCurrDay()
         {
-            var query = database.Table<SavedWord>().Where(s => s.Date == DateTime.Today);
+            var query = database.Table<SavedWord>().Where(s => s.Date <= DateTime.Today);
             return query.ToListAsync();
         }
         public void UpdateWordAtDay(SavedWord word, DateTime time)

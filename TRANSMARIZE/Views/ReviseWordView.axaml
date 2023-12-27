@@ -4,42 +4,51 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
              x:Class="TRANSMARIZE.Views.ReviseWordView">
-	<Border CornerRadius="20"
-			BorderThickness="5"
-			BorderBrush="Black"
-			Background="White"
-			Margin="20 30 20 10">
-		<Grid RowDefinitions="Auto, Auto, Auto, *"
-			  Height="440">
-			<TextBlock Grid.Row="0"
-					   Text="{Binding LearnContent}"
-					   HorizontalAlignment="Center"
-					   FontSize="60"
-					   FontFamily="{StaticResource VigaFont}"
-					   FontWeight="Bold"
-					   Margin="0 50 0 0"/>
-			<TextBlock Grid.Row="1"
-					   Text="{Binding LearnPhonetic}"
-					   HorizontalAlignment="Center"
-					   FontSize="60"
-					   FontFamily="{StaticResource VigaFont}"
-					   FontWeight="DemiBold"
-					   Margin="0 25 0 0"/>
-			<TextBlock Grid.Row="2"
-					   Text="{Binding Date}"
-					   HorizontalAlignment="Center"
-					   FontSize="60"
-					   FontFamily="{StaticResource VigaFont}"
-					   FontWeight="DemiBold"
-					   Margin="0 25 0 0"/>
-			<Button Grid.Row="3"
-					Content="Reveal"
-					HorizontalAlignment="Center"
-					HorizontalContentAlignment="Center"
-					VerticalContentAlignment="Center"
-					FontSize="40"
-					Margin="0 35 0 0"
-					Command="{Binding $parent[Window].DataContext.NaviRevealCommand}"/>
-		</Grid>
-	</Border>
+	<StackPanel>
+		<Border CornerRadius="20"
+				BorderThickness="5"
+				BorderBrush="Black"
+				Background="White"
+				Margin="25 30 25 10">
+			
+			<Grid RowDefinitions="Auto, Auto, Auto, *"
+				  Height="360">
+				<TextBlock Grid.Row="0"
+						   Text="{Binding LearnContent}"
+						   HorizontalAlignment="Center"
+						   FontSize="60"
+						   FontFamily="{StaticResource VigaFont}"
+						   FontWeight="Bold"
+						   Margin="0 30 0 0"/>
+				<TextBlock Grid.Row="1"
+						   Text="{Binding LearnPhonetic}"
+						   HorizontalAlignment="Center"
+						   FontSize="60"
+						   FontFamily="{StaticResource VigaFont}"
+						   FontWeight="DemiBold"
+						   Foreground="DarkGray"
+						   Margin="0 20 0 0"/>
+				<TextBlock Grid.Row="2"
+						   Text="{Binding Date}"
+						   HorizontalAlignment="Center"
+						   FontSize="50"
+						   FontFamily="{StaticResource VigaFont}"
+						   FontWeight="DemiBold"
+						   Margin="0 25 0 0"/>
+			</Grid>
+		</Border>
+		<Button Grid.Row="3"
+				Content="Reveal"
+				HorizontalAlignment="Center"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="15"
+				FontFamily="{StaticResource VigaFont}"
+				Background="#00A9FF"
+				Foreground="White"
+				FontSize="40"
+				Margin="0 20 0 0"
+				Command="{Binding $parent[Window].DataContext.RevealWordCommand}"/>
+	</StackPanel>
+
 </UserControl>
