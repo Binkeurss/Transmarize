@@ -11,11 +11,14 @@ namespace TRANSMARIZE.ViewModels
 		private string learnContent = "abstract";
 		[ObservableProperty]
 		private string learnPhonetic = "nan";
+		[ObservableProperty]
+		private string date = string.Empty;
 		public ReviseWordViewModel() { }
 		public ReviseWordViewModel(SavedWord learnWord)
 		{
 			LearnContent = learnWord.Content;
 			LearnPhonetic = learnWord.Phonetic;
+			Date = learnWord.Date.ToShortDateString();
 		}
 	}
 }

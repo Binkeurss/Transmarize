@@ -59,7 +59,7 @@
 				HorizontalContentAlignment="Center"
 				VerticalContentAlignment="Center"
 				HorizontalAlignment="Center"
-				Command="{Binding $parent[Window].DataContext.NaviReviseCommand}"/>
+				Command="{Binding $parent[Window].DataContext.ReviseButtonCommand}"/>
 		</StackPanel>
 		
 	</StackPanel>

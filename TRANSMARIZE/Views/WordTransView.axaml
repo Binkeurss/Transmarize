@@ -7,7 +7,8 @@
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
 			 Width="500" Height="600"
              x:Class="TRANSMARIZE.Views.WordTransView">
-	<Grid RowDefinitions="Auto, Auto, Auto, *">
+	<Grid RowDefinitions="Auto, Auto, Auto, *"
+		  Margin="0 -10 0 0">
 		<!--Row 1 để chứa chữ, phiên âm và sound -->
 		<Grid Grid.Row="0" Height="150">
 			<Grid.Styles>
@@ -85,20 +86,52 @@
 			<StackPanel Orientation="Horizontal"
 						Margin="0 -80 0 0"
 						HorizontalAlignment="Center">
-				<Button Content="Next"
+				<Button Content="Again"
+						CornerRadius="10"
 						Width="75"
 						Height="40"
 						HorizontalContentAlignment="Center"
 						VerticalContentAlignment="Center"
 						FontSize="20"
-						Command="{Binding $parent[Window].DataContext.NaviReviseCommand}"/>
+						Background="#BF3131"
+						Foreground="White"
+						FontFamily="{StaticResource VigaFont}"
+						Command="{Binding $parent[Window].DataContext.UpdateDayAndNext0Command}"/>
+				<Button Content="1 Day"
+						CornerRadius="10"
+						Margin="10 0 0 0"
+						Width="75"
+						Height="40"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						FontSize="20"
+						Background="#00A9FF"
+						Foreground="White"
+						FontFamily="{StaticResource VigaFont}"
+						Command="{Binding $parent[Window].DataContext.UpdateDayAndNext1Command}"/>
+				<Button Content="4 Day"
+						CornerRadius="10"
+						Margin="10 0 0 0"
+						Width="75"
+						Height="40"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						FontSize="20"
+						Background="#65B741"
+						Foreground="White"
+						FontFamily="{StaticResource VigaFont}"
+						Command="{Binding $parent[Window].DataContext.UpdateDayAndNext4Command}"/>
 				<Button Content="Stop"
+						CornerRadius="10"
+						Margin="10 0 0 0"
 						Width="75"
 						Height="40"
 						HorizontalContentAlignment="Center"
 						VerticalContentAlignment="Center"
 						FontSize="20"
-						Command="{Binding $parent[Window].DataContext.NaviListCommand}"/>
+						Foreground="White"
+						FontFamily="{StaticResource VigaFont}"
+						Command="{Binding $parent[Window].DataContext.CloseFlashCardCommand}"/>
 			</StackPanel>
 		</Grid>
 	</Grid>
