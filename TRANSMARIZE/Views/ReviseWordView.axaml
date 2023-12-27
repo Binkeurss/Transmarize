@@ -9,7 +9,7 @@
 			BorderBrush="Black"
 			Background="White"
 			Margin="20 30 20 10">
-		<Grid RowDefinitions="Auto, Auto, Auto"
+		<Grid RowDefinitions="Auto, Auto, Auto, *"
 			  Height="440">
 			<TextBlock Grid.Row="0"
 					   Text="{Binding LearnContent}"
@@ -25,7 +25,14 @@
 					   FontFamily="{StaticResource VigaFont}"
 					   FontWeight="DemiBold"
 					   Margin="0 25 0 0"/>
-			<Button Grid.Row="2"
+			<TextBlock Grid.Row="2"
+					   Text="{Binding Date}"
+					   HorizontalAlignment="Center"
+					   FontSize="60"
+					   FontFamily="{StaticResource VigaFont}"
+					   FontWeight="DemiBold"
+					   Margin="0 25 0 0"/>
+			<Button Grid.Row="3"
 					Content="Reveal"
 					HorizontalAlignment="Center"
 					HorizontalContentAlignment="Center"

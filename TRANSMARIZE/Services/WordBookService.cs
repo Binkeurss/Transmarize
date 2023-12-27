@@ -21,9 +21,9 @@ namespace TRANSMARIZE.Services
             // Trong database đó, tạo một table dựa trên class SavedWord
             database.CreateTableAsync<SavedWord>().Wait();
         }
-        public Task<List<SavedWord>> GetWordsAsync()
+        public async Task<List<SavedWord>> GetWordsAsync()
         {
-            return database.Table<SavedWord>().ToListAsync();
+            return await database.Table<SavedWord>().ToListAsync();
         }
         public Task<int> SaveWordAsync(SavedWord word)
         {
@@ -37,6 +37,16 @@ namespace TRANSMARIZE.Services
         {
             var query = database.Table<SavedWord>().Where(s => s.Content == word);
             return query.ToListAsync();
+        }
+        public Task<List<SavedWord>> GetWordsAtCurrDay()
+        {
+            var query = database.Table<SavedWord>().Where(s => s.Date == DateTime.Today);
+            return query.ToListAsync();
+        }
+        public void UpdateWordAtDay(SavedWord word, DateTime time)
+        {
+            word.Date = time;
+            var r = database.UpdateAsync(word);
         }
         public Task<int> ClearTaskAsync()
         {

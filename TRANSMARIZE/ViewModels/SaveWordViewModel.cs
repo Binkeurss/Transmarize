@@ -5,21 +5,39 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TRANSMARIZE.Model;
+using System.Threading.Tasks;
 
 namespace TRANSMARIZE.ViewModels
 {
     public partial class SaveWordViewModel : ViewModelBase
     {
-        public static SavedWord learnWord;
-        public static int i = 0;
+        public SavedWord learnWord;
+        public int i = 0;
+        public List<SavedWord> wordList = new List<SavedWord>();
 
         [ObservableProperty]
         ViewModelBase content = new ListWordViewModel();
+        public SaveWordViewModel() { }
+        public SaveWordViewModel(ViewModelBase view)
+        {
+            Content = view;
+        }
 
         [RelayCommand]
-        public async void NaviRevise()
+        public async void OpenFlashCard()
         {
-            List<SavedWord> wordList = await App.WordBookDatabase.GetWordsAsync();
+            //wordList = await App.WordBookDatabase.GetWordsAtCurrDay();
+            wordList = await App.WordBookDatabase.GetWordsAsync();
+            i = 0;
+            if (i < wordList.Count())
+            {
+                learnWord = wordList[i++];
+                Content = new ReviseWordViewModel(learnWord);
+            }
+        }
+
+        public void NaviRevise()
+        {
             if (i < wordList.Count())
             {
                 learnWord = wordList[i++];
@@ -32,19 +50,36 @@ namespace TRANSMARIZE.ViewModels
         }
 
         [RelayCommand]
+        public void UpdateDayAndNavi0()
+        {
+            wordList.Add(learnWord);
+            NaviRevise();
+        }
+
+        [RelayCommand]
+        public void UpdateDayAndNavi1()
+        {
+            App.WordBookDatabase.UpdateWordAtDay(learnWord, learnWord.Date.AddDays(1));
+            NaviRevise();
+        }
+
+        [RelayCommand]
+        public void UpdateDayAndNavi4()
+        {
+            App.WordBookDatabase.UpdateWordAtDay(learnWord, learnWord.Date.AddDays(4));
+            NaviRevise();
+        }
+
+        [RelayCommand]
         public void NaviReveal()
         {
             Content = new WordTransViewModel(learnWord);
         }
+
         [RelayCommand]
         public void NaviList()
         {
             Content = new ListWordViewModel();
-        }
-        public SaveWordViewModel() { }
-        public SaveWordViewModel(ViewModelBase view)
-        {
-            Content = view;
         }
     }
 }
