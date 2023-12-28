@@ -134,14 +134,15 @@
 
 				<StackPanel Orientation="Horizontal">
 					<TextBlock Classes="SourceTextTextBlock" Text="{Binding FirstBox}"/>
-					<Button VerticalContentAlignment="Center"
+					<ToggleButton VerticalContentAlignment="Center"
 							HorizontalContentAlignment="Center"
+							Margin="10 0 0 -20"
 							Background="Transparent"
-							Margin="10 5 0 -20"
+							IsChecked="False"
 							Command="{Binding ReadWord1Command}">
 						<Image Source="{SvgImage avares://TRANSMARIZE/Assets/speaker.svg}"
 								   Width="30" Height="30"/>
-					</Button>
+					</ToggleButton>
 					<Button VerticalContentAlignment="Center"
 							HorizontalContentAlignment="Center"
 							Background="Transparent"

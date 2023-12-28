@@ -115,14 +115,21 @@ namespace TRANSMARIZE.ViewModels
                 }
                 // lấy file audio
                 JToken phonetics = entry["phonetics"];
+                // ishassound luôn luôn true do có API đọc text rồi
                 Ishassound = true;
                 foreach (JToken phonetic in phonetics)
                 {
-                    if (phonetic["audio"].ToString() != "")
+                    // lấy thêm cách đọc
+                    if (phonetic["text"] != null && phonetic["text"].ToString() != "")
+                    {
+                        Phonetic = phonetic["text"].ToString();
+                    }
+                    // lấy đường dẫn audio
+                    if (phonetic["audio"] != null && phonetic["audio"].ToString() != "")
                     {
                         Sound = phonetic["audio"].ToString();
                         // Ishassound = true;
-                        break;
+                        // break;
                     }
                 }
 

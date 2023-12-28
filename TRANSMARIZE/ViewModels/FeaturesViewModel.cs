@@ -194,6 +194,7 @@ namespace TRANSMARIZE.ViewModels
 
         [ObservableProperty]
         private bool isStartUp = ShareData.GetBool(ShareData.settingPath);
+
         [RelayCommand]
         public void StartUp()
         {
@@ -208,11 +209,21 @@ namespace TRANSMARIZE.ViewModels
                 ShareData.SaveBool(ShareData.settingPath, false);
             }
         }
+
+        SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+
         [RelayCommand]
         public void ReadWord1()
         {
-            SpeechSynthesizer synthesizer = new SpeechSynthesizer();
-            synthesizer.SpeakAsync(SourceText);
+            if (synthesizer.State == SynthesizerState.Speaking)
+            {
+                synthesizer.Pause();
+            }
+            else
+            {
+                synthesizer = new SpeechSynthesizer();
+                synthesizer.SpeakAsync(SourceText);
+            }
         }
 
         [ObservableProperty]
