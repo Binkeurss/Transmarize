@@ -25,7 +25,7 @@
 	
 	<TrayIcon.Icons>
 		<TrayIcons>
-			<TrayIcon Icon="/Assets/transmarize-logofinal.ico"
+			<TrayIcon Icon="avares://TRANSMARIZE/Assets/transmarize-logofinal.ico"
 					  ToolTipText="Transmarize ToolTip">
 				<TrayIcon.Menu>
 					<NativeMenu>

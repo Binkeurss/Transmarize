@@ -14,7 +14,8 @@
 		ExtendClientAreaTitleBarHeightHint="-1"	
 		Background="#709BE3"
 		CanResize="False"
-		WindowStartupLocation="CenterScreen">
+		WindowStartupLocation="CenterScreen"
+		Icon="avares://TRANSMARIZE/Assets/transmarize-logofinal.ico">
 	
 	<Design.DataContext>
 		<vm:FeaturesViewModel />

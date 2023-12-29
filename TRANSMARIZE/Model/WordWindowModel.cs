@@ -9,7 +9,6 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
-using LibVLCSharp.Shared;
 using TRANSMARIZE.ViewModels;
 using System.Security;
 

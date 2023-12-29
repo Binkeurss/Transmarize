@@ -18,7 +18,7 @@ namespace TRANSMARIZE.Views
             if (numWord == 1)
             {
                 WordWindow wordWindow = new WordWindow();
-                wordWindow.DataContext = new WordWindowViewModel();
+                wordWindow.DataContext = new WordTransViewModel();
                 wordWindow.Show();
             }
             else
@@ -77,8 +77,9 @@ namespace TRANSMARIZE.Views
             }
             return wordCount;
         }
-        public void Window_Deactivated(object? sender, System.EventArgs e)
+        public async void Window_Deactivated(object? sender, System.EventArgs e)
         {
+            await Task.Delay(50);
             this.Close();
         }
     }
