@@ -23,6 +23,8 @@ namespace TRANSMARIZE.ViewModels
 		private string urlImage = string.Empty;
 		[ObservableProperty]
 		private Bitmap imageFromWebsite;
+		[ObservableProperty]
+		private bool isComplete = false;
 
         public ReviseWordViewModel() { }
 		public ReviseWordViewModel(SavedWord learnWord)
@@ -36,7 +38,12 @@ namespace TRANSMARIZE.ViewModels
         public async void SearchImage()
         {
             var pexelsClient = new PexelsClient("o2f83GqfSjOliNYQKk2qn23C6QEcDiHIGaKmJkQWtogxMK3zwaMunxfk");
-            var result = await pexelsClient.SearchPhotosAsync(LearnContent);
+			Task<PexelsDotNetSDK.Models.PhotoPage> task = pexelsClient.SearchPhotosAsync(LearnContent);
+            var result = await task;
+			if (task.IsCompleted == true)
+			{
+				IsComplete = true;
+			}
 			List<PexelsDotNetSDK.Models.Photo> photos = result.photos.ToList();
 			if (photos.Count == 0)
 			{
