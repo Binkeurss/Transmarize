@@ -8,7 +8,7 @@ using System.Linq;
 using TRANSMARIZE.Services;
 using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
-using System.Speech.Synthesis;
+//using System.Speech.Synthesis;
 
 namespace TRANSMARIZE.ViewModels
 {
