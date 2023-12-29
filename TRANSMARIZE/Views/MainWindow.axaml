@@ -7,7 +7,6 @@
         mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="343"
 		Width="700" Height="343"
         x:Class="TRANSMARIZE.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
         Title="TRANSMARIZE"
 		CornerRadius="25"
 		ExtendClientAreaToDecorationsHint="True"
@@ -15,7 +14,8 @@
 		ExtendClientAreaTitleBarHeightHint="-1"	
 		Background="#709BE3"
 		CanResize="False"
-		WindowStartupLocation="CenterScreen">
+		WindowStartupLocation="CenterScreen"
+		Icon="avares://TRANSMARIZE/Assets/transmarize-logofinal.ico">
 	<Grid ColumnDefinitions="Auto, Auto, *, Auto">
 		<!-- Column 0 -->
 		<Grid Grid.Column="0" RowDefinitions="Auto, Auto, Auto, Auto" 
