@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
 	<channel>
-		<title>Transmarize App</title>
+		<title>Transmarize App v1.1.1</title>
 		<link>https://github.com/Binkeurss/TRANSMARIZE_LTTQ/blob/master/AppCast.xml</link>
 		<description>Most recent changes with links to updates.</description>
 		<language>en</language>
 		<item>
-			<title>Version 2.0 (2 bugs fixed; 3 new features)</title>
+			<title>Version 1.1.1 (2 bugs fixed; 3 new features)</title>
 			<sparkle:releaseNotesLink>
 				https://github.com/Binkeurss/TRANSMARIZE_LTTQ/blob/master/README.md
 			</sparkle:releaseNotesLink>
-			<pubDate>Thu, 27 Oct 2016 10:30:00 +0000</pubDate>
-			<enclosure url="https://github.com/Binkeurss/TRANSMARIZE_LTTQ/blob/master/Transmarize-Offical-Setup.exe"
-                       sparkle:version="2.0"
+			<pubDate>Sun, 31 Dec 2023 10:30:00 +0000</pubDate>
+			<enclosure url="https://github.com/Binkeurss/TRANSMARIZE_LTTQ/blob/master/Transmarize-Offical-Setup-v1.1.1.exe"
+                       sparkle:version="1.1.1"
                        sparkle:os="windows"
                        length="12288"
                        type="application/octet-stream"
