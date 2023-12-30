@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
-    <channel>
-        <title>TRANSMARIZE App</title>
-        <link>https://github.com/Binkeurss/TRANSMARIZE_LTTQ/blob/master/AppCast.xml</link>
-        <description>Most recent changes with links to updates.</description>
-        <language>en</language>
-        <item>
-            <title>Version 2.0 (2 bugs fixed; 3 new features)</title>
-            <sparkle:releaseNotesLink>
+	<channel>
+		<title>Transmarize App</title>
+		<link>https://github.com/Binkeurss/TRANSMARIZE_LTTQ/blob/master/AppCast.xml</link>
+		<description>Most recent changes with links to updates.</description>
+		<language>en</language>
+		<item>
+			<title>Version 2.0 (2 bugs fixed; 3 new features)</title>
+			<sparkle:releaseNotesLink>
 				https://github.com/Binkeurss/TRANSMARIZE_LTTQ/blob/master/README.md
 			</sparkle:releaseNotesLink>
-            <pubDate>Sat, 30 Dec 2023 10:30:00 +0000</pubDate>
-            <enclosure url="https://netsparkleupdater.github.io/NetSparkle/files/sample-app/NetSparkleUpdate.exe"
+			<pubDate>Thu, 27 Oct 2016 10:30:00 +0000</pubDate>
+			<enclosure url="https://github.com/Binkeurss/TRANSMARIZE_LTTQ/blob/master/Transmarize-Offical-Setup.exe"
                        sparkle:version="2.0"
                        sparkle:os="windows"
                        length="12288"
                        type="application/octet-stream"
-                       sparkle:signature="NSG/eKz9BaTJrRDvKSwYEaOumYpPMtMYRq+vjsNlHqRGku/Ual3EoQ==" />
-        </item>
-    </channel>
+                       sparkle:signature="Zp8SVmqWFoqS2BvkXS2D9Cdvok4NREohUM/xoWjtTu0IuyfpiInTEl+7dchVixMZWqfUkUTUQOKfzRjRMOdhAg=="/>
+		</item>
+	</channel>
 </rss>
