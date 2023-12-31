@@ -36,7 +36,7 @@ public partial class MainWindow : Window
         {
             UIFactory = new NetSparkleUpdater.UI.Avalonia.UIFactory(Icon)
             {
-                UpdateWindowGridBackgroundBrush = new SolidColorBrush(Colors.Purple)
+                //UpdateWindowGridBackgroundBrush = new SolidColorBrush(Colors.Purple)
             },
             RelaunchAfterUpdate = true, // default is false; set to true if you want your app to restart after updating (keep as false if your installer will start your app for you)
             ShowsUIOnMainThread = true, // required on Avalonia, preferred on WPF/WinForms
