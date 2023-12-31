@@ -7,6 +7,11 @@ using TRANSMARIZE.Model;
 using TRANSMARIZE.ViewModels;
 using System.Collections.Generic;
 using System;
+using NetSparkleUpdater.SignatureVerifiers;
+using NetSparkleUpdater.UI.Avalonia;
+using NetSparkleUpdater;
+using NetSparkleUpdater.Enums;
+using Avalonia.Media;
 
 namespace TRANSMARIZE.Views;
 
@@ -15,6 +20,7 @@ public partial class MainWindow : Window
     // Khởi tạo các biến hook và giả lập sự kiện
     public static TaskPoolGlobalHook hook = new TaskPoolGlobalHook();
     EventSimulator simulator = new EventSimulator();
+    private SparkleUpdater _sparkle;
 
     // currentText dùng để tránh popup window mở sai thời điểm
     // string currentText = string.Empty; // note: đã được chuyển sang ShareData
@@ -22,6 +28,22 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         Clipboard.ClearAsync();
+
+        string manifestModuleName = System.Reflection.Assembly.GetEntryAssembly().ManifestModule.FullyQualifiedName;
+
+        _sparkle = new SparkleUpdater("https://ngyyen.github.io/AppCast.xml", // link to your app cast file
+                                       new Ed25519Checker(SecurityMode.Unsafe) )
+        {
+            UIFactory = new NetSparkleUpdater.UI.Avalonia.UIFactory(Icon)
+            {
+                UpdateWindowGridBackgroundBrush = new SolidColorBrush(Colors.Purple)
+            },
+            RelaunchAfterUpdate = true, // default is false; set to true if you want your app to restart after updating (keep as false if your installer will start your app for you)
+            ShowsUIOnMainThread = true, // required on Avalonia, preferred on WPF/WinForms
+        };
+        //_sparkle.SecurityProtocolType = System.Net.SecurityProtocolType.Tls12;
+        _sparkle.StartLoop(true, true); // `true` to run an initial check online -- only call StartLoop once for a given SparkleUpdater instance!
+
     }
 
     public void OnMouseRelease(object sender, MouseHookEventArgs e)
@@ -108,5 +130,10 @@ public partial class MainWindow : Window
     public void HideButton_Click(object sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         this.Hide();
+    }
+
+    private async void CheckUpdateButton(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        await _sparkle.CheckForUpdatesAtUserRequest();
     }
 }
