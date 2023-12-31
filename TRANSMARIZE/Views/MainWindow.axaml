@@ -16,6 +16,7 @@
 		CanResize="False"
 		WindowStartupLocation="CenterScreen"
 		Icon="avares://TRANSMARIZE/Assets/transmarize-logofinal.ico">
+	<StackPanel>
 	<Grid ColumnDefinitions="Auto, Auto, *, Auto">
 		<!-- Column 0 -->
 		<Grid Grid.Column="0" RowDefinitions="Auto, Auto, Auto, Auto" 
@@ -161,55 +162,50 @@
 							</Setter>
 						</Style>
 					</Grid.Styles>
-					
-					<StackPanel Orientation="Horizontal">
-						<Button
-							BorderBrush="Black"
-							BorderThickness="2"
-							Content="START"
-							Background="#FFFFFF"
-							Margin="12 0 0 0"
-							Width="69"
-							Height="43"
-							FontWeight="Bold"
-							FontFamily="VigaFont"
-							Foreground="Black"
-							CornerRadius="25"
-							HorizontalContentAlignment="Center"
-							VerticalContentAlignment="Center"
-							Click="RunHookButton">
-						</Button>
-						<Button Content="Word Book"
-								Click="OpenBookButton"
-								Margin="12 0 0 0"
+					<StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<Button
 								BorderBrush="Black"
 								BorderThickness="2"
+								Content="START"
 								Background="#FFFFFF"
-								Width="95"
+								Margin="12 0 0 0"
+								Width="69"
 								Height="43"
 								FontWeight="Bold"
 								FontFamily="VigaFont"
 								Foreground="Black"
 								CornerRadius="25"
 								HorizontalContentAlignment="Center"
-								VerticalContentAlignment="Center"/>
-						
-						<ToggleSwitch Margin="15 3 0 0"						  
-									  FontFamily="{StaticResource VigaFont}"
-									  IsChecked="{Binding IsStartUp}"
-									  Command="{Binding StartUpCommand}">
+								VerticalContentAlignment="Center"
+								Click="RunHookButton">
+							</Button>
+							<Button Content="Word Book"
+									Click="OpenBookButton"
+									Margin="12 0 0 0"
+									BorderBrush="Black"
+									BorderThickness="2"
+									Background="#FFFFFF"
+									Width="95"
+									Height="43"
+									FontWeight="Bold"
+									FontFamily="VigaFont"
+									Foreground="Black"
+									CornerRadius="25"
+									HorizontalContentAlignment="Center"
+									VerticalContentAlignment="Center"/>
+
+							<ToggleSwitch Margin="15 3 0 0"
+										  FontFamily="{StaticResource VigaFont}"
+										  IsChecked="{Binding IsStartUp}"
+										  Command="{Binding StartUpCommand}">
 								<TextBlock Text="Auto Run"
 										   FontSize="15"
 										   FontFamily="{StaticResource VigaFont}"
 										   FontWeight="DemiBold"
 										   Margin="0 0 0 -7"/>
-						</ToggleSwitch>
-						<Button Content="XXX"
-								Click="CheckUpdateButton"
-								Margin="-10 0 0 0"/>
-						<TextBlock Text="ver 1.1.2"
-								   Margin="-55 55 0 0"
-								   FontFamily="{StaticResource VigaFont}"/>
+							</ToggleSwitch>
+						</StackPanel>
 					</StackPanel>
 					
 				</Grid>
@@ -334,8 +330,24 @@
 				</Button>
 
 			</StackPanel>
-		</Grid>
-		
+		</Grid>		
 		<!--Button Exit and Hide-->
 	</Grid>
+	<StackPanel Orientation="Horizontal">
+		<TextBlock Text="ver 1.1.5"
+				   Margin="610 5 4 0"
+				   FontFamily="{StaticResource VigaFont}"/>
+		<Button Click="CheckUpdateButton"
+				Margin="0 2 0 0"
+				Width="25"
+				Height="25"
+				Background="Transparent"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center">
+			<Image Source="{SvgImage avares://TRANSMARIZE/Assets/update.svg}"
+				   Width="15"
+				   Height="15"/>
+		</Button>
+	</StackPanel>
+	</StackPanel>
 </Window>
