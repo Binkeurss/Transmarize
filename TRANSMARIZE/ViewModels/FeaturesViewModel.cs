@@ -179,7 +179,7 @@ namespace TRANSMARIZE.ViewModels
         // API Explain
         public async Task<string> ExplainText(string input)
         {
-            var YOUR_API_KEY = "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";
+            var YOUR_API_KEY = "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";
             string userInput = "What is " + input;
             var client = new RestClient("https://api.openai.com/v1");
             var request = new RestRequest("engines/text-davinci-003/completions", Method.Post);
@@ -198,7 +198,7 @@ namespace TRANSMARIZE.ViewModels
         [RelayCommand]
         public void StartUp()
         {
-            if (IsStartUp == true)
+/*            if (IsStartUp == true)
             {
                 ShareData.SetToStartup(true);
                 ShareData.SaveBool(ShareData.settingPath, true);
@@ -207,7 +207,7 @@ namespace TRANSMARIZE.ViewModels
             {
                 ShareData.SetToStartup(false);
                 ShareData.SaveBool(ShareData.settingPath, false);
-            }
+            }*/
         }
 
         //SpeechSynthesizer synthesizer = new SpeechSynthesizer();
