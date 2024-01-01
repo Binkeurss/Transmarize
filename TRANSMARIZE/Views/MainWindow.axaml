@@ -334,7 +334,7 @@
 		<!--Button Exit and Hide-->
 	</Grid>
 	<StackPanel Orientation="Horizontal">
-		<TextBlock Text="ver 1.1.6"
+		<TextBlock Text="ver 1.1.9"
 				   Margin="610 5 4 0"
 				   FontFamily="{StaticResource VigaFont}"/>
 		<Button Click="CheckUpdateButton"
