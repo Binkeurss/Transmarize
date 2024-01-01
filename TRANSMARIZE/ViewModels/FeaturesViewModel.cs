@@ -179,7 +179,7 @@ namespace TRANSMARIZE.ViewModels
         // API Explain
         public async Task<string> ExplainText(string input)
         {
-            var YOUR_API_KEY = "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";
+            var YOUR_API_KEY = "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";
             string userInput = "What is " + input;
             var client = new RestClient("https://api.openai.com/v1");
             var request = new RestRequest("engines/text-davinci-003/completions", Method.Post);
