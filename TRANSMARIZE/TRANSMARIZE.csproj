@@ -66,4 +66,10 @@
       <DependentUpon>WordTransView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\TranslateWindow.axaml.cs">
+      <DependentUpon>TranslateWindow.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
