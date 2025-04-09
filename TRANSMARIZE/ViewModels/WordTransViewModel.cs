@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using TRANSMARIZE.Model;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Speech.Synthesis;
+//using System.Speech.Synthesis;
 
 namespace TRANSMARIZE.ViewModels
 {
     public partial class WordTransViewModel : ViewModelBase
     {
         private HttpClient httpClient = new HttpClient();
-        private SpeechSynthesizer synthesizer = new SpeechSynthesizer();
+        //private SpeechSynthesizer synthesizer = new SpeechSynthesizer();
 
         // biến savedword có giá trị khi từ đang tra đã được lưu vào WordBook
         public SavedWord findedWord = new SavedWord();
@@ -192,7 +192,7 @@ namespace TRANSMARIZE.ViewModels
                         var mediaplayer = new MediaPlayer(media);
                         mediaplayer.Play();*/
 
-            synthesizer.SpeakAsync(Word);
+            //synthesizer.SpeakAsync(Word);
         }
 
         [RelayCommand]
